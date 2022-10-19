@@ -1,4 +1,4 @@
-`MSD-14663 Europa Exploration Repository`
+# MSD-14663 Europa Exploration Repository
 
 Repository will hold all code required for the MSD Europa Exploration Team
 
