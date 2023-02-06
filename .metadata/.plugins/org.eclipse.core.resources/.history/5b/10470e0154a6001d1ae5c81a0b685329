@@ -1,0 +1,24 @@
+/*
+ * VASensors.c
+ *
+ *  Created on: Feb 6, 2023
+ *      Author: Liam Sullivan
+ *
+ *  Description:
+ *
+ */
+
+#include "VASensors.h"
+
+void start_va_sensors(ADC_HandleTypeDef* adc_handle){
+	HAL_StatusTypeDef ret;
+
+	// Start the collection of Values from the ADC
+	ret = HAL_ADC_Start(adc_handle);
+
+	// Poll for a conversion
+
+
+}
+
+

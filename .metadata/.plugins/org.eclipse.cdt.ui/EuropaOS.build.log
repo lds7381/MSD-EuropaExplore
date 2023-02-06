@@ -1,0 +1,25 @@
+14:52:49 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+In file included from ../Core/Src/VASensors.c:11:
+../Core/Inc/VASensors.h:28:1: warning: useless storage class specifier in empty declaration
+   28 | };
+      | ^
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  20804	     20	   3252	  24076	   5e0c	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+
+14:52:51 Build Finished. 0 errors, 2 warnings. (took 1s.773ms)
+
