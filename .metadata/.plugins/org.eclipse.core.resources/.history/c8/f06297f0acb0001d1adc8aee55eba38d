@@ -35,8 +35,8 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		buff[0] = HAL_ADC_GetValue(adc_handle);
 		HAL_ADC_Stop(adc_handle);
 
-		sprintf(reading, "ADC VALUE: %ld\r\n", buff[0]);
-		print(uart, reading, sizeof(reading));
+		sprintf(str, "ADC VALUE: %ld\r\n", buff[0]);
+		print(uart, str, sizeof(str));
 		HAL_Delay(500);
 	}
 

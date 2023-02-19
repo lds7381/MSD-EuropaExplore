@@ -16,7 +16,6 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	uint32_t vernier_values[3];
 
 	char str[50] = "Vernier Sensor Collection Started\r\n";
-	char reading[20];
 	print(uart, str, sizeof(str));
 
 	// Select pH Channel
@@ -32,12 +31,13 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		// Poll for a conversion
 		HAL_ADC_Start(adc_handle);
 		HAL_ADC_PollForConversion(adc_handle, 1000);
-		buff[0] = HAL_ADC_GetValue(adc_handle);
+		digital_result = HAL_ADC_GetValue(adc_handle);
 		HAL_ADC_Stop(adc_handle);
 
-		sprintf(reading, "ADC VALUE: %ld\r\n", buff[0]);
-		print(uart, reading, sizeof(reading));
+		sprintf(str, "ADC VALUE: %ld\r\n", buff[0]);
+		print(uart, str, sizeof(str));
 		HAL_Delay(500);
+
 	}
 
 }

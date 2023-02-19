@@ -1,7 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 ADC1.Channel-12\#ChannelRegularConversion=ADC_CHANNEL_4
 ADC1.ContinuousConvMode=ENABLE
-ADC1.ExternalTrigConv=ADC_EXTERNALTRIG_T3_TRGO
+ADC1.ExternalTrigConv=ADC_SOFTWARE_START
 ADC1.IPParameters=Rank-12\#ChannelRegularConversion,master,Channel-12\#ChannelRegularConversion,SingleDiff-12\#ChannelRegularConversion,SamplingTime-12\#ChannelRegularConversion,OffsetNumber-12\#ChannelRegularConversion,NbrOfConversionFlag,ContinuousConvMode,ExternalTrigConv
 ADC1.NbrOfConversionFlag=1
 ADC1.OffsetNumber-12\#ChannelRegularConversion=ADC_OFFSET_NONE
