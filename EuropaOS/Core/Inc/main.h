@@ -32,6 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "time.h"
+#include "VASensors.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -65,14 +66,14 @@ void Error_Handler(void);
 #define STLK_RX_GPIO_Port GPIOD
 #define STLK_TX_Pin GPIO_PIN_9
 #define STLK_TX_GPIO_Port GPIOD
+#define MUX_SEL0_Pin GPIO_PIN_4
+#define MUX_SEL0_GPIO_Port GPIOG
 #define USB_PowerSwitchOn_Pin GPIO_PIN_5
 #define USB_PowerSwitchOn_GPIO_Port GPIOG
-#define USB_OverCurrent_Pin GPIO_PIN_6
-#define USB_OverCurrent_GPIO_Port GPIOG
+#define MUX_SEL1_Pin GPIO_PIN_6
+#define MUX_SEL1_GPIO_Port GPIOG
 #define STLINK_TX_Pin GPIO_PIN_7
 #define STLINK_TX_GPIO_Port GPIOG
-#define STLINK_RX_Pin GPIO_PIN_8
-#define STLINK_RX_GPIO_Port GPIOG
 #define USB_SOF_Pin GPIO_PIN_8
 #define USB_SOF_GPIO_Port GPIOA
 #define USB_VBUS_Pin GPIO_PIN_9

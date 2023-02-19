@@ -1,4 +1,5 @@
-../Core/Src/VASensors.c:15:6:start_va_sensors	32	static
-../Core/Src/VASensors.c:36:6:adc_select_pH	40	static
-../Core/Src/VASensors.c:51:6:adc_select_salinity	40	static
-../Core/Src/VASensors.c:67:6:adc_select_dissolved_oxygen	40	static
+../Core/Src/VASensors.c:15:6:start_va_sensors	96	static
+../Core/Src/VASensors.c:46:6:adc_select_pH	40	static
+../Core/Src/VASensors.c:61:6:adc_select_salinity	40	static
+../Core/Src/VASensors.c:77:6:adc_select_dissolved_oxygen	40	static
+../Core/Src/VASensors.c:93:6:mux_select	16	static

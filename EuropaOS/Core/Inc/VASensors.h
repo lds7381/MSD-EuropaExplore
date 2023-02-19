@@ -13,6 +13,7 @@
 
 #include "stm32l4xx.h"
 #include "main.h"
+#include "uart.h"
 
 #define ADC_TIMEOUT (1000)
 
@@ -20,11 +21,18 @@
 /*	id_t Enum
  * 	Description: This Enum will hold all of the IDs for the different types of Vernier analog sensors
  */
-typedef enum id_t{
+enum v_net_id{
 	thermistor 			= 0b000,
 	dissolved_oxygen 	= 0b001,
 	ph 					= 0b010,
 	salinity 			= 0b100
+};
+
+// Vernier Multiplexer selects
+enum mux_vsel_t {
+	sel_do 					= 0b00,
+	sel_ph 					= 0b01,
+	sel_salinity			= 0b10
 };
 
 
@@ -37,7 +45,7 @@ typedef struct {
 	int	data;
 } va_data_t;
 
-void start_va_sensors(ADC_HandleTypeDef* adc_handle);
+void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, uint32_t *buff);
 void adc_select_pH(ADC_HandleTypeDef* adc_handle);
 void adc_select_salinity(ADC_HandleTypeDef* adc_handle);
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle);
