@@ -16,9 +16,8 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	uint32_t vernier_values[3];
 
 	char str[50] = "Vernier Sensor Collection Started\r\n";
-	char reading[40];
+	char reading[30];
 	double volts;
-	uint32_t ph;
 	print(uart, str, sizeof(str));
 
 	// Select pH Channel
@@ -39,10 +38,9 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		buff[0] = HAL_ADC_GetValue(adc_handle);
 		HAL_ADC_Stop(adc_handle);
 		volts = conv_adc_volt(buff[0]);
-		ph = conv_volt_ph(volts);
-		sprintf(reading, "ADC VALUE: %ld, Volts: %0.2f, pH: %ld\r\n", buff[0], volts, ph);
+		sprintf(reading, "ADC VALUE: %ld, Volts: %0.2f\r\n", buff[0], volts);
 		print(uart, reading, sizeof(reading));
-		HAL_Delay(1000);
+		HAL_Delay(500);
 	}
 
 }
@@ -60,9 +58,6 @@ void adc_select_pH(ADC_HandleTypeDef* adc_handle){
     if (HAL_ADC_ConfigChannel(adc_handle, &sConfig) != HAL_OK){
     	Error_Handler();
     }
-
-    // Mux Selection
-    mux_select(sel_ph);
 }
 
 void adc_select_salinity(ADC_HandleTypeDef* adc_handle){
@@ -79,9 +74,6 @@ void adc_select_salinity(ADC_HandleTypeDef* adc_handle){
     {
 	  Error_Handler();
     }
-
-    // Mux Selection
-    mux_select(sel_salinity);
 }
 
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle){
@@ -98,9 +90,6 @@ void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle){
     {
 	  Error_Handler();
     }
-
-    // Mux Selection
-    mux_select(sel_do);
 }
 
 void mux_select(enum mux_vsel_t sel) {
@@ -124,7 +113,7 @@ double conv_adc_volt(uint32_t adc_reading){
 }
 
 uint32_t conv_volt_ph(double volts) {
-	return (uint8_t)(14-(volts/0.25));
+	return (uint8_t) (volts/0.25);
 }
 
 

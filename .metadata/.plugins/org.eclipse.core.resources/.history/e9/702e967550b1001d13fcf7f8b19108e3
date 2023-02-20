@@ -56,6 +56,5 @@ void adc_select_pH(ADC_HandleTypeDef* adc_handle);
 void adc_select_salinity(ADC_HandleTypeDef* adc_handle);
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle);
 double conv_adc_volt(uint32_t adc_reading);
-uint32_t conv_volt_ph(double volts);
 
 #endif /* INC_VASENSORS_H_ */

@@ -124,7 +124,7 @@ double conv_adc_volt(uint32_t adc_reading){
 }
 
 uint32_t conv_volt_ph(double volts) {
-	return (uint8_t)(14-(volts/0.25));
+	return (uint8_t)(volts/0.25);
 }
 
 
