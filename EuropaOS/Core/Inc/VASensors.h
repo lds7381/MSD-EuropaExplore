@@ -17,6 +17,12 @@
 
 #define ADC_TIMEOUT (1000)
 
+#define MAX_VOLT (3.3)
+#define MIN_VOLT (0.0)
+
+#define MAX_ADC_READ (4095)
+#define MIN_ADC_READ (0)
+
 
 /*	id_t Enum
  * 	Description: This Enum will hold all of the IDs for the different types of Vernier analog sensors
@@ -49,5 +55,6 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 void adc_select_pH(ADC_HandleTypeDef* adc_handle);
 void adc_select_salinity(ADC_HandleTypeDef* adc_handle);
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle);
+double conv_adc_volt(uint32_t adc_reading);
 
 #endif /* INC_VASENSORS_H_ */

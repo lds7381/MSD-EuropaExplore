@@ -16,7 +16,8 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	uint32_t vernier_values[3];
 
 	char str[50] = "Vernier Sensor Collection Started\r\n";
-	char reading[20];
+	char reading[30];
+	double volts;
 	print(uart, str, sizeof(str));
 
 	// Select pH Channel
@@ -25,8 +26,10 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 //	if ( HAL_ADC_Start(adc_handle) != HAL_OK) {
 //		Error_Handler();
 //	}
+	HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
 
 	//HAL_ADC_Start_DMA(adc_handle, buff, 1);
+	adc_handle->Instance->DIFSEL = 0;
 
 	while(1) {
 		// Poll for a conversion
@@ -34,8 +37,8 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		HAL_ADC_PollForConversion(adc_handle, 1000);
 		buff[0] = HAL_ADC_GetValue(adc_handle);
 		HAL_ADC_Stop(adc_handle);
-
-		sprintf(reading, "ADC VALUE: %ld\r\n", buff[0]);
+		volts = conv_adc_volt(buff[0]);
+		sprintf(reading, "ADC VALUE: %ld, Volts: %0.1f\r\n", buff[0], volts);
 		print(uart, reading, sizeof(reading));
 		HAL_Delay(500);
 	}
@@ -49,7 +52,7 @@ void adc_select_pH(ADC_HandleTypeDef* adc_handle){
 	// Populate the configuration to select channel 3 (pH Sensor)
 	sConfig.Channel = ADC_CHANNEL_4;
     sConfig.Rank = ADC_REGULAR_RANK_1;
-    sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
+    sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
     // Configure the adc to select channel 3
     if (HAL_ADC_ConfigChannel(adc_handle, &sConfig) != HAL_OK){
@@ -103,6 +106,10 @@ void mux_select(enum mux_vsel_t sel) {
 	else {
 		HAL_GPIO_WritePin(MUX_SEL1_GPIO_Port, MUX_SEL1_Pin, GPIO_PIN_RESET);
 	}
+}
+
+double conv_adc_volt(uint32_t adc_reading){
+	return (double)(((((double)adc_reading - (double)MIN_ADC_READ) * (MAX_VOLT - MIN_VOLT)) / ((double)MAX_ADC_READ - (double)MIN_ADC_READ)) + MIN_VOLT);
 }
 
 
