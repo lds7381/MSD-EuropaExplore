@@ -14,6 +14,7 @@
 #include "stm32l4xx.h"
 #include "main.h"
 #include "uart.h"
+#include <math.h>
 
 #define ADC_TIMEOUT (1000)
 
@@ -57,5 +58,6 @@ void adc_select_salinity(ADC_HandleTypeDef* adc_handle);
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle);
 double conv_adc_volt(uint32_t adc_reading);
 uint32_t conv_volt_ph(double volts);
+void mux_select(enum mux_vsel_t sel);
 
 #endif /* INC_VASENSORS_H_ */

@@ -45,6 +45,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		HAL_Delay(1000);
 	}
 
+
 }
 
 void adc_select_pH(ADC_HandleTypeDef* adc_handle){
@@ -124,7 +125,8 @@ double conv_adc_volt(uint32_t adc_reading){
 }
 
 uint32_t conv_volt_ph(double volts) {
-	return (uint8_t)(14-(volts/0.25));
+	double ph = (14-(volts/0.25));
+	return (uint32_t) round(ph);
 }
 
 

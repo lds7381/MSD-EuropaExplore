@@ -32779,3 +32779,131 @@
 2023-02-20 13:28:36,267 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 1819mS.
 2023-02-20 13:28:36,268 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
 2023-02-20 13:28:36,275 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-02-20 14:27:24,608 [INFO] Gpio:272 - dependency for GPIO [ADC1, DAC1, LPUART1, RCC, SYS]
+2023-02-20 14:27:41,901 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 745363112 Bytes (1024458752)
+2023-02-20 14:27:42,005 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 773288872 Bytes (1024458752)
+2023-02-20 14:27:44,250 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 881677992 Bytes (1024458752)
+2023-02-20 14:27:44,658 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: DAC
+2023-02-20 14:27:44,658 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8L4
+2023-02-20 14:27:44,659 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SYS
+2023-02-20 14:27:44,659 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: ADC
+2023-02-20 14:27:44,659 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: RCC
+2023-02-20 14:27:44,659 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: LPUART
+2023-02-20 14:27:44,659 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: NVIC
+2023-02-20 14:27:44,660 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: GPIO
+2023-02-20 14:27:44,662 [INFO] CodeGenerator:690 - code generatio: config db path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.6.1.202207061420\\db\
+2023-02-20 14:27:44,893 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp_save
+2023-02-20 14:27:44,994 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp
+2023-02-20 14:27:45,084 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp_save
+2023-02-20 14:27:45,207 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp
+2023-02-20 14:27:45,555 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c_save
+2023-02-20 14:27:45,647 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c
+2023-02-20 14:27:45,655 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h_save
+2023-02-20 14:27:45,708 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h
+2023-02-20 14:27:45,722 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c_save
+2023-02-20 14:27:45,804 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c
+2023-02-20 14:27:45,807 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp_save
+2023-02-20 14:27:45,852 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp
+2023-02-20 14:27:45,864 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h_save
+2023-02-20 14:27:45,934 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h
+2023-02-20 14:27:45,952 [WARN] IPConfigManager:3348 - IP not found : TIM
+2023-02-20 14:27:45,952 [WARN] CodeGenerator:3567 - IP not found : null
+2023-02-20 14:27:45,963 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h_save
+2023-02-20 14:27:46,038 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h
+2023-02-20 14:27:46,047 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c_save
+2023-02-20 14:27:46,149 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c
+2023-02-20 14:27:46,801 [INFO] ProjectBuilder:2919 - Time for Copy HAL[1] : 226mS.
+2023-02-20 14:27:46,805 [INFO] ProjectBuilder:4117 - Project Generator version: 3.17.1
+2023-02-20 14:27:47,062 [INFO] ConfigFileManager:1394 - The Die is : DIE470
+2023-02-20 14:27:48,481 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 1676mS.
+2023-02-20 14:27:48,482 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
+2023-02-20 14:27:48,490 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-02-20 14:29:28,961 [INFO] Gpio:272 - dependency for GPIO [ADC1, DAC1, LPUART1, RCC, SYS]
+2023-02-20 14:29:29,020 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-02-20 14:29:29,354 [INFO] Gpio:272 - dependency for GPIO [ADC1, DAC1, LPUART1, RCC, SYS]
+2023-02-20 14:29:29,403 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-02-20 14:34:38,968 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 691798528 Bytes (1040187392)
+2023-02-20 14:34:39,067 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 719583744 Bytes (1040187392)
+2023-02-20 14:34:41,024 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 771490304 Bytes (1040187392)
+2023-02-20 14:34:41,432 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: DAC
+2023-02-20 14:34:41,432 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8L4
+2023-02-20 14:34:41,432 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SYS
+2023-02-20 14:34:41,432 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: ADC
+2023-02-20 14:34:41,434 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: RCC
+2023-02-20 14:34:41,434 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: LPUART
+2023-02-20 14:34:41,434 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: NVIC
+2023-02-20 14:34:41,434 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: GPIO
+2023-02-20 14:34:41,435 [INFO] CodeGenerator:690 - code generatio: config db path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.6.1.202207061420\\db\
+2023-02-20 14:34:41,710 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp_save
+2023-02-20 14:34:41,784 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp
+2023-02-20 14:34:41,840 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp_save
+2023-02-20 14:34:41,919 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp
+2023-02-20 14:34:42,348 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c_save
+2023-02-20 14:34:42,433 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c
+2023-02-20 14:34:42,439 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h_save
+2023-02-20 14:34:42,491 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h
+2023-02-20 14:34:42,505 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c_save
+2023-02-20 14:34:42,589 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c
+2023-02-20 14:34:42,592 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp_save
+2023-02-20 14:34:42,636 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp
+2023-02-20 14:34:42,648 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h_save
+2023-02-20 14:34:42,746 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h
+2023-02-20 14:34:42,767 [WARN] IPConfigManager:3348 - IP not found : TIM
+2023-02-20 14:34:42,767 [WARN] CodeGenerator:3567 - IP not found : null
+2023-02-20 14:34:42,779 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h_save
+2023-02-20 14:34:42,849 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h
+2023-02-20 14:34:42,859 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c_save
+2023-02-20 14:34:42,979 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c
+2023-02-20 14:34:43,704 [INFO] ProjectBuilder:2919 - Time for Copy HAL[1] : 236mS.
+2023-02-20 14:34:43,707 [INFO] ProjectBuilder:4117 - Project Generator version: 3.17.1
+2023-02-20 14:34:44,011 [INFO] ConfigFileManager:1394 - The Die is : DIE470
+2023-02-20 14:34:45,138 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 1431mS.
+2023-02-20 14:34:45,139 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
+2023-02-20 14:34:45,192 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-02-21 18:26:33,577 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,580 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,580 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,580 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,581 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,581 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,581 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,581 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,581 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,582 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,583 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,583 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,583 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,747 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,883 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,884 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,884 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,885 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,886 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,887 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,887 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 18:26:33,968 [INFO] ADCParametersView:113 -                Rank 1 : true
+2023-02-21 19:34:38,431 [ERROR] ConfigurationRetriever:139 - IOException on connection: sw-center.st.com
+2023-02-21 19:34:38,432 [ERROR] ConfigurationRetriever:139 - IOException on connection: sw-center.st.com
+2023-02-21 19:34:38,433 [ERROR] ConfigurationRetriever:139 - IOException on connection: sw-center.st.com
+2023-02-27 12:39:05,507 [INFO] Activator:177 - 
+
+
+2023-02-27 12:39:05,510 [INFO] Activator:178 - !SESSION log4j initialized

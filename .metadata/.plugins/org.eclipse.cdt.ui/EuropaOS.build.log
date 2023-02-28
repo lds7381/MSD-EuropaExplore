@@ -1,33 +1,10 @@
-15:31:06 **** Incremental Build of configuration Debug for project EuropaOS ****
+15:22:25 **** Incremental Build of configuration Debug for project EuropaOS ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
-../Core/Src/VASensors.c: In function 'start_va_sensors':
-../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
-   16 |  uint32_t vernier_values[3];
-      |           ^~~~~~~~~~~~~~
-../Core/Src/VASensors.c: In function 'adc_select_pH':
-../Core/Src/VASensors.c:65:5: warning: implicit declaration of function 'mux_select'; did you mean 'pselect'? [-Wimplicit-function-declaration]
-   65 |     mux_select(sel_ph);
-      |     ^~~~~~~~~~
-      |     pselect
-../Core/Src/VASensors.c: At top level:
-../Core/Src/VASensors.c:106:6: warning: conflicting types for 'mux_select'
-  106 | void mux_select(enum mux_vsel_t sel) {
-      |      ^~~~~~~~~~
-../Core/Src/VASensors.c:65:5: note: previous implicit declaration of 'mux_select' was here
-   65 |     mux_select(sel_ph);
-      |     ^~~~~~~~~~
-arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: EuropaOS.elf
- 
 arm-none-eabi-size   EuropaOS.elf 
-arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
    text	   data	    bss	    dec	    hex	filename
-  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+  42172	    484	   1932	  44588	   ae2c	EuropaOS.elf
 Finished building: default.size.stdout
  
-Finished building: EuropaOS.list
- 
 
-15:31:07 Build Finished. 0 errors, 3 warnings. (took 1s.22ms)
+15:22:25 Build Finished. 0 errors, 0 warnings. (took 293ms)
 

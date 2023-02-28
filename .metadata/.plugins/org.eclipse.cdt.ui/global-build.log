@@ -5213,3 +5213,231 @@ Finished building: default.size.stdout
  
 Finished building: EuropaOS.list
  
+12:44:41 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+12:45:10 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+12:45:35 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+12:46:32 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+12:49:40 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c: In function 'adc_select_pH':
+../Core/Src/VASensors.c:66:5: warning: implicit declaration of function 'mux_select'; did you mean 'pselect'? [-Wimplicit-function-declaration]
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+      |     pselect
+../Core/Src/VASensors.c: At top level:
+../Core/Src/VASensors.c:107:6: warning: conflicting types for 'mux_select'
+  107 | void mux_select(enum mux_vsel_t sel) {
+      |      ^~~~~~~~~~
+../Core/Src/VASensors.c:66:5: note: previous implicit declaration of 'mux_select' was here
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+12:56:34 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+12:58:52 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+13:00:40 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+13:03:48 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+13:05:33 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+14:31:12 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c: In function 'adc_select_pH':
+../Core/Src/VASensors.c:66:5: warning: implicit declaration of function 'mux_select'; did you mean 'pselect'? [-Wimplicit-function-declaration]
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+      |     pselect
+../Core/Src/VASensors.c: At top level:
+../Core/Src/VASensors.c:107:6: warning: conflicting types for 'mux_select'
+  107 | void mux_select(enum mux_vsel_t sel) {
+      |      ^~~~~~~~~~
+../Core/Src/VASensors.c:66:5: note: previous implicit declaration of 'mux_select' was here
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+14:31:59 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c: In function 'adc_select_pH':
+../Core/Src/VASensors.c:66:5: warning: implicit declaration of function 'mux_select'; did you mean 'pselect'? [-Wimplicit-function-declaration]
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+      |     pselect
+../Core/Src/VASensors.c: At top level:
+../Core/Src/VASensors.c:107:6: warning: conflicting types for 'mux_select'
+  107 | void mux_select(enum mux_vsel_t sel) {
+      |      ^~~~~~~~~~
+../Core/Src/VASensors.c:66:5: note: previous implicit declaration of 'mux_select' was here
+   66 |     mux_select(sel_ph);
+      |     ^~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+17:35:58 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42024	    484	   1932	  44440	   ad98	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+15:21:48 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:78:10: warning: unused variable 'tx' [-Wunused-variable]
+   78 |  uint8_t tx[20];
+      |          ^~
+../Core/Src/VASensors.c: In function 'conv_volt_ph':
+../Core/Src/VASensors.c:129:20: warning: implicit declaration of function 'round' [-Wimplicit-function-declaration]
+  129 |  return (uint32_t) round(ph);
+      |                    ^~~~~
+../Core/Src/VASensors.c:129:20: warning: incompatible implicit declaration of built-in function 'round'
+../Core/Src/VASensors.c:12:1: note: include '<math.h>' or provide a declaration of 'round'
+   11 | #include "VASensors.h"
+  +++ |+#include <math.h>
+   12 | 
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  42172	    484	   1932	  44588	   ae2c	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+15:22:19 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:78:10: warning: unused variable 'tx' [-Wunused-variable]
+   78 |  uint8_t tx[20];
+      |          ^~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  42172	    484	   1932	  44588	   ae2c	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+15:22:25 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  42172	    484	   1932	  44588	   ae2c	EuropaOS.elf
+Finished building: default.size.stdout
+ 
