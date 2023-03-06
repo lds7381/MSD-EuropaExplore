@@ -29,6 +29,5 @@ typedef struct arducam_info_t {
 	SPI_HandleTypeDef *spi;
 	I2C_HandleTypeDef *i2c;
 	uint8_t resolution;
-} arducam_info_t;
 
 #endif /* INC_ARDUCAM_H_ */

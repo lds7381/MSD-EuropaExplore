@@ -1,0 +1,16 @@
+/*
+ * Arducam.h
+ *
+ *  Created on: Mar 6, 2023
+ *      Author: liams
+ */
+
+#ifndef INC_ARDUCAM_H_
+#define INC_ARDUCAM_H_
+
+typedef enum res_t {
+	_1800x16000,
+	_800x600,
+} res_t;
+
+#endif /* INC_ARDUCAM_H_ */

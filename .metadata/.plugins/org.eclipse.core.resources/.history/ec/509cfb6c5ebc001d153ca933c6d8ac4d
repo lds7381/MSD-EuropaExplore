@@ -1,0 +1,10 @@
+/*
+ * Arducam.c
+ *
+ *  Created on: Mar 6, 2023
+ *      Author: liams
+ */
+
+void init_Arducam(SPI_HandleTypeDef *spi, I2C_HandleTypeDef *i2c, ){
+
+}
