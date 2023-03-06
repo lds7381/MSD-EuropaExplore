@@ -104,9 +104,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   // Vernier Sensor Collection Function
-  HAL_DAC_Start(&hdac1, DAC_CHANNEL_2);
-  HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_2, DAC_ALIGN_12B_R, 0);
-  start_va_sensors(&hadc1, &hlpuart1, adc_buff);
+  //HAL_DAC_Start(&hdac1, DAC_CHANNEL_2);
+  //HAL_DAC_SetValue(&hdac1, DAC_CHANNEL_2, DAC_ALIGN_12B_R, 0);
+  //start_va_sensors(&hadc1, &hlpuart1, adc_buff);
+
+  // Camera Photo collection function
+
 
   /* USER CODE END 2 */
 
