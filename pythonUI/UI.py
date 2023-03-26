@@ -27,6 +27,8 @@ data_TE = [] # [deg C]
 # Init serial interface 
 ser = serial.Serial('COM3', baudrate=9600, timeout=1)
 
+# ------------------------------------------------------------
+
 # controls 
 def create_control_frame(container):
     controlFrame = Frame(container)
