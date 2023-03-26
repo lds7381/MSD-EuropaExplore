@@ -1,30 +1,31 @@
 from tkinter import * 
-# import serial
+import serial
 import re 
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+import csv 
 
+# INIT
+# start the interface elements 
 root = Tk()
 root.title = "Europa Explorer Interface"
 root.resizable(0,0)
 root.wm_attributes("-topmost", 1)
 
+# start the csv writer 
+csv_writer = csv.writer()
 
-def read_data():
-    global func_id
-    plt.ion()
-    new_value = ser.readline().decode('ascii')
-    if new_value == '':
-        pass
-    else:
-        y.append(eval(new_value[:-2]))
-        x.append(len(y) - 1)
-        plt.plot(x, y, 'r-')
-        plt.show()
-        plt.pause(0.0001)
-    func_id = Top.after(100, read_data)
+# Init data 
+data_timestamps = [] # [seconds]
+data_DO = [] # dissolved oxygen [mg/L]
+data_SA = [] # salinity [ppm]
+data_PH = [] # ph [log scale]
+data_TE = [] # [deg C]
+
+# Init serial interface 
+ser = serial.Serial('COM3', baudrate=9600, timeout=1)
 
 # controls 
 def create_control_frame(container):
@@ -39,23 +40,32 @@ def create_control_frame(container):
         widget.grid(padx=5, pady=5)
     return controlFrame
 
+# ------------------------------------------------------------
+
+# captures data in csv and updates plot 
+# continuously updating plots https://stackoverflow.com/questions/47970163/continuously-updating-graph-in-tkinter
+# integrate plots with tk https://www.geeksforgeeks.org/how-to-embed-matplotlib-charts-in-tkinter-gui/
 def create_plots_frame(container):
-    plotsFrame = Frame(container)
-
     plt.ion()
-    return plotsFrame
-Figure.add_subplot()
+    new_line = ser.readline().decode('ascii')
+    if new_line == '':
+        pass
+    else:   
+        line_arr = new_line.split('\n')
+        val_time,val_DO,val_SA,val_PH,val_TE = line_arr 
+        data_timestamps.append(val_time)
+        data_DO.append(val_DO)
+        data_SA.append(val_SA)
+        data_PH.append(val_PH)
+        data_TE.append(val_TE)
 
-def plot(container):
-    # the figure that will contain the plot
-    fig = Figure(figsize = (5, 5),
-                 dpi = 100)
-    # list of squares
-    y = [i**2 for i in range(101)]
-    # adding the subplot
-    plot1 = fig.add_subplot(111)
-    # plotting the graph
-    plot1.plot(y)
+        csv_writer.writerow(line_arr)
+
+        plt.plot(x, y, 'r-')
+        plt.show()
+        plt.pause(0.0001)
+
+    # TODO: bastardized version of two sources that doesn't work yet
     # creating the Tkinter canvas
     # containing the Matplotlib figure
     canvas = FigureCanvasTkAgg(fig, master = container)  
@@ -67,7 +77,9 @@ def plot(container):
     toolbar.update()
     # placing the toolbar on the Tkinter container
     canvas.get_tk_widget().pack()
+    return root.after(100, create_plots_frame)
 
+# ------------------------------------------------------------
 
 def stop():
     return
@@ -76,6 +88,8 @@ def rudder_command():
 def propeller_command():
     return
 
+
+# ------------------------------------------------------------
 canvas = Canvas(root, width=500, height=400, bd=0, highlightthickness=0)
 canvas.pack()
 
@@ -112,12 +126,12 @@ ball = Ball(canvas, "red")
 ball.draw()  #Changed per Bryan Oakley's comment.
 root.mainloop()
 
+# ------------------------------------------------------------
 # root = Tk()
 # s = serial.Serial('COM3')
-
-
 # res = s.read().split('\t')
 # print(res)
+
 
 # label_DO = Label(root, text="DOVAL")
 # label_PH = Label(root, text="PHVAL")
@@ -125,7 +139,7 @@ root.mainloop()
 # label_TE = Label(root, text="TEVAL")
 
 # analog gauges https://stackoverflow.com/questions/46789053/python3-tkinter-analog-gauge
-# continuously updating graphs https://stackoverflow.com/questions/47970163/continuously-updating-graph-in-tkinter
+
 
 # label = Label(root, fg="red")
 # label.pack()
