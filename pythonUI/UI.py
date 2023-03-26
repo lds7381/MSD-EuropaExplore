@@ -1,0 +1,138 @@
+from tkinter import * 
+# import serial
+import re 
+import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+
+root = Tk()
+root.title = "Europa Explorer Interface"
+root.resizable(0,0)
+root.wm_attributes("-topmost", 1)
+
+
+def read_data():
+    global func_id
+    plt.ion()
+    new_value = ser.readline().decode('ascii')
+    if new_value == '':
+        pass
+    else:
+        y.append(eval(new_value[:-2]))
+        x.append(len(y) - 1)
+        plt.plot(x, y, 'r-')
+        plt.show()
+        plt.pause(0.0001)
+    func_id = Top.after(100, read_data)
+
+# controls 
+def create_control_frame(container):
+    controlFrame = Frame(container)
+
+    Button(controlFrame, text="rudder left",command=rudder_command).grid(column=0, row=1)
+    Button(controlFrame, text="rudder right",command=rudder_command).grid(column=2, row=1)
+    Button(controlFrame, text="move forwards",command=propeller_command).grid(column=1, row=0)
+    Button(controlFrame, text="move backwards",command=propeller_command).grid(column=1, row=2)
+    Button(controlFrame, text="STOP",command=stop).grid(column=1, row=1)
+    for widget in controlFrame.winfo_children():
+        widget.grid(padx=5, pady=5)
+    return controlFrame
+
+def create_plots_frame(container):
+    plotsFrame = Frame(container)
+
+    plt.ion()
+    return plotsFrame
+Figure.add_subplot()
+
+def plot(container):
+    # the figure that will contain the plot
+    fig = Figure(figsize = (5, 5),
+                 dpi = 100)
+    # list of squares
+    y = [i**2 for i in range(101)]
+    # adding the subplot
+    plot1 = fig.add_subplot(111)
+    # plotting the graph
+    plot1.plot(y)
+    # creating the Tkinter canvas
+    # containing the Matplotlib figure
+    canvas = FigureCanvasTkAgg(fig, master = container)  
+    canvas.draw()
+    # placing the canvas on the Tkinter container
+    canvas.get_tk_widget().pack()
+    # creating the Matplotlib toolbar
+    toolbar = NavigationToolbar2Tk(canvas, container)
+    toolbar.update()
+    # placing the toolbar on the Tkinter container
+    canvas.get_tk_widget().pack()
+
+
+def stop():
+    return
+def rudder_command():
+    return
+def propeller_command():
+    return
+
+canvas = Canvas(root, width=500, height=400, bd=0, highlightthickness=0)
+canvas.pack()
+
+class control:
+    def __init__(self, canvas):
+        self.canvas = canvas
+        self.id = canvas.b
+        self.canvas.move(self.id, 245, 100)
+
+        self.canvas.bind("<Button-1>", self.canvas_onclick1)
+        self.canvas.bind("<Button-3>", self.canvas_onclick2)
+        self.text_id = self.canvas.create_text(300, 200, anchor='se')
+        self.canvas.itemconfig(self.text_id, text='hello')
+
+        self.acc = 9.81
+        self.vel = -5; 
+        
+    def canvas_onclick1(self, event):
+        print(canvas.coords(self.id))
+        self.vel = self.vel  - 10
+    def canvas_onclick2(self, event):
+        print(canvas.coords(self.id))
+        self.vel = self.vel  + 10
+    
+    def draw(self):
+        self.canvas.move(self.id, 0, round(self.vel,0))
+        self.canvas.after(10, self.draw)
+        self.vel = self.vel + self.acc * 0.01
+
+
+       
+
+ball = Ball(canvas, "red")
+ball.draw()  #Changed per Bryan Oakley's comment.
+root.mainloop()
+
+# root = Tk()
+# s = serial.Serial('COM3')
+
+
+# res = s.read().split('\t')
+# print(res)
+
+# label_DO = Label(root, text="DOVAL")
+# label_PH = Label(root, text="PHVAL")
+# label_SA = Label(root, text="SAVAL")
+# label_TE = Label(root, text="TEVAL")
+
+# analog gauges https://stackoverflow.com/questions/46789053/python3-tkinter-analog-gauge
+# continuously updating graphs https://stackoverflow.com/questions/47970163/continuously-updating-graph-in-tkinter
+
+# label = Label(root, fg="red")
+# label.pack()
+# counter_label(label)
+
+
+# # https://stackoverflow.com/questions/29158220/tkinter-understanding-mainloop/
+# while True:
+#     root.update_idletasks()
+#     root.update()
