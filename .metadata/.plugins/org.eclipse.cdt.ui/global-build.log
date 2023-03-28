@@ -5841,3 +5841,314 @@ Finished building: default.size.stdout
  
 Finished building: EuropaOS.list
  
+17:47:38 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:115:3: warning: implicit declaration of function 'HAL_DELAY' [-Wimplicit-function-declaration]
+  115 |   HAL_DELAY(1000);
+      |   ^~~~~~~~~
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+c:\st\stm32cubeide_1.10.1\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.10.3-2021.10.win32_1.0.0.202111181127\tools\arm-none-eabi\bin\ld.exe: ./Core/Src/VASensors.o: in function `start_va_sensors':
+C:/Users/liams/Documents/MSD/Code-Repo/MSD-EuropaExplore/EuropaOS/Debug/../Core/Src/VASensors.c:115: undefined reference to `HAL_DELAY'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: EuropaOS.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+17:47:48 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41668	    484	   1916	  44068	   ac24	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+18:41:46 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41692	    484	   1916	  44092	   ac3c	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+18:58:04 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:75:10: warning: unused variable 'tx' [-Wunused-variable]
+   75 |  uint8_t tx[20];
+      |          ^~
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  40936	    484	   1916	  43336	   a948	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+18:58:09 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-size   EuropaOS.elf 
+   text	   data	    bss	    dec	    hex	filename
+  40936	    484	   1916	  43336	   a948	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+18:58:46 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  40936	    484	   1916	  43336	   a948	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+18:59:28 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:75:10: warning: unused variable 'tx' [-Wunused-variable]
+   75 |  uint8_t tx[20];
+      |          ^~
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:42: warning: ' Percent ' directive writing 9 bytes into a region of size between 0 and 4 [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                      ~~~~^~~~~
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 20
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41264	    484	   1916	  43664	   aa90	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:00:10 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:38: warning: ' Percent ' directive writing 9 bytes into a region of size between 0 and 9 [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                      ^~~~~~~~~
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 25
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41264	    484	   1916	  43664	   aa90	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:01:53 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41264	    484	   1916	  43664	   aa90	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:02:27 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41264	    484	   1916	  43664	   aa90	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:03:55 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41264	    484	   1916	  43664	   aa90	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:06:19 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:75:10: warning: unused variable 'tx' [-Wunused-variable]
+   75 |  uint8_t tx[20];
+      |          ^~
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41700	    484	   1916	  44100	   ac44	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:07:06 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41700	    484	   1916	  44100	   ac44	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 
+19:08:44 **** Incremental Build of configuration Debug for project EuropaOS ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Src/VASensors.c:16:11: warning: variable 'vernier_values' set but not used [-Wunused-but-set-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Src/VASensors.c:111:47: warning: 'sprintf' may write a terminating nul past the end of the destination [-Wformat-overflow=]
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |                                               ^
+../Core/Src/VASensors.c:111:6: note: 'sprintf' output between 26 and 336 bytes into a destination of size 26
+  111 |      sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "EuropaOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\STM32L4R5ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="EuropaOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: EuropaOS.elf
+ 
+arm-none-eabi-size   EuropaOS.elf 
+arm-none-eabi-objdump -h -S  EuropaOS.elf  > "EuropaOS.list"
+   text	   data	    bss	    dec	    hex	filename
+  41700	    484	   1916	  44100	   ac44	EuropaOS.elf
+Finished building: default.size.stdout
+ 
+Finished building: EuropaOS.list
+ 

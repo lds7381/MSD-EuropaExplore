@@ -96,7 +96,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 			char msg[26];
 			if (PH_EN) {
 				sprintf(msg, "pH: %d ", (int)ph);
-				print(uart, msg, 7);
+				print(uart, msg, 9);
 			}
 			if (SALINITY_EN) {
 				sprintf(msg, "Salinity: %0.2f ppt ", salinity);
@@ -108,7 +108,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 					print(uart, msg, sizeof(msg));
 				}
 				else if (DO_PERCENT_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
+					sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
 					print(uart, msg, sizeof(msg)+1);
 				}
 			}

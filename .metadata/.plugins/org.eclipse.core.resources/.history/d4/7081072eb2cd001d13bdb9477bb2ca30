@@ -33,7 +33,6 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 			// Select pH Channel
 			adc_select_pH(adc_handle);
 			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
-			adc_handle->Instance->DIFSEL = 0;
 
 			// Poll for a conversion
 			HAL_ADC_Start(adc_handle);
@@ -51,7 +50,6 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		if (SALINITY_EN) {
 			adc_select_salinity(adc_handle);
 			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
-			adc_handle->Instance->DIFSEL = 0;
 
 			// Poll for a conversion
 			HAL_ADC_Start(adc_handle);
@@ -68,7 +66,6 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		if (DO_EN) {
 			adc_select_dissolved_oxygen(adc_handle);
 			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
-			adc_handle->Instance->DIFSEL = 0;
 
 			// Poll for a conversion
 			HAL_ADC_Start(adc_handle);
@@ -93,30 +90,29 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 
 		// Print out information to console if verbose
 		if (VS_VERBOSE) {
-			char msg[26];
 			if (PH_EN) {
-				sprintf(msg, "pH: %d ", (int)ph);
-				print(uart, msg, 7);
+				sprintf(str, "pH: %d ", (int)ph);
+				print(uart, str, sizeof(str));
 			}
 			if (SALINITY_EN) {
-				sprintf(msg, "Salinity: %0.2f ppt ", salinity);
-				print(uart, msg, 20);
+				sprintf(str, "Salinity: %0.2f ppt ", salinity);
+				print(uart, str, sizeof(str));
 			}
 			if (DO_EN) {
 				if (DO_MGL_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f mg/L ", dis_o);
-					print(uart, msg, sizeof(msg));
+					sprintf(str, "Dissolved O: %0.2f mg/L ", dis_o);
+					print(uart, str, sizeof(str));
 				}
 				else if (DO_PERCENT_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
-					print(uart, msg, sizeof(msg)+1);
+					sprintf(str, "Dissolved O: %0.2f Percent ", dis_o);
+					print(uart, str, sizeof(str));
 				}
 			}
 			print(uart, "\r\n", 3);
 		}
 
 		// One second delay (TODO: replace this with timer in future)
-		HAL_Delay(1000);
+		HAL_DELAY(1000);
 
 	}
 	return;

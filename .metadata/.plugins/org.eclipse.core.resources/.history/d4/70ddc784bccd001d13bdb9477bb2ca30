@@ -93,14 +93,14 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 
 		// Print out information to console if verbose
 		if (VS_VERBOSE) {
-			char msg[26];
+			char msg[25];
 			if (PH_EN) {
 				sprintf(msg, "pH: %d ", (int)ph);
-				print(uart, msg, 7);
+				print(uart, msg, sizeof(msg));
 			}
 			if (SALINITY_EN) {
 				sprintf(msg, "Salinity: %0.2f ppt ", salinity);
-				print(uart, msg, 20);
+				print(uart, msg, sizeof(msg));
 			}
 			if (DO_EN) {
 				if (DO_MGL_MODE) {
@@ -108,8 +108,8 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 					print(uart, msg, sizeof(msg));
 				}
 				else if (DO_PERCENT_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
-					print(uart, msg, sizeof(msg)+1);
+					sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+					print(uart, msg, sizeof(msg));
 				}
 			}
 			print(uart, "\r\n", 3);
