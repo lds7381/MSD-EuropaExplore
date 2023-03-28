@@ -1,7 +1,10 @@
-../Core/Src/VASensors.c:15:6:start_va_sensors	168	static
-../Core/Src/VASensors.c:51:6:adc_select_pH	40	static
-../Core/Src/VASensors.c:69:6:adc_select_salinity	40	static
-../Core/Src/VASensors.c:88:6:adc_select_dissolved_oxygen	40	static
-../Core/Src/VASensors.c:107:6:mux_select	16	static
-../Core/Src/VASensors.c:123:8:conv_adc_volt	16	static
-../Core/Src/VASensors.c:127:10:conv_volt_ph	24	static
+../Core/Src/VASensors.c:15:6:start_va_sensors	128	static
+../Core/Src/VASensors.c:114:6:adc_select_pH	40	static
+../Core/Src/VASensors.c:132:6:adc_select_salinity	40	static
+../Core/Src/VASensors.c:151:6:adc_select_dissolved_oxygen	40	static
+../Core/Src/VASensors.c:170:6:mux_select	16	static
+../Core/Src/VASensors.c:186:8:conv_adc_volt	16	static
+../Core/Src/VASensors.c:190:10:conv_volt_ph	24	static
+../Core/Src/VASensors.c:195:8:conv_volt_salinity	16	static
+../Core/Src/VASensors.c:199:8:conv_volt_do_mgl	16	static
+../Core/Src/VASensors.c:203:10:conv_volt_do_percent	16	static

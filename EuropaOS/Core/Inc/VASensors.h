@@ -31,6 +31,14 @@
 #define DO_MGL_MODE (0)
 #define DO_PERCENT_MODE (1)
 
+#define VS_VERBOSE (1)
+
+#define SALINITY_VOLT_SLOPE (16.3)
+#define DO_MGL_VOLT_SLOPE (4.444)
+#define DO_MGL_VOLT_INTERCEPT (0.444)
+#define DO_PERCENT_VOLT_SLOPE (66.666)
+#define DO_PERCENT_VOLT_INERCEPT (0.666)
+
 
 /*	id_t Enum
  * 	Description: This Enum will hold all of the IDs for the different types of Vernier analog sensors
@@ -65,6 +73,9 @@ void adc_select_salinity(ADC_HandleTypeDef* adc_handle);
 void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle);
 double conv_adc_volt(uint32_t adc_reading);
 uint32_t conv_volt_ph(double volts);
+double conv_volt_salinity(double volts);
+double conv_volt_do_mgl(double volts);
+uint32_t conv_volt_do_percent(double volts);
 void mux_select(enum mux_vsel_t sel);
 
 #endif /* INC_VASENSORS_H_ */
