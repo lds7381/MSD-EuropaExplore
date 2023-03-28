@@ -1,10 +1,3028 @@
-15:22:25 **** Incremental Build of configuration Debug for project EuropaOS ****
+15:29:54 **** Incremental Build of configuration Debug for project EuropaOS ****
 make -j8 all 
-arm-none-eabi-size   EuropaOS.elf 
-   text	   data	    bss	    dec	    hex	filename
-  42172	    484	   1932	  44588	   ae2c	EuropaOS.elf
-Finished building: default.size.stdout
- 
+arm-none-eabi-gcc "../Core/Src/Arducam.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/Arducam.d" -MT"Core/Src/Arducam.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/Arducam.o"
+arm-none-eabi-gcc "../Core/Src/VASensors.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/VASensors.d" -MT"Core/Src/VASensors.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/VASensors.o"
+arm-none-eabi-gcc "../Core/Src/i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/i2c.d" -MT"Core/Src/i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/i2c.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_hal_msp.d" -MT"Core/Src/stm32l4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32l4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l4xx_it.d" -MT"Core/Src/stm32l4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l4xx_it.o"
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4R5xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/uart.o"
+In file included from ../Core/Inc/i2c.h:11,
+                 from ../Core/Src/i2c.c:7:
+../Core/Inc/ov2640_reg.h:228:7: error: unknown type name 'sensor_reg'
+  228 | const sensor_reg OV2640_JPEG_INIT[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:230:3: warning: braces around scalar initializer
+  230 |   { 0xff, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:230:3: note: (near initialization for 'OV2640_JPEG_INIT[0]')
+../Core/Inc/ov2640_reg.h:230:11: warning: excess elements in scalar initializer
+  230 |   { 0xff, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:230:11: note: (near initialization for 'OV2640_JPEG_INIT[0]')
+../Core/Inc/ov2640_reg.h:231:3: warning: braces around scalar initializer
+  231 |   { 0x2c, 0xff },
+      |   ^
+../Core/Inc/ov2640_reg.h:231:3: note: (near initialization for 'OV2640_JPEG_INIT[1]')
+../Core/Inc/ov2640_reg.h:231:11: warning: excess elements in scalar initializer
+  231 |   { 0x2c, 0xff },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:231:11: note: (near initialization for 'OV2640_JPEG_INIT[1]')
+../Core/Inc/ov2640_reg.h:232:3: warning: braces around scalar initializer
+  232 |   { 0x2e, 0xdf },
+      |   ^
+../Core/Inc/ov2640_reg.h:232:3: note: (near initialization for 'OV2640_JPEG_INIT[2]')
+../Core/Inc/ov2640_reg.h:232:11: warning: excess elements in scalar initializer
+  232 |   { 0x2e, 0xdf },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:232:11: note: (near initialization for 'OV2640_JPEG_INIT[2]')
+../Core/Inc/ov2640_reg.h:233:3: warning: braces around scalar initializer
+  233 |   { 0xff, 0x01 },
+      |   ^
+../Core/Inc/ov2640_reg.h:233:3: note: (near initialization for 'OV2640_JPEG_INIT[3]')
+../Core/Inc/ov2640_reg.h:233:11: warning: excess elements in scalar initializer
+  233 |   { 0xff, 0x01 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:233:11: note: (near initialization for 'OV2640_JPEG_INIT[3]')
+../Core/Inc/ov2640_reg.h:234:3: warning: braces around scalar initializer
+  234 |   { 0x3c, 0x32 },
+      |   ^
+../Core/Inc/ov2640_reg.h:234:3: note: (near initialization for 'OV2640_JPEG_INIT[4]')
+../Core/Inc/ov2640_reg.h:234:11: warning: excess elements in scalar initializer
+  234 |   { 0x3c, 0x32 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:234:11: note: (near initialization for 'OV2640_JPEG_INIT[4]')
+../Core/Inc/ov2640_reg.h:235:3: warning: braces around scalar initializer
+  235 |   { 0x11, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:235:3: note: (near initialization for 'OV2640_JPEG_INIT[5]')
+../Core/Inc/ov2640_reg.h:235:11: warning: excess elements in scalar initializer
+  235 |   { 0x11, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:235:11: note: (near initialization for 'OV2640_JPEG_INIT[5]')
+../Core/Inc/ov2640_reg.h:236:3: warning: braces around scalar initializer
+  236 |   { 0x09, 0x02 },
+      |   ^
+../Core/Inc/ov2640_reg.h:236:3: note: (near initialization for 'OV2640_JPEG_INIT[6]')
+../Core/Inc/ov2640_reg.h:236:11: warning: excess elements in scalar initializer
+  236 |   { 0x09, 0x02 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:236:11: note: (near initialization for 'OV2640_JPEG_INIT[6]')
+../Core/Inc/ov2640_reg.h:237:3: warning: braces around scalar initializer
+  237 |   { 0x04, 0x28 },
+      |   ^
+../Core/Inc/ov2640_reg.h:237:3: note: (near initialization for 'OV2640_JPEG_INIT[7]')
+../Core/Inc/ov2640_reg.h:237:11: warning: excess elements in scalar initializer
+  237 |   { 0x04, 0x28 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:237:11: note: (near initialization for 'OV2640_JPEG_INIT[7]')
+../Core/Inc/ov2640_reg.h:238:3: warning: braces around scalar initializer
+  238 |   { 0x13, 0xe5 },
+      |   ^
+../Core/Inc/ov2640_reg.h:238:3: note: (near initialization for 'OV2640_JPEG_INIT[8]')
+../Core/Inc/ov2640_reg.h:238:11: warning: excess elements in scalar initializer
+  238 |   { 0x13, 0xe5 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:238:11: note: (near initialization for 'OV2640_JPEG_INIT[8]')
+../Core/Inc/ov2640_reg.h:239:3: warning: braces around scalar initializer
+  239 |   { 0x14, 0x48 },
+      |   ^
+../Core/Inc/ov2640_reg.h:239:3: note: (near initialization for 'OV2640_JPEG_INIT[9]')
+../Core/Inc/ov2640_reg.h:239:11: warning: excess elements in scalar initializer
+  239 |   { 0x14, 0x48 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:239:11: note: (near initialization for 'OV2640_JPEG_INIT[9]')
+../Core/Inc/ov2640_reg.h:240:3: warning: braces around scalar initializer
+  240 |   { 0x2c, 0x0c },
+      |   ^
+../Core/Inc/ov2640_reg.h:240:3: note: (near initialization for 'OV2640_JPEG_INIT[10]')
+../Core/Inc/ov2640_reg.h:240:11: warning: excess elements in scalar initializer
+  240 |   { 0x2c, 0x0c },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:240:11: note: (near initialization for 'OV2640_JPEG_INIT[10]')
+../Core/Inc/ov2640_reg.h:241:3: warning: braces around scalar initializer
+  241 |   { 0x33, 0x78 },
+      |   ^
+../Core/Inc/ov2640_reg.h:241:3: note: (near initialization for 'OV2640_JPEG_INIT[11]')
+../Core/Inc/ov2640_reg.h:241:11: warning: excess elements in scalar initializer
+  241 |   { 0x33, 0x78 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:241:11: note: (near initialization for 'OV2640_JPEG_INIT[11]')
+../Core/Inc/ov2640_reg.h:242:3: warning: braces around scalar initializer
+  242 |   { 0x3a, 0x33 },
+      |   ^
+../Core/Inc/ov2640_reg.h:242:3: note: (near initialization for 'OV2640_JPEG_INIT[12]')
+../Core/Inc/ov2640_reg.h:242:11: warning: excess elements in scalar initializer
+  242 |   { 0x3a, 0x33 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:242:11: note: (near initialization for 'OV2640_JPEG_INIT[12]')
+../Core/Inc/ov2640_reg.h:243:3: warning: braces around scalar initializer
+  243 |   { 0x3b, 0xfB },
+      |   ^
+../Core/Inc/ov2640_reg.h:243:3: note: (near initialization for 'OV2640_JPEG_INIT[13]')
+../Core/Inc/ov2640_reg.h:243:11: warning: excess elements in scalar initializer
+  243 |   { 0x3b, 0xfB },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:243:11: note: (near initialization for 'OV2640_JPEG_INIT[13]')
+../Core/Inc/ov2640_reg.h:244:3: warning: braces around scalar initializer
+  244 |   { 0x3e, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:244:3: note: (near initialization for 'OV2640_JPEG_INIT[14]')
+../Core/Inc/ov2640_reg.h:244:11: warning: excess elements in scalar initializer
+  244 |   { 0x3e, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:244:11: note: (near initialization for 'OV2640_JPEG_INIT[14]')
+../Core/Inc/ov2640_reg.h:245:3: warning: braces around scalar initializer
+  245 |   { 0x43, 0x11 },
+      |   ^
+../Core/Inc/ov2640_reg.h:245:3: note: (near initialization for 'OV2640_JPEG_INIT[15]')
+../Core/Inc/ov2640_reg.h:245:11: warning: excess elements in scalar initializer
+  245 |   { 0x43, 0x11 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:245:11: note: (near initialization for 'OV2640_JPEG_INIT[15]')
+../Core/Inc/ov2640_reg.h:246:3: warning: braces around scalar initializer
+  246 |   { 0x16, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:246:3: note: (near initialization for 'OV2640_JPEG_INIT[16]')
+../Core/Inc/ov2640_reg.h:246:11: warning: excess elements in scalar initializer
+  246 |   { 0x16, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:246:11: note: (near initialization for 'OV2640_JPEG_INIT[16]')
+../Core/Inc/ov2640_reg.h:247:3: warning: braces around scalar initializer
+  247 |   { 0x39, 0x92 },
+      |   ^
+../Core/Inc/ov2640_reg.h:247:3: note: (near initialization for 'OV2640_JPEG_INIT[17]')
+../Core/Inc/ov2640_reg.h:247:11: warning: excess elements in scalar initializer
+  247 |   { 0x39, 0x92 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:247:11: note: (near initialization for 'OV2640_JPEG_INIT[17]')
+../Core/Inc/ov2640_reg.h:248:3: warning: braces around scalar initializer
+  248 |   { 0x35, 0xda },
+      |   ^
+../Core/Inc/ov2640_reg.h:248:3: note: (near initialization for 'OV2640_JPEG_INIT[18]')
+../Core/Inc/ov2640_reg.h:248:11: warning: excess elements in scalar initializer
+  248 |   { 0x35, 0xda },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:248:11: note: (near initialization for 'OV2640_JPEG_INIT[18]')
+../Core/Inc/ov2640_reg.h:249:3: warning: braces around scalar initializer
+  249 |   { 0x22, 0x1a },
+      |   ^
+../Core/Inc/ov2640_reg.h:249:3: note: (near initialization for 'OV2640_JPEG_INIT[19]')
+../Core/Inc/ov2640_reg.h:249:11: warning: excess elements in scalar initializer
+  249 |   { 0x22, 0x1a },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:249:11: note: (near initialization for 'OV2640_JPEG_INIT[19]')
+../Core/Inc/ov2640_reg.h:250:3: warning: braces around scalar initializer
+  250 |   { 0x37, 0xc3 },
+      |   ^
+../Core/Inc/ov2640_reg.h:250:3: note: (near initialization for 'OV2640_JPEG_INIT[20]')
+../Core/Inc/ov2640_reg.h:250:11: warning: excess elements in scalar initializer
+  250 |   { 0x37, 0xc3 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:250:11: note: (near initialization for 'OV2640_JPEG_INIT[20]')
+../Core/Inc/ov2640_reg.h:251:3: warning: braces around scalar initializer
+  251 |   { 0x23, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:251:3: note: (near initialization for 'OV2640_JPEG_INIT[21]')
+../Core/Inc/ov2640_reg.h:251:11: warning: excess elements in scalar initializer
+  251 |   { 0x23, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:251:11: note: (near initialization for 'OV2640_JPEG_INIT[21]')
+../Core/Inc/ov2640_reg.h:252:3: warning: braces around scalar initializer
+  252 |   { 0x34, 0xc0 },
+      |   ^
+../Core/Inc/ov2640_reg.h:252:3: note: (near initialization for 'OV2640_JPEG_INIT[22]')
+../Core/Inc/ov2640_reg.h:252:11: warning: excess elements in scalar initializer
+  252 |   { 0x34, 0xc0 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:252:11: note: (near initialization for 'OV2640_JPEG_INIT[22]')
+../Core/Inc/ov2640_reg.h:253:3: warning: braces around scalar initializer
+  253 |   { 0x36, 0x1a },
+      |   ^
+../Core/Inc/ov2640_reg.h:253:3: note: (near initialization for 'OV2640_JPEG_INIT[23]')
+../Core/Inc/ov2640_reg.h:253:11: warning: excess elements in scalar initializer
+  253 |   { 0x36, 0x1a },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:253:11: note: (near initialization for 'OV2640_JPEG_INIT[23]')
+../Core/Inc/ov2640_reg.h:254:3: warning: braces around scalar initializer
+  254 |   { 0x06, 0x88 },
+      |   ^
+../Core/Inc/ov2640_reg.h:254:3: note: (near initialization for 'OV2640_JPEG_INIT[24]')
+../Core/Inc/ov2640_reg.h:254:11: warning: excess elements in scalar initializer
+  254 |   { 0x06, 0x88 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:254:11: note: (near initialization for 'OV2640_JPEG_INIT[24]')
+../Core/Inc/ov2640_reg.h:255:3: warning: braces around scalar initializer
+  255 |   { 0x07, 0xc0 },
+      |   ^
+../Core/Inc/ov2640_reg.h:255:3: note: (near initialization for 'OV2640_JPEG_INIT[25]')
+../Core/Inc/ov2640_reg.h:255:11: warning: excess elements in scalar initializer
+  255 |   { 0x07, 0xc0 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:255:11: note: (near initialization for 'OV2640_JPEG_INIT[25]')
+../Core/Inc/ov2640_reg.h:256:3: warning: braces around scalar initializer
+  256 |   { 0x0d, 0x87 },
+      |   ^
+../Core/Inc/ov2640_reg.h:256:3: note: (near initialization for 'OV2640_JPEG_INIT[26]')
+../Core/Inc/ov2640_reg.h:256:11: warning: excess elements in scalar initializer
+  256 |   { 0x0d, 0x87 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:256:11: note: (near initialization for 'OV2640_JPEG_INIT[26]')
+../Core/Inc/ov2640_reg.h:257:3: warning: braces around scalar initializer
+  257 |   { 0x0e, 0x41 },
+      |   ^
+../Core/Inc/ov2640_reg.h:257:3: note: (near initialization for 'OV2640_JPEG_INIT[27]')
+../Core/Inc/ov2640_reg.h:257:11: warning: excess elements in scalar initializer
+  257 |   { 0x0e, 0x41 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:257:11: note: (near initialization for 'OV2640_JPEG_INIT[27]')
+../Core/Inc/ov2640_reg.h:258:3: warning: braces around scalar initializer
+  258 |   { 0x4c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:258:3: note: (near initialization for 'OV2640_JPEG_INIT[28]')
+../Core/Inc/ov2640_reg.h:258:11: warning: excess elements in scalar initializer
+  258 |   { 0x4c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:258:11: note: (near initialization for 'OV2640_JPEG_INIT[28]')
+../Core/Inc/ov2640_reg.h:259:3: warning: braces around scalar initializer
+  259 |   { 0x48, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:259:3: note: (near initialization for 'OV2640_JPEG_INIT[29]')
+../Core/Inc/ov2640_reg.h:259:11: warning: excess elements in scalar initializer
+  259 |   { 0x48, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:259:11: note: (near initialization for 'OV2640_JPEG_INIT[29]')
+../Core/Inc/ov2640_reg.h:260:3: warning: braces around scalar initializer
+  260 |   { 0x5B, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:260:3: note: (near initialization for 'OV2640_JPEG_INIT[30]')
+../Core/Inc/ov2640_reg.h:260:11: warning: excess elements in scalar initializer
+  260 |   { 0x5B, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:260:11: note: (near initialization for 'OV2640_JPEG_INIT[30]')
+../Core/Inc/ov2640_reg.h:261:3: warning: braces around scalar initializer
+  261 |   { 0x42, 0x03 },
+      |   ^
+../Core/Inc/ov2640_reg.h:261:3: note: (near initialization for 'OV2640_JPEG_INIT[31]')
+../Core/Inc/ov2640_reg.h:261:11: warning: excess elements in scalar initializer
+  261 |   { 0x42, 0x03 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:261:11: note: (near initialization for 'OV2640_JPEG_INIT[31]')
+../Core/Inc/ov2640_reg.h:262:3: warning: braces around scalar initializer
+  262 |   { 0x4a, 0x81 },
+      |   ^
+../Core/Inc/ov2640_reg.h:262:3: note: (near initialization for 'OV2640_JPEG_INIT[32]')
+../Core/Inc/ov2640_reg.h:262:11: warning: excess elements in scalar initializer
+  262 |   { 0x4a, 0x81 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:262:11: note: (near initialization for 'OV2640_JPEG_INIT[32]')
+../Core/Inc/ov2640_reg.h:263:3: warning: braces around scalar initializer
+  263 |   { 0x21, 0x99 },
+      |   ^
+../Core/Inc/ov2640_reg.h:263:3: note: (near initialization for 'OV2640_JPEG_INIT[33]')
+../Core/Inc/ov2640_reg.h:263:11: warning: excess elements in scalar initializer
+  263 |   { 0x21, 0x99 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:263:11: note: (near initialization for 'OV2640_JPEG_INIT[33]')
+../Core/Inc/ov2640_reg.h:264:3: warning: braces around scalar initializer
+  264 |   { 0x24, 0x40 },
+      |   ^
+../Core/Inc/ov2640_reg.h:264:3: note: (near initialization for 'OV2640_JPEG_INIT[34]')
+../Core/Inc/ov2640_reg.h:264:11: warning: excess elements in scalar initializer
+  264 |   { 0x24, 0x40 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:264:11: note: (near initialization for 'OV2640_JPEG_INIT[34]')
+../Core/Inc/ov2640_reg.h:265:3: warning: braces around scalar initializer
+  265 |   { 0x25, 0x38 },
+      |   ^
+../Core/Inc/ov2640_reg.h:265:3: note: (near initialization for 'OV2640_JPEG_INIT[35]')
+../Core/Inc/ov2640_reg.h:265:11: warning: excess elements in scalar initializer
+  265 |   { 0x25, 0x38 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:265:11: note: (near initialization for 'OV2640_JPEG_INIT[35]')
+../Core/Inc/ov2640_reg.h:266:3: warning: braces around scalar initializer
+  266 |   { 0x26, 0x82 },
+      |   ^
+../Core/Inc/ov2640_reg.h:266:3: note: (near initialization for 'OV2640_JPEG_INIT[36]')
+../Core/Inc/ov2640_reg.h:266:11: warning: excess elements in scalar initializer
+  266 |   { 0x26, 0x82 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:266:11: note: (near initialization for 'OV2640_JPEG_INIT[36]')
+../Core/Inc/ov2640_reg.h:267:3: warning: braces around scalar initializer
+  267 |   { 0x5c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:267:3: note: (near initialization for 'OV2640_JPEG_INIT[37]')
+../Core/Inc/ov2640_reg.h:267:11: warning: excess elements in scalar initializer
+  267 |   { 0x5c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:267:11: note: (near initialization for 'OV2640_JPEG_INIT[37]')
+../Core/Inc/ov2640_reg.h:268:3: warning: braces around scalar initializer
+  268 |   { 0x63, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:268:3: note: (near initialization for 'OV2640_JPEG_INIT[38]')
+../Core/Inc/ov2640_reg.h:268:11: warning: excess elements in scalar initializer
+  268 |   { 0x63, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:268:11: note: (near initialization for 'OV2640_JPEG_INIT[38]')
+../Core/Inc/ov2640_reg.h:269:3: warning: braces around scalar initializer
+  269 |   { 0x61, 0x70 },
+      |   ^
+../Core/Inc/ov2640_reg.h:269:3: note: (near initialization for 'OV2640_JPEG_INIT[39]')
+../Core/Inc/ov2640_reg.h:269:11: warning: excess elements in scalar initializer
+  269 |   { 0x61, 0x70 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:269:11: note: (near initialization for 'OV2640_JPEG_INIT[39]')
+../Core/Inc/ov2640_reg.h:270:3: warning: braces around scalar initializer
+  270 |   { 0x62, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:270:3: note: (near initialization for 'OV2640_JPEG_INIT[40]')
+../Core/Inc/ov2640_reg.h:270:11: warning: excess elements in scalar initializer
+  270 |   { 0x62, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:270:11: note: (near initialization for 'OV2640_JPEG_INIT[40]')
+../Core/Inc/ov2640_reg.h:271:3: warning: braces around scalar initializer
+  271 |   { 0x7c, 0x05 },
+      |   ^
+../Core/Inc/ov2640_reg.h:271:3: note: (near initialization for 'OV2640_JPEG_INIT[41]')
+../Core/Inc/ov2640_reg.h:271:11: warning: excess elements in scalar initializer
+  271 |   { 0x7c, 0x05 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:271:11: note: (near initialization for 'OV2640_JPEG_INIT[41]')
+../Core/Inc/ov2640_reg.h:272:3: warning: braces around scalar initializer
+  272 |   { 0x20, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:272:3: note: (near initialization for 'OV2640_JPEG_INIT[42]')
+../Core/Inc/ov2640_reg.h:272:11: warning: excess elements in scalar initializer
+  272 |   { 0x20, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:272:11: note: (near initialization for 'OV2640_JPEG_INIT[42]')
+../Core/Inc/ov2640_reg.h:273:3: warning: braces around scalar initializer
+  273 |   { 0x28, 0x30 },
+      |   ^
+../Core/Inc/ov2640_reg.h:273:3: note: (near initialization for 'OV2640_JPEG_INIT[43]')
+../Core/Inc/ov2640_reg.h:273:11: warning: excess elements in scalar initializer
+  273 |   { 0x28, 0x30 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:273:11: note: (near initialization for 'OV2640_JPEG_INIT[43]')
+../Core/Inc/ov2640_reg.h:274:3: warning: braces around scalar initializer
+  274 |   { 0x6c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:274:3: note: (near initialization for 'OV2640_JPEG_INIT[44]')
+../Core/Inc/ov2640_reg.h:274:11: warning: excess elements in scalar initializer
+  274 |   { 0x6c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:274:11: note: (near initialization for 'OV2640_JPEG_INIT[44]')
+../Core/Inc/ov2640_reg.h:275:3: warning: braces around scalar initializer
+  275 |   { 0x6d, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:275:3: note: (near initialization for 'OV2640_JPEG_INIT[45]')
+../Core/Inc/ov2640_reg.h:275:11: warning: excess elements in scalar initializer
+  275 |   { 0x6d, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:275:11: note: (near initialization for 'OV2640_JPEG_INIT[45]')
+../Core/Inc/ov2640_reg.h:276:3: warning: braces around scalar initializer
+  276 |   { 0x6e, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:276:3: note: (near initialization for 'OV2640_JPEG_INIT[46]')
+../Core/Inc/ov2640_reg.h:276:11: warning: excess elements in scalar initializer
+  276 |   { 0x6e, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:276:11: note: (near initialization for 'OV2640_JPEG_INIT[46]')
+../Core/Inc/ov2640_reg.h:277:3: warning: braces around scalar initializer
+  277 |   { 0x70, 0x02 },
+      |   ^
+../Core/Inc/ov2640_reg.h:277:3: note: (near initialization for 'OV2640_JPEG_INIT[47]')
+../Core/Inc/ov2640_reg.h:277:11: warning: excess elements in scalar initializer
+  277 |   { 0x70, 0x02 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:277:11: note: (near initialization for 'OV2640_JPEG_INIT[47]')
+../Core/Inc/ov2640_reg.h:278:3: warning: braces around scalar initializer
+  278 |   { 0x71, 0x94 },
+      |   ^
+../Core/Inc/ov2640_reg.h:278:3: note: (near initialization for 'OV2640_JPEG_INIT[48]')
+../Core/Inc/ov2640_reg.h:278:11: warning: excess elements in scalar initializer
+  278 |   { 0x71, 0x94 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:278:11: note: (near initialization for 'OV2640_JPEG_INIT[48]')
+../Core/Inc/ov2640_reg.h:279:3: warning: braces around scalar initializer
+  279 |   { 0x73, 0xc1 },
+      |   ^
+../Core/Inc/ov2640_reg.h:279:3: note: (near initialization for 'OV2640_JPEG_INIT[49]')
+../Core/Inc/ov2640_reg.h:279:11: warning: excess elements in scalar initializer
+  279 |   { 0x73, 0xc1 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:279:11: note: (near initialization for 'OV2640_JPEG_INIT[49]')
+../Core/Inc/ov2640_reg.h:280:3: warning: braces around scalar initializer
+  280 |   { 0x12, 0x40 },
+      |   ^
+../Core/Inc/ov2640_reg.h:280:3: note: (near initialization for 'OV2640_JPEG_INIT[50]')
+../Core/Inc/ov2640_reg.h:280:11: warning: excess elements in scalar initializer
+  280 |   { 0x12, 0x40 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:280:11: note: (near initialization for 'OV2640_JPEG_INIT[50]')
+../Core/Inc/ov2640_reg.h:281:3: warning: braces around scalar initializer
+  281 |   { 0x17, 0x11 },
+      |   ^
+../Core/Inc/ov2640_reg.h:281:3: note: (near initialization for 'OV2640_JPEG_INIT[51]')
+../Core/Inc/ov2640_reg.h:281:11: warning: excess elements in scalar initializer
+  281 |   { 0x17, 0x11 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:281:11: note: (near initialization for 'OV2640_JPEG_INIT[51]')
+../Core/Inc/ov2640_reg.h:282:3: warning: braces around scalar initializer
+  282 |   { 0x18, 0x43 },
+      |   ^
+../Core/Inc/ov2640_reg.h:282:3: note: (near initialization for 'OV2640_JPEG_INIT[52]')
+../Core/Inc/ov2640_reg.h:282:11: warning: excess elements in scalar initializer
+  282 |   { 0x18, 0x43 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:282:11: note: (near initialization for 'OV2640_JPEG_INIT[52]')
+../Core/Inc/ov2640_reg.h:283:3: warning: braces around scalar initializer
+  283 |   { 0x19, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:283:3: note: (near initialization for 'OV2640_JPEG_INIT[53]')
+../Core/Inc/ov2640_reg.h:283:11: warning: excess elements in scalar initializer
+  283 |   { 0x19, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:283:11: note: (near initialization for 'OV2640_JPEG_INIT[53]')
+../Core/Inc/ov2640_reg.h:284:3: warning: braces around scalar initializer
+  284 |   { 0x1a, 0x4b },
+      |   ^
+../Core/Inc/ov2640_reg.h:284:3: note: (near initialization for 'OV2640_JPEG_INIT[54]')
+../Core/Inc/ov2640_reg.h:284:11: warning: excess elements in scalar initializer
+  284 |   { 0x1a, 0x4b },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:284:11: note: (near initialization for 'OV2640_JPEG_INIT[54]')
+../Core/Inc/ov2640_reg.h:285:3: warning: braces around scalar initializer
+  285 |   { 0x32, 0x09 },
+      |   ^
+../Core/Inc/ov2640_reg.h:285:3: note: (near initialization for 'OV2640_JPEG_INIT[55]')
+../Core/Inc/ov2640_reg.h:285:11: warning: excess elements in scalar initializer
+  285 |   { 0x32, 0x09 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:285:11: note: (near initialization for 'OV2640_JPEG_INIT[55]')
+../Core/Inc/ov2640_reg.h:286:3: warning: braces around scalar initializer
+  286 |   { 0x37, 0xc0 },
+      |   ^
+../Core/Inc/ov2640_reg.h:286:3: note: (near initialization for 'OV2640_JPEG_INIT[56]')
+../Core/Inc/ov2640_reg.h:286:11: warning: excess elements in scalar initializer
+  286 |   { 0x37, 0xc0 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:286:11: note: (near initialization for 'OV2640_JPEG_INIT[56]')
+../Core/Inc/ov2640_reg.h:287:3: warning: braces around scalar initializer
+  287 |   { 0x4f, 0x60 },
+      |   ^
+../Core/Inc/ov2640_reg.h:287:3: note: (near initialization for 'OV2640_JPEG_INIT[57]')
+../Core/Inc/ov2640_reg.h:287:11: warning: excess elements in scalar initializer
+  287 |   { 0x4f, 0x60 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:287:11: note: (near initialization for 'OV2640_JPEG_INIT[57]')
+../Core/Inc/ov2640_reg.h:288:3: warning: braces around scalar initializer
+  288 |   { 0x50, 0xa8 },
+      |   ^
+../Core/Inc/ov2640_reg.h:288:3: note: (near initialization for 'OV2640_JPEG_INIT[58]')
+../Core/Inc/ov2640_reg.h:288:11: warning: excess elements in scalar initializer
+  288 |   { 0x50, 0xa8 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:288:11: note: (near initialization for 'OV2640_JPEG_INIT[58]')
+../Core/Inc/ov2640_reg.h:289:3: warning: braces around scalar initializer
+  289 |   { 0x6d, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:289:3: note: (near initialization for 'OV2640_JPEG_INIT[59]')
+../Core/Inc/ov2640_reg.h:289:11: warning: excess elements in scalar initializer
+  289 |   { 0x6d, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:289:11: note: (near initialization for 'OV2640_JPEG_INIT[59]')
+../Core/Inc/ov2640_reg.h:290:3: warning: braces around scalar initializer
+  290 |   { 0x3d, 0x38 },
+      |   ^
+../Core/Inc/ov2640_reg.h:290:3: note: (near initialization for 'OV2640_JPEG_INIT[60]')
+../Core/Inc/ov2640_reg.h:290:11: warning: excess elements in scalar initializer
+  290 |   { 0x3d, 0x38 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:290:11: note: (near initialization for 'OV2640_JPEG_INIT[60]')
+../Core/Inc/ov2640_reg.h:291:3: warning: braces around scalar initializer
+  291 |   { 0x46, 0x3f },
+      |   ^
+../Core/Inc/ov2640_reg.h:291:3: note: (near initialization for 'OV2640_JPEG_INIT[61]')
+../Core/Inc/ov2640_reg.h:291:11: warning: excess elements in scalar initializer
+  291 |   { 0x46, 0x3f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:291:11: note: (near initialization for 'OV2640_JPEG_INIT[61]')
+../Core/Inc/ov2640_reg.h:292:3: warning: braces around scalar initializer
+  292 |   { 0x4f, 0x60 },
+      |   ^
+../Core/Inc/ov2640_reg.h:292:3: note: (near initialization for 'OV2640_JPEG_INIT[62]')
+../Core/Inc/ov2640_reg.h:292:11: warning: excess elements in scalar initializer
+  292 |   { 0x4f, 0x60 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:292:11: note: (near initialization for 'OV2640_JPEG_INIT[62]')
+../Core/Inc/ov2640_reg.h:293:3: warning: braces around scalar initializer
+  293 |   { 0x0c, 0x3c },
+      |   ^
+../Core/Inc/ov2640_reg.h:293:3: note: (near initialization for 'OV2640_JPEG_INIT[63]')
+../Core/Inc/ov2640_reg.h:293:11: warning: excess elements in scalar initializer
+  293 |   { 0x0c, 0x3c },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:293:11: note: (near initialization for 'OV2640_JPEG_INIT[63]')
+../Core/Inc/ov2640_reg.h:294:3: warning: braces around scalar initializer
+  294 |   { 0xff, 0x00 },
+      |   ^
+../Core/Src/VASensors.c: In function 'start_va_sensors':
+../Core/Inc/ov2640_reg.h:294:3: note: (near initialization for 'OV2640_JPEG_INIT[64]')
+../Core/Src/VASensors.c:16:11: warning: unused variable 'vernier_values' [-Wunused-variable]
+   16 |  uint32_t vernier_values[3];
+      |           ^~~~~~~~~~~~~~
+../Core/Inc/ov2640_reg.h:294:11: warning: excess elements in scalar initializer
+  294 |   { 0xff, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:294:11: note: (near initialization for 'OV2640_JPEG_INIT[64]')
+../Core/Inc/ov2640_reg.h:295:3: warning: braces around scalar initializer
+  295 |   { 0xe5, 0x7f },
+      |   ^
+../Core/Inc/ov2640_reg.h:295:3: note: (near initialization for 'OV2640_JPEG_INIT[65]')
+../Core/Inc/ov2640_reg.h:295:11: warning: excess elements in scalar initializer
+  295 |   { 0xe5, 0x7f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:295:11: note: (near initialization for 'OV2640_JPEG_INIT[65]')
+../Core/Inc/ov2640_reg.h:296:3: warning: braces around scalar initializer
+  296 |   { 0xf9, 0xc0 },
+      |   ^
+../Core/Inc/ov2640_reg.h:296:3: note: (near initialization for 'OV2640_JPEG_INIT[66]')
+../Core/Inc/ov2640_reg.h:296:11: warning: excess elements in scalar initializer
+  296 |   { 0xf9, 0xc0 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:296:11: note: (near initialization for 'OV2640_JPEG_INIT[66]')
+../Core/Inc/ov2640_reg.h:297:3: warning: braces around scalar initializer
+  297 |   { 0x41, 0x24 },
+      |   ^
+../Core/Inc/ov2640_reg.h:297:3: note: (near initialization for 'OV2640_JPEG_INIT[67]')
+../Core/Inc/ov2640_reg.h:297:11: warning: excess elements in scalar initializer
+  297 |   { 0x41, 0x24 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:297:11: note: (near initialization for 'OV2640_JPEG_INIT[67]')
+../Core/Inc/ov2640_reg.h:298:3: warning: braces around scalar initializer
+  298 |   { 0xe0, 0x14 },
+      |   ^
+../Core/Inc/ov2640_reg.h:298:3: note: (near initialization for 'OV2640_JPEG_INIT[68]')
+../Core/Inc/ov2640_reg.h:298:11: warning: excess elements in scalar initializer
+  298 |   { 0xe0, 0x14 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:298:11: note: (near initialization for 'OV2640_JPEG_INIT[68]')
+../Core/Inc/ov2640_reg.h:299:3: warning: braces around scalar initializer
+  299 |   { 0x76, 0xff },
+      |   ^
+../Core/Inc/ov2640_reg.h:299:3: note: (near initialization for 'OV2640_JPEG_INIT[69]')
+../Core/Inc/ov2640_reg.h:299:11: warning: excess elements in scalar initializer
+  299 |   { 0x76, 0xff },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:299:11: note: (near initialization for 'OV2640_JPEG_INIT[69]')
+../Core/Inc/ov2640_reg.h:300:3: warning: braces around scalar initializer
+  300 |   { 0x33, 0xa0 },
+      |   ^
+../Core/Inc/ov2640_reg.h:300:3: note: (near initialization for 'OV2640_JPEG_INIT[70]')
+../Core/Inc/ov2640_reg.h:300:11: warning: excess elements in scalar initializer
+  300 |   { 0x33, 0xa0 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:300:11: note: (near initialization for 'OV2640_JPEG_INIT[70]')
+../Core/Inc/ov2640_reg.h:301:3: warning: braces around scalar initializer
+  301 |   { 0x42, 0x20 },
+      |   ^
+../Core/Inc/ov2640_reg.h:301:3: note: (near initialization for 'OV2640_JPEG_INIT[71]')
+../Core/Inc/ov2640_reg.h:301:11: warning: excess elements in scalar initializer
+  301 |   { 0x42, 0x20 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:301:11: note: (near initialization for 'OV2640_JPEG_INIT[71]')
+../Core/Inc/ov2640_reg.h:302:3: warning: braces around scalar initializer
+  302 |   { 0x43, 0x18 },
+      |   ^
+../Core/Inc/ov2640_reg.h:302:3: note: (near initialization for 'OV2640_JPEG_INIT[72]')
+../Core/Inc/ov2640_reg.h:302:11: warning: excess elements in scalar initializer
+  302 |   { 0x43, 0x18 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:302:11: note: (near initialization for 'OV2640_JPEG_INIT[72]')
+../Core/Inc/ov2640_reg.h:303:3: warning: braces around scalar initializer
+  303 |   { 0x4c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:303:3: note: (near initialization for 'OV2640_JPEG_INIT[73]')
+../Core/Inc/ov2640_reg.h:303:11: warning: excess elements in scalar initializer
+  303 |   { 0x4c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:303:11: note: (near initialization for 'OV2640_JPEG_INIT[73]')
+../Core/Inc/ov2640_reg.h:304:3: warning: braces around scalar initializer
+  304 |   { 0x87, 0xd5 },
+      |   ^
+../Core/Inc/ov2640_reg.h:304:3: note: (near initialization for 'OV2640_JPEG_INIT[74]')
+../Core/Inc/ov2640_reg.h:304:11: warning: excess elements in scalar initializer
+  304 |   { 0x87, 0xd5 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:304:11: note: (near initialization for 'OV2640_JPEG_INIT[74]')
+../Core/Inc/ov2640_reg.h:305:3: warning: braces around scalar initializer
+  305 |   { 0x88, 0x3f },
+      |   ^
+../Core/Inc/ov2640_reg.h:305:3: note: (near initialization for 'OV2640_JPEG_INIT[75]')
+../Core/Inc/ov2640_reg.h:305:11: warning: excess elements in scalar initializer
+  305 |   { 0x88, 0x3f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:305:11: note: (near initialization for 'OV2640_JPEG_INIT[75]')
+../Core/Inc/ov2640_reg.h:306:3: warning: braces around scalar initializer
+  306 |   { 0xd7, 0x03 },
+      |   ^
+../Core/Inc/ov2640_reg.h:306:3: note: (near initialization for 'OV2640_JPEG_INIT[76]')
+../Core/Inc/ov2640_reg.h:306:11: warning: excess elements in scalar initializer
+  306 |   { 0xd7, 0x03 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:306:11: note: (near initialization for 'OV2640_JPEG_INIT[76]')
+../Core/Inc/ov2640_reg.h:307:3: warning: braces around scalar initializer
+  307 |   { 0xd9, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:307:3: note: (near initialization for 'OV2640_JPEG_INIT[77]')
+../Core/Inc/ov2640_reg.h:307:11: warning: excess elements in scalar initializer
+  307 |   { 0xd9, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:307:11: note: (near initialization for 'OV2640_JPEG_INIT[77]')
+../Core/Inc/ov2640_reg.h:308:3: warning: braces around scalar initializer
+  308 |   { 0xd3, 0x82 },
+      |   ^
+../Core/Inc/ov2640_reg.h:308:3: note: (near initialization for 'OV2640_JPEG_INIT[78]')
+../Core/Inc/ov2640_reg.h:308:11: warning: excess elements in scalar initializer
+  308 |   { 0xd3, 0x82 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:308:11: note: (near initialization for 'OV2640_JPEG_INIT[78]')
+../Core/Inc/ov2640_reg.h:309:3: warning: braces around scalar initializer
+  309 |   { 0xc8, 0x08 },
+      |   ^
+../Core/Inc/ov2640_reg.h:309:3: note: (near initialization for 'OV2640_JPEG_INIT[79]')
+../Core/Inc/ov2640_reg.h:309:11: warning: excess elements in scalar initializer
+  309 |   { 0xc8, 0x08 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:309:11: note: (near initialization for 'OV2640_JPEG_INIT[79]')
+../Core/Inc/ov2640_reg.h:310:3: warning: braces around scalar initializer
+  310 |   { 0xc9, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:310:3: note: (near initialization for 'OV2640_JPEG_INIT[80]')
+../Core/Inc/ov2640_reg.h:310:11: warning: excess elements in scalar initializer
+  310 |   { 0xc9, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:310:11: note: (near initialization for 'OV2640_JPEG_INIT[80]')
+../Core/Inc/ov2640_reg.h:311:3: warning: braces around scalar initializer
+  311 |   { 0x7c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:311:3: note: (near initialization for 'OV2640_JPEG_INIT[81]')
+../Core/Inc/ov2640_reg.h:311:11: warning: excess elements in scalar initializer
+  311 |   { 0x7c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:311:11: note: (near initialization for 'OV2640_JPEG_INIT[81]')
+../Core/Inc/ov2640_reg.h:312:3: warning: braces around scalar initializer
+  312 |   { 0x7d, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:312:3: note: (near initialization for 'OV2640_JPEG_INIT[82]')
+../Core/Inc/ov2640_reg.h:312:11: warning: excess elements in scalar initializer
+  312 |   { 0x7d, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:312:11: note: (near initialization for 'OV2640_JPEG_INIT[82]')
+../Core/Inc/ov2640_reg.h:313:3: warning: braces around scalar initializer
+  313 |   { 0x7c, 0x03 },
+      |   ^
+../Core/Inc/ov2640_reg.h:313:3: note: (near initialization for 'OV2640_JPEG_INIT[83]')
+../Core/Inc/ov2640_reg.h:313:11: warning: excess elements in scalar initializer
+  313 |   { 0x7c, 0x03 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:313:11: note: (near initialization for 'OV2640_JPEG_INIT[83]')
+../Core/Inc/ov2640_reg.h:314:3: warning: braces around scalar initializer
+  314 |   { 0x7d, 0x48 },
+      |   ^
+../Core/Inc/ov2640_reg.h:314:3: note: (near initialization for 'OV2640_JPEG_INIT[84]')
+../Core/Inc/ov2640_reg.h:314:11: warning: excess elements in scalar initializer
+  314 |   { 0x7d, 0x48 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:314:11: note: (near initialization for 'OV2640_JPEG_INIT[84]')
+../Core/Inc/ov2640_reg.h:315:3: warning: braces around scalar initializer
+  315 |   { 0x7d, 0x48 },
+      |   ^
+../Core/Inc/ov2640_reg.h:315:3: note: (near initialization for 'OV2640_JPEG_INIT[85]')
+../Core/Inc/ov2640_reg.h:315:11: warning: excess elements in scalar initializer
+  315 |   { 0x7d, 0x48 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:315:11: note: (near initialization for 'OV2640_JPEG_INIT[85]')
+../Core/Inc/ov2640_reg.h:316:3: warning: braces around scalar initializer
+  316 |   { 0x7c, 0x08 },
+      |   ^
+../Core/Inc/ov2640_reg.h:316:3: note: (near initialization for 'OV2640_JPEG_INIT[86]')
+../Core/Inc/ov2640_reg.h:316:11: warning: excess elements in scalar initializer
+  316 |   { 0x7c, 0x08 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:316:11: note: (near initialization for 'OV2640_JPEG_INIT[86]')
+../Core/Inc/ov2640_reg.h:317:3: warning: braces around scalar initializer
+  317 |   { 0x7d, 0x20 },
+      |   ^
+../Core/Inc/ov2640_reg.h:317:3: note: (near initialization for 'OV2640_JPEG_INIT[87]')
+../Core/Inc/ov2640_reg.h:317:11: warning: excess elements in scalar initializer
+  317 |   { 0x7d, 0x20 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:317:11: note: (near initialization for 'OV2640_JPEG_INIT[87]')
+../Core/Inc/ov2640_reg.h:318:3: warning: braces around scalar initializer
+  318 |   { 0x7d, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:318:3: note: (near initialization for 'OV2640_JPEG_INIT[88]')
+../Core/Inc/ov2640_reg.h:318:11: warning: excess elements in scalar initializer
+  318 |   { 0x7d, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:318:11: note: (near initialization for 'OV2640_JPEG_INIT[88]')
+../Core/Inc/ov2640_reg.h:319:3: warning: braces around scalar initializer
+  319 |   { 0x7d, 0x0e },
+      |   ^
+../Core/Inc/ov2640_reg.h:319:3: note: (near initialization for 'OV2640_JPEG_INIT[89]')
+../Core/Inc/ov2640_reg.h:319:11: warning: excess elements in scalar initializer
+  319 |   { 0x7d, 0x0e },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:319:11: note: (near initialization for 'OV2640_JPEG_INIT[89]')
+../Core/Inc/ov2640_reg.h:320:3: warning: braces around scalar initializer
+  320 |   { 0x90, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:320:3: note: (near initialization for 'OV2640_JPEG_INIT[90]')
+../Core/Inc/ov2640_reg.h:320:11: warning: excess elements in scalar initializer
+  320 |   { 0x90, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:320:11: note: (near initialization for 'OV2640_JPEG_INIT[90]')
+../Core/Inc/ov2640_reg.h:321:3: warning: braces around scalar initializer
+  321 |   { 0x91, 0x0e },
+      |   ^
+../Core/Inc/ov2640_reg.h:321:3: note: (near initialization for 'OV2640_JPEG_INIT[91]')
+../Core/Inc/ov2640_reg.h:321:11: warning: excess elements in scalar initializer
+  321 |   { 0x91, 0x0e },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:321:11: note: (near initialization for 'OV2640_JPEG_INIT[91]')
+../Core/Inc/ov2640_reg.h:322:3: warning: braces around scalar initializer
+  322 |   { 0x91, 0x1a },
+      |   ^
+../Core/Inc/ov2640_reg.h:322:3: note: (near initialization for 'OV2640_JPEG_INIT[92]')
+../Core/Inc/ov2640_reg.h:322:11: warning: excess elements in scalar initializer
+  322 |   { 0x91, 0x1a },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:322:11: note: (near initialization for 'OV2640_JPEG_INIT[92]')
+../Core/Inc/ov2640_reg.h:323:3: warning: braces around scalar initializer
+  323 |   { 0x91, 0x31 },
+      |   ^
+../Core/Inc/ov2640_reg.h:323:3: note: (near initialization for 'OV2640_JPEG_INIT[93]')
+../Core/Inc/ov2640_reg.h:323:11: warning: excess elements in scalar initializer
+  323 |   { 0x91, 0x31 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:323:11: note: (near initialization for 'OV2640_JPEG_INIT[93]')
+../Core/Inc/ov2640_reg.h:324:3: warning: braces around scalar initializer
+  324 |   { 0x91, 0x5a },
+      |   ^
+../Core/Inc/ov2640_reg.h:324:3: note: (near initialization for 'OV2640_JPEG_INIT[94]')
+../Core/Inc/ov2640_reg.h:324:11: warning: excess elements in scalar initializer
+  324 |   { 0x91, 0x5a },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:324:11: note: (near initialization for 'OV2640_JPEG_INIT[94]')
+../Core/Inc/ov2640_reg.h:325:3: warning: braces around scalar initializer
+  325 |   { 0x91, 0x69 },
+      |   ^
+../Core/Inc/ov2640_reg.h:325:3: note: (near initialization for 'OV2640_JPEG_INIT[95]')
+../Core/Inc/ov2640_reg.h:325:11: warning: excess elements in scalar initializer
+  325 |   { 0x91, 0x69 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:325:11: note: (near initialization for 'OV2640_JPEG_INIT[95]')
+../Core/Inc/ov2640_reg.h:326:3: warning: braces around scalar initializer
+  326 |   { 0x91, 0x75 },
+      |   ^
+../Core/Inc/ov2640_reg.h:326:3: note: (near initialization for 'OV2640_JPEG_INIT[96]')
+../Core/Inc/ov2640_reg.h:326:11: warning: excess elements in scalar initializer
+  326 |   { 0x91, 0x75 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:326:11: note: (near initialization for 'OV2640_JPEG_INIT[96]')
+../Core/Inc/ov2640_reg.h:327:3: warning: braces around scalar initializer
+  327 |   { 0x91, 0x7e },
+      |   ^
+../Core/Inc/ov2640_reg.h:327:3: note: (near initialization for 'OV2640_JPEG_INIT[97]')
+../Core/Inc/ov2640_reg.h:327:11: warning: excess elements in scalar initializer
+  327 |   { 0x91, 0x7e },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:327:11: note: (near initialization for 'OV2640_JPEG_INIT[97]')
+../Core/Inc/ov2640_reg.h:328:3: warning: braces around scalar initializer
+  328 |   { 0x91, 0x88 },
+      |   ^
+../Core/Inc/ov2640_reg.h:328:3: note: (near initialization for 'OV2640_JPEG_INIT[98]')
+../Core/Inc/ov2640_reg.h:328:11: warning: excess elements in scalar initializer
+  328 |   { 0x91, 0x88 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:328:11: note: (near initialization for 'OV2640_JPEG_INIT[98]')
+../Core/Inc/ov2640_reg.h:329:3: warning: braces around scalar initializer
+  329 |   { 0x91, 0x8f },
+      |   ^
+../Core/Inc/ov2640_reg.h:329:3: note: (near initialization for 'OV2640_JPEG_INIT[99]')
+../Core/Inc/ov2640_reg.h:329:11: warning: excess elements in scalar initializer
+  329 |   { 0x91, 0x8f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:329:11: note: (near initialization for 'OV2640_JPEG_INIT[99]')
+../Core/Inc/ov2640_reg.h:330:3: warning: braces around scalar initializer
+  330 |   { 0x91, 0x96 },
+      |   ^
+../Core/Inc/ov2640_reg.h:330:3: note: (near initialization for 'OV2640_JPEG_INIT[100]')
+../Core/Inc/ov2640_reg.h:330:11: warning: excess elements in scalar initializer
+  330 |   { 0x91, 0x96 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:330:11: note: (near initialization for 'OV2640_JPEG_INIT[100]')
+../Core/Inc/ov2640_reg.h:331:3: warning: braces around scalar initializer
+  331 |   { 0x91, 0xa3 },
+      |   ^
+../Core/Inc/ov2640_reg.h:331:3: note: (near initialization for 'OV2640_JPEG_INIT[101]')
+../Core/Inc/ov2640_reg.h:331:11: warning: excess elements in scalar initializer
+  331 |   { 0x91, 0xa3 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:331:11: note: (near initialization for 'OV2640_JPEG_INIT[101]')
+../Core/Inc/ov2640_reg.h:332:3: warning: braces around scalar initializer
+  332 |   { 0x91, 0xaf },
+      |   ^
+../Core/Inc/ov2640_reg.h:332:3: note: (near initialization for 'OV2640_JPEG_INIT[102]')
+../Core/Inc/ov2640_reg.h:332:11: warning: excess elements in scalar initializer
+  332 |   { 0x91, 0xaf },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:332:11: note: (near initialization for 'OV2640_JPEG_INIT[102]')
+../Core/Inc/ov2640_reg.h:333:3: warning: braces around scalar initializer
+  333 |   { 0x91, 0xc4 },
+      |   ^
+../Core/Inc/ov2640_reg.h:333:3: note: (near initialization for 'OV2640_JPEG_INIT[103]')
+../Core/Inc/ov2640_reg.h:333:11: warning: excess elements in scalar initializer
+  333 |   { 0x91, 0xc4 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:333:11: note: (near initialization for 'OV2640_JPEG_INIT[103]')
+../Core/Inc/ov2640_reg.h:334:3: warning: braces around scalar initializer
+  334 |   { 0x91, 0xd7 },
+      |   ^
+../Core/Inc/ov2640_reg.h:334:3: note: (near initialization for 'OV2640_JPEG_INIT[104]')
+../Core/Inc/ov2640_reg.h:334:11: warning: excess elements in scalar initializer
+  334 |   { 0x91, 0xd7 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:334:11: note: (near initialization for 'OV2640_JPEG_INIT[104]')
+../Core/Inc/ov2640_reg.h:335:3: warning: braces around scalar initializer
+  335 |   { 0x91, 0xe8 },
+      |   ^
+../Core/Inc/ov2640_reg.h:335:3: note: (near initialization for 'OV2640_JPEG_INIT[105]')
+../Core/Inc/ov2640_reg.h:335:11: warning: excess elements in scalar initializer
+  335 |   { 0x91, 0xe8 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:335:11: note: (near initialization for 'OV2640_JPEG_INIT[105]')
+../Core/Inc/ov2640_reg.h:336:3: warning: braces around scalar initializer
+  336 |   { 0x91, 0x20 },
+      |   ^
+../Core/Inc/ov2640_reg.h:336:3: note: (near initialization for 'OV2640_JPEG_INIT[106]')
+../Core/Inc/ov2640_reg.h:336:11: warning: excess elements in scalar initializer
+  336 |   { 0x91, 0x20 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:336:11: note: (near initialization for 'OV2640_JPEG_INIT[106]')
+../Core/Inc/ov2640_reg.h:337:3: warning: braces around scalar initializer
+  337 |   { 0x92, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:337:3: note: (near initialization for 'OV2640_JPEG_INIT[107]')
+../Core/Inc/ov2640_reg.h:337:11: warning: excess elements in scalar initializer
+  337 |   { 0x92, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:337:11: note: (near initialization for 'OV2640_JPEG_INIT[107]')
+../Core/Inc/ov2640_reg.h:338:3: warning: braces around scalar initializer
+  338 |   { 0x93, 0x06 },
+      |   ^
+../Core/Inc/ov2640_reg.h:338:3: note: (near initialization for 'OV2640_JPEG_INIT[108]')
+../Core/Inc/ov2640_reg.h:338:11: warning: excess elements in scalar initializer
+  338 |   { 0x93, 0x06 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:338:11: note: (near initialization for 'OV2640_JPEG_INIT[108]')
+../Core/Inc/ov2640_reg.h:339:3: warning: braces around scalar initializer
+  339 |   { 0x93, 0xe3 },
+      |   ^
+../Core/Inc/ov2640_reg.h:339:3: note: (near initialization for 'OV2640_JPEG_INIT[109]')
+../Core/Inc/ov2640_reg.h:339:11: warning: excess elements in scalar initializer
+  339 |   { 0x93, 0xe3 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:339:11: note: (near initialization for 'OV2640_JPEG_INIT[109]')
+../Core/Inc/ov2640_reg.h:340:3: warning: braces around scalar initializer
+  340 |   { 0x93, 0x05 },
+      |   ^
+../Core/Inc/ov2640_reg.h:340:3: note: (near initialization for 'OV2640_JPEG_INIT[110]')
+../Core/Inc/ov2640_reg.h:340:11: warning: excess elements in scalar initializer
+  340 |   { 0x93, 0x05 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:340:11: note: (near initialization for 'OV2640_JPEG_INIT[110]')
+../Core/Inc/ov2640_reg.h:341:3: warning: braces around scalar initializer
+  341 |   { 0x93, 0x05 },
+      |   ^
+../Core/Inc/ov2640_reg.h:341:3: note: (near initialization for 'OV2640_JPEG_INIT[111]')
+../Core/Inc/ov2640_reg.h:341:11: warning: excess elements in scalar initializer
+  341 |   { 0x93, 0x05 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:341:11: note: (near initialization for 'OV2640_JPEG_INIT[111]')
+../Core/Inc/ov2640_reg.h:342:3: warning: braces around scalar initializer
+  342 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:342:3: note: (near initialization for 'OV2640_JPEG_INIT[112]')
+../Core/Inc/ov2640_reg.h:342:11: warning: excess elements in scalar initializer
+  342 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:342:11: note: (near initialization for 'OV2640_JPEG_INIT[112]')
+../Core/Inc/ov2640_reg.h:343:3: warning: braces around scalar initializer
+  343 |   { 0x93, 0x04 },
+      |   ^
+../Core/Inc/ov2640_reg.h:343:3: note: (near initialization for 'OV2640_JPEG_INIT[113]')
+../Core/Inc/ov2640_reg.h:343:11: warning: excess elements in scalar initializer
+  343 |   { 0x93, 0x04 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:343:11: note: (near initialization for 'OV2640_JPEG_INIT[113]')
+../Core/Inc/ov2640_reg.h:344:3: warning: braces around scalar initializer
+  344 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:344:3: note: (near initialization for 'OV2640_JPEG_INIT[114]')
+../Core/Inc/ov2640_reg.h:344:11: warning: excess elements in scalar initializer
+  344 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:344:11: note: (near initialization for 'OV2640_JPEG_INIT[114]')
+../Core/Inc/ov2640_reg.h:345:3: warning: braces around scalar initializer
+  345 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:345:3: note: (near initialization for 'OV2640_JPEG_INIT[115]')
+../Core/Inc/ov2640_reg.h:345:11: warning: excess elements in scalar initializer
+  345 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:345:11: note: (near initialization for 'OV2640_JPEG_INIT[115]')
+../Core/Inc/ov2640_reg.h:346:3: warning: braces around scalar initializer
+  346 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:346:3: note: (near initialization for 'OV2640_JPEG_INIT[116]')
+../Core/Inc/ov2640_reg.h:346:11: warning: excess elements in scalar initializer
+  346 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:346:11: note: (near initialization for 'OV2640_JPEG_INIT[116]')
+../Core/Inc/ov2640_reg.h:347:3: warning: braces around scalar initializer
+  347 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:347:3: note: (near initialization for 'OV2640_JPEG_INIT[117]')
+../Core/Inc/ov2640_reg.h:347:11: warning: excess elements in scalar initializer
+  347 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:347:11: note: (near initialization for 'OV2640_JPEG_INIT[117]')
+../Core/Inc/ov2640_reg.h:348:3: warning: braces around scalar initializer
+  348 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:348:3: note: (near initialization for 'OV2640_JPEG_INIT[118]')
+../Core/Inc/ov2640_reg.h:348:11: warning: excess elements in scalar initializer
+  348 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:348:11: note: (near initialization for 'OV2640_JPEG_INIT[118]')
+../Core/Inc/ov2640_reg.h:349:3: warning: braces around scalar initializer
+  349 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:349:3: note: (near initialization for 'OV2640_JPEG_INIT[119]')
+../Core/Inc/ov2640_reg.h:349:11: warning: excess elements in scalar initializer
+  349 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:349:11: note: (near initialization for 'OV2640_JPEG_INIT[119]')
+../Core/Inc/ov2640_reg.h:350:3: warning: braces around scalar initializer
+  350 |   { 0x93, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:350:3: note: (near initialization for 'OV2640_JPEG_INIT[120]')
+../Core/Inc/ov2640_reg.h:350:11: warning: excess elements in scalar initializer
+  350 |   { 0x93, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:350:11: note: (near initialization for 'OV2640_JPEG_INIT[120]')
+../Core/Inc/ov2640_reg.h:351:3: warning: braces around scalar initializer
+  351 |   { 0x96, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:351:3: note: (near initialization for 'OV2640_JPEG_INIT[121]')
+../Core/Inc/ov2640_reg.h:351:11: warning: excess elements in scalar initializer
+  351 |   { 0x96, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:351:11: note: (near initialization for 'OV2640_JPEG_INIT[121]')
+../Core/Inc/ov2640_reg.h:352:3: warning: braces around scalar initializer
+  352 |   { 0x97, 0x08 },
+      |   ^
+../Core/Inc/ov2640_reg.h:352:3: note: (near initialization for 'OV2640_JPEG_INIT[122]')
+../Core/Inc/ov2640_reg.h:352:11: warning: excess elements in scalar initializer
+  352 |   { 0x97, 0x08 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:352:11: note: (near initialization for 'OV2640_JPEG_INIT[122]')
+../Core/Inc/ov2640_reg.h:353:3: warning: braces around scalar initializer
+  353 |   { 0x97, 0x19 },
+      |   ^
+../Core/Inc/ov2640_reg.h:353:3: note: (near initialization for 'OV2640_JPEG_INIT[123]')
+../Core/Inc/ov2640_reg.h:353:11: warning: excess elements in scalar initializer
+  353 |   { 0x97, 0x19 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:353:11: note: (near initialization for 'OV2640_JPEG_INIT[123]')
+../Core/Inc/ov2640_reg.h:354:3: warning: braces around scalar initializer
+  354 |   { 0x97, 0x02 },
+      |   ^
+../Core/Inc/ov2640_reg.h:354:3: note: (near initialization for 'OV2640_JPEG_INIT[124]')
+../Core/Inc/ov2640_reg.h:354:11: warning: excess elements in scalar initializer
+  354 |   { 0x97, 0x02 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:354:11: note: (near initialization for 'OV2640_JPEG_INIT[124]')
+../Core/Inc/ov2640_reg.h:355:3: warning: braces around scalar initializer
+  355 |   { 0x97, 0x0c },
+      |   ^
+../Core/Inc/ov2640_reg.h:355:3: note: (near initialization for 'OV2640_JPEG_INIT[125]')
+../Core/Inc/ov2640_reg.h:355:11: warning: excess elements in scalar initializer
+  355 |   { 0x97, 0x0c },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:355:11: note: (near initialization for 'OV2640_JPEG_INIT[125]')
+../Core/Inc/ov2640_reg.h:356:3: warning: braces around scalar initializer
+  356 |   { 0x97, 0x24 },
+      |   ^
+../Core/Inc/ov2640_reg.h:356:3: note: (near initialization for 'OV2640_JPEG_INIT[126]')
+../Core/Inc/ov2640_reg.h:356:11: warning: excess elements in scalar initializer
+  356 |   { 0x97, 0x24 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:356:11: note: (near initialization for 'OV2640_JPEG_INIT[126]')
+../Core/Inc/ov2640_reg.h:357:3: warning: braces around scalar initializer
+  357 |   { 0x97, 0x30 },
+      |   ^
+../Core/Inc/ov2640_reg.h:357:3: note: (near initialization for 'OV2640_JPEG_INIT[127]')
+../Core/Inc/ov2640_reg.h:357:11: warning: excess elements in scalar initializer
+  357 |   { 0x97, 0x30 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:357:11: note: (near initialization for 'OV2640_JPEG_INIT[127]')
+../Core/Inc/ov2640_reg.h:358:3: warning: braces around scalar initializer
+  358 |   { 0x97, 0x28 },
+      |   ^
+../Core/Inc/ov2640_reg.h:358:3: note: (near initialization for 'OV2640_JPEG_INIT[128]')
+../Core/Inc/ov2640_reg.h:358:11: warning: excess elements in scalar initializer
+  358 |   { 0x97, 0x28 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:358:11: note: (near initialization for 'OV2640_JPEG_INIT[128]')
+../Core/Inc/ov2640_reg.h:359:3: warning: braces around scalar initializer
+  359 |   { 0x97, 0x26 },
+      |   ^
+../Core/Inc/ov2640_reg.h:359:3: note: (near initialization for 'OV2640_JPEG_INIT[129]')
+../Core/Inc/ov2640_reg.h:359:11: warning: excess elements in scalar initializer
+  359 |   { 0x97, 0x26 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:359:11: note: (near initialization for 'OV2640_JPEG_INIT[129]')
+../Core/Inc/ov2640_reg.h:360:3: warning: braces around scalar initializer
+  360 |   { 0x97, 0x02 },
+      |   ^
+../Core/Inc/ov2640_reg.h:360:3: note: (near initialization for 'OV2640_JPEG_INIT[130]')
+../Core/Inc/ov2640_reg.h:360:11: warning: excess elements in scalar initializer
+  360 |   { 0x97, 0x02 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:360:11: note: (near initialization for 'OV2640_JPEG_INIT[130]')
+../Core/Inc/ov2640_reg.h:361:3: warning: braces around scalar initializer
+  361 |   { 0x97, 0x98 },
+      |   ^
+../Core/Inc/ov2640_reg.h:361:3: note: (near initialization for 'OV2640_JPEG_INIT[131]')
+../Core/Inc/ov2640_reg.h:361:11: warning: excess elements in scalar initializer
+  361 |   { 0x97, 0x98 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:361:11: note: (near initialization for 'OV2640_JPEG_INIT[131]')
+../Core/Inc/ov2640_reg.h:362:3: warning: braces around scalar initializer
+  362 |   { 0x97, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:362:3: note: (near initialization for 'OV2640_JPEG_INIT[132]')
+../Core/Inc/ov2640_reg.h:362:11: warning: excess elements in scalar initializer
+  362 |   { 0x97, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:362:11: note: (near initialization for 'OV2640_JPEG_INIT[132]')
+../Core/Inc/ov2640_reg.h:363:3: warning: braces around scalar initializer
+  363 |   { 0x97, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:363:3: note: (near initialization for 'OV2640_JPEG_INIT[133]')
+../Core/Inc/ov2640_reg.h:363:11: warning: excess elements in scalar initializer
+  363 |   { 0x97, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:363:11: note: (near initialization for 'OV2640_JPEG_INIT[133]')
+../Core/Inc/ov2640_reg.h:364:3: warning: braces around scalar initializer
+  364 |   { 0x97, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:364:3: note: (near initialization for 'OV2640_JPEG_INIT[134]')
+../Core/Inc/ov2640_reg.h:364:11: warning: excess elements in scalar initializer
+  364 |   { 0x97, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:364:11: note: (near initialization for 'OV2640_JPEG_INIT[134]')
+../Core/Inc/ov2640_reg.h:365:3: warning: braces around scalar initializer
+  365 |   { 0xc3, 0xed },
+      |   ^
+../Core/Inc/ov2640_reg.h:365:3: note: (near initialization for 'OV2640_JPEG_INIT[135]')
+../Core/Inc/ov2640_reg.h:365:11: warning: excess elements in scalar initializer
+  365 |   { 0xc3, 0xed },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:365:11: note: (near initialization for 'OV2640_JPEG_INIT[135]')
+../Core/Inc/ov2640_reg.h:366:3: warning: braces around scalar initializer
+  366 |   { 0xa4, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:366:3: note: (near initialization for 'OV2640_JPEG_INIT[136]')
+../Core/Inc/ov2640_reg.h:366:11: warning: excess elements in scalar initializer
+  366 |   { 0xa4, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:366:11: note: (near initialization for 'OV2640_JPEG_INIT[136]')
+../Core/Inc/ov2640_reg.h:367:3: warning: braces around scalar initializer
+  367 |   { 0xa8, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:367:3: note: (near initialization for 'OV2640_JPEG_INIT[137]')
+../Core/Inc/ov2640_reg.h:367:11: warning: excess elements in scalar initializer
+  367 |   { 0xa8, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:367:11: note: (near initialization for 'OV2640_JPEG_INIT[137]')
+../Core/Inc/ov2640_reg.h:368:3: warning: braces around scalar initializer
+  368 |   { 0xc5, 0x11 },
+      |   ^
+../Core/Inc/ov2640_reg.h:368:3: note: (near initialization for 'OV2640_JPEG_INIT[138]')
+../Core/Inc/ov2640_reg.h:368:11: warning: excess elements in scalar initializer
+  368 |   { 0xc5, 0x11 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:368:11: note: (near initialization for 'OV2640_JPEG_INIT[138]')
+../Core/Inc/ov2640_reg.h:369:3: warning: braces around scalar initializer
+  369 |   { 0xc6, 0x51 },
+      |   ^
+../Core/Inc/ov2640_reg.h:369:3: note: (near initialization for 'OV2640_JPEG_INIT[139]')
+../Core/Inc/ov2640_reg.h:369:11: warning: excess elements in scalar initializer
+  369 |   { 0xc6, 0x51 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:369:11: note: (near initialization for 'OV2640_JPEG_INIT[139]')
+../Core/Inc/ov2640_reg.h:370:3: warning: braces around scalar initializer
+  370 |   { 0xbf, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:370:3: note: (near initialization for 'OV2640_JPEG_INIT[140]')
+../Core/Inc/ov2640_reg.h:370:11: warning: excess elements in scalar initializer
+  370 |   { 0xbf, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:370:11: note: (near initialization for 'OV2640_JPEG_INIT[140]')
+../Core/Inc/ov2640_reg.h:371:3: warning: braces around scalar initializer
+  371 |   { 0xc7, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:371:3: note: (near initialization for 'OV2640_JPEG_INIT[141]')
+../Core/Inc/ov2640_reg.h:371:11: warning: excess elements in scalar initializer
+  371 |   { 0xc7, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:371:11: note: (near initialization for 'OV2640_JPEG_INIT[141]')
+../Core/Inc/ov2640_reg.h:372:3: warning: braces around scalar initializer
+  372 |   { 0xb6, 0x66 },
+      |   ^
+../Core/Inc/ov2640_reg.h:372:3: note: (near initialization for 'OV2640_JPEG_INIT[142]')
+../Core/Inc/ov2640_reg.h:372:11: warning: excess elements in scalar initializer
+  372 |   { 0xb6, 0x66 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:372:11: note: (near initialization for 'OV2640_JPEG_INIT[142]')
+../Core/Inc/ov2640_reg.h:373:3: warning: braces around scalar initializer
+  373 |   { 0xb8, 0xA5 },
+      |   ^
+../Core/Inc/ov2640_reg.h:373:3: note: (near initialization for 'OV2640_JPEG_INIT[143]')
+../Core/Inc/ov2640_reg.h:373:11: warning: excess elements in scalar initializer
+  373 |   { 0xb8, 0xA5 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:373:11: note: (near initialization for 'OV2640_JPEG_INIT[143]')
+../Core/Inc/ov2640_reg.h:374:3: warning: braces around scalar initializer
+  374 |   { 0xb7, 0x64 },
+      |   ^
+../Core/Inc/ov2640_reg.h:374:3: note: (near initialization for 'OV2640_JPEG_INIT[144]')
+../Core/Inc/ov2640_reg.h:374:11: warning: excess elements in scalar initializer
+  374 |   { 0xb7, 0x64 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:374:11: note: (near initialization for 'OV2640_JPEG_INIT[144]')
+../Core/Inc/ov2640_reg.h:375:3: warning: braces around scalar initializer
+  375 |   { 0xb9, 0x7C },
+      |   ^
+../Core/Inc/ov2640_reg.h:375:3: note: (near initialization for 'OV2640_JPEG_INIT[145]')
+../Core/Inc/ov2640_reg.h:375:11: warning: excess elements in scalar initializer
+  375 |   { 0xb9, 0x7C },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:375:11: note: (near initialization for 'OV2640_JPEG_INIT[145]')
+../Core/Inc/ov2640_reg.h:376:3: warning: braces around scalar initializer
+  376 |   { 0xb3, 0xaf },
+      |   ^
+../Core/Inc/ov2640_reg.h:376:3: note: (near initialization for 'OV2640_JPEG_INIT[146]')
+../Core/Inc/ov2640_reg.h:376:11: warning: excess elements in scalar initializer
+  376 |   { 0xb3, 0xaf },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:376:11: note: (near initialization for 'OV2640_JPEG_INIT[146]')
+../Core/Inc/ov2640_reg.h:377:3: warning: braces around scalar initializer
+  377 |   { 0xb4, 0x97 },
+      |   ^
+../Core/Inc/ov2640_reg.h:377:3: note: (near initialization for 'OV2640_JPEG_INIT[147]')
+../Core/Inc/ov2640_reg.h:377:11: warning: excess elements in scalar initializer
+  377 |   { 0xb4, 0x97 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:377:11: note: (near initialization for 'OV2640_JPEG_INIT[147]')
+../Core/Inc/ov2640_reg.h:378:3: warning: braces around scalar initializer
+  378 |   { 0xb5, 0xFF },
+      |   ^
+../Core/Inc/ov2640_reg.h:378:3: note: (near initialization for 'OV2640_JPEG_INIT[148]')
+../Core/Inc/ov2640_reg.h:378:11: warning: excess elements in scalar initializer
+  378 |   { 0xb5, 0xFF },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:378:11: note: (near initialization for 'OV2640_JPEG_INIT[148]')
+../Core/Inc/ov2640_reg.h:379:3: warning: braces around scalar initializer
+  379 |   { 0xb0, 0xC5 },
+      |   ^
+../Core/Inc/ov2640_reg.h:379:3: note: (near initialization for 'OV2640_JPEG_INIT[149]')
+../Core/Inc/ov2640_reg.h:379:11: warning: excess elements in scalar initializer
+  379 |   { 0xb0, 0xC5 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:379:11: note: (near initialization for 'OV2640_JPEG_INIT[149]')
+../Core/Inc/ov2640_reg.h:380:3: warning: braces around scalar initializer
+  380 |   { 0xb1, 0x94 },
+      |   ^
+../Core/Inc/ov2640_reg.h:380:3: note: (near initialization for 'OV2640_JPEG_INIT[150]')
+../Core/Inc/ov2640_reg.h:380:11: warning: excess elements in scalar initializer
+  380 |   { 0xb1, 0x94 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:380:11: note: (near initialization for 'OV2640_JPEG_INIT[150]')
+../Core/Inc/ov2640_reg.h:381:3: warning: braces around scalar initializer
+  381 |   { 0xb2, 0x0f },
+      |   ^
+../Core/Inc/ov2640_reg.h:381:3: note: (near initialization for 'OV2640_JPEG_INIT[151]')
+../Core/Inc/ov2640_reg.h:381:11: warning: excess elements in scalar initializer
+  381 |   { 0xb2, 0x0f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:381:11: note: (near initialization for 'OV2640_JPEG_INIT[151]')
+../Core/Inc/ov2640_reg.h:382:3: warning: braces around scalar initializer
+  382 |   { 0xc4, 0x5c },
+      |   ^
+../Core/Inc/ov2640_reg.h:382:3: note: (near initialization for 'OV2640_JPEG_INIT[152]')
+../Core/Inc/ov2640_reg.h:382:11: warning: excess elements in scalar initializer
+  382 |   { 0xc4, 0x5c },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:382:11: note: (near initialization for 'OV2640_JPEG_INIT[152]')
+../Core/Inc/ov2640_reg.h:383:3: warning: braces around scalar initializer
+  383 |   { 0xc0, 0x64 },
+      |   ^
+../Core/Inc/ov2640_reg.h:383:3: note: (near initialization for 'OV2640_JPEG_INIT[153]')
+../Core/Inc/ov2640_reg.h:383:11: warning: excess elements in scalar initializer
+  383 |   { 0xc0, 0x64 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:383:11: note: (near initialization for 'OV2640_JPEG_INIT[153]')
+../Core/Inc/ov2640_reg.h:384:3: warning: braces around scalar initializer
+  384 |   { 0xc1, 0x4B },
+      |   ^
+../Core/Inc/ov2640_reg.h:384:3: note: (near initialization for 'OV2640_JPEG_INIT[154]')
+../Core/Inc/ov2640_reg.h:384:11: warning: excess elements in scalar initializer
+  384 |   { 0xc1, 0x4B },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:384:11: note: (near initialization for 'OV2640_JPEG_INIT[154]')
+../Core/Inc/ov2640_reg.h:385:3: warning: braces around scalar initializer
+  385 |   { 0x8c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:385:3: note: (near initialization for 'OV2640_JPEG_INIT[155]')
+../Core/Inc/ov2640_reg.h:385:11: warning: excess elements in scalar initializer
+  385 |   { 0x8c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:385:11: note: (near initialization for 'OV2640_JPEG_INIT[155]')
+../Core/Inc/ov2640_reg.h:386:3: warning: braces around scalar initializer
+  386 |   { 0x86, 0x3D },
+      |   ^
+../Core/Inc/ov2640_reg.h:386:3: note: (near initialization for 'OV2640_JPEG_INIT[156]')
+../Core/Inc/ov2640_reg.h:386:11: warning: excess elements in scalar initializer
+  386 |   { 0x86, 0x3D },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:386:11: note: (near initialization for 'OV2640_JPEG_INIT[156]')
+../Core/Inc/ov2640_reg.h:387:3: warning: braces around scalar initializer
+  387 |   { 0x50, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:387:3: note: (near initialization for 'OV2640_JPEG_INIT[157]')
+../Core/Inc/ov2640_reg.h:387:11: warning: excess elements in scalar initializer
+  387 |   { 0x50, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:387:11: note: (near initialization for 'OV2640_JPEG_INIT[157]')
+../Core/Inc/ov2640_reg.h:388:3: warning: braces around scalar initializer
+  388 |   { 0x51, 0xC8 },
+      |   ^
+../Core/Inc/ov2640_reg.h:388:3: note: (near initialization for 'OV2640_JPEG_INIT[158]')
+../Core/Inc/ov2640_reg.h:388:11: warning: excess elements in scalar initializer
+  388 |   { 0x51, 0xC8 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:388:11: note: (near initialization for 'OV2640_JPEG_INIT[158]')
+../Core/Inc/ov2640_reg.h:389:3: warning: braces around scalar initializer
+  389 |   { 0x52, 0x96 },
+      |   ^
+../Core/Inc/ov2640_reg.h:389:3: note: (near initialization for 'OV2640_JPEG_INIT[159]')
+../Core/Inc/ov2640_reg.h:389:11: warning: excess elements in scalar initializer
+  389 |   { 0x52, 0x96 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:389:11: note: (near initialization for 'OV2640_JPEG_INIT[159]')
+../Core/Inc/ov2640_reg.h:390:3: warning: braces around scalar initializer
+  390 |   { 0x53, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:390:3: note: (near initialization for 'OV2640_JPEG_INIT[160]')
+../Core/Inc/ov2640_reg.h:390:11: warning: excess elements in scalar initializer
+  390 |   { 0x53, 0x00 },
+      |           ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Inc/ov2640_reg.h:390:11: note: (near initialization for 'OV2640_JPEG_INIT[160]')
+../Core/Inc/ov2640_reg.h:391:3: warning: braces around scalar initializer
+  391 |   { 0x54, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:391:3: note: (near initialization for 'OV2640_JPEG_INIT[161]')
+../Core/Inc/ov2640_reg.h:391:11: warning: excess elements in scalar initializer
+  391 |   { 0x54, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:391:11: note: (near initialization for 'OV2640_JPEG_INIT[161]')
+../Core/Inc/ov2640_reg.h:392:3: warning: braces around scalar initializer
+  392 |   { 0x55, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:392:3: note: (near initialization for 'OV2640_JPEG_INIT[162]')
+../Core/Inc/ov2640_reg.h:392:11: warning: excess elements in scalar initializer
+  392 |   { 0x55, 0x00 },
+      |           ^~~~
+../Core/Src/main.c:128:3: warning: implicit declaration of function 'init_arducam' [-Wimplicit-function-declaration]
+  128 |   init_arducam(&camera_1);
+      |   ^~~~~~~~~~~~
+../Core/Inc/ov2640_reg.h:392:11: note: (near initialization for 'OV2640_JPEG_INIT[162]')
+../Core/Inc/ov2640_reg.h:393:3: warning: braces around scalar initializer
+  393 |   { 0x5a, 0xC8 },
+      |   ^
+../Core/Inc/ov2640_reg.h:393:3: note: (near initialization for 'OV2640_JPEG_INIT[163]')
+../Core/Inc/ov2640_reg.h:393:11: warning: excess elements in scalar initializer
+  393 |   { 0x5a, 0xC8 },
+      |           ^~~~
+../Core/Src/main.c:85:11: warning: unused variable 'adc_buff' [-Wunused-variable]
+   85 |  uint32_t adc_buff[1];
+      |           ^~~~~~~~
+../Core/Inc/ov2640_reg.h:393:11: note: (near initialization for 'OV2640_JPEG_INIT[163]')
+../Core/Src/main.c:84:10: warning: unused variable 'tx' [-Wunused-variable]
+   84 |  uint8_t tx[20];
+      |          ^~
+../Core/Inc/ov2640_reg.h:394:3: warning: braces around scalar initializer
+  394 |   { 0x5b, 0x96 },
+      |   ^
+../Core/Inc/ov2640_reg.h:394:3: note: (near initialization for 'OV2640_JPEG_INIT[164]')
+../Core/Inc/ov2640_reg.h:394:11: warning: excess elements in scalar initializer
+  394 |   { 0x5b, 0x96 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:394:11: note: (near initialization for 'OV2640_JPEG_INIT[164]')
+../Core/Inc/ov2640_reg.h:395:3: warning: braces around scalar initializer
+  395 |   { 0x5c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:395:3: note: (near initialization for 'OV2640_JPEG_INIT[165]')
+../Core/Inc/ov2640_reg.h:395:11: warning: excess elements in scalar initializer
+  395 |   { 0x5c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:395:11: note: (near initialization for 'OV2640_JPEG_INIT[165]')
+../Core/Inc/ov2640_reg.h:396:3: warning: braces around scalar initializer
+  396 |   { 0xd3, 0x00 }, //{ 0xd3, 0x7f },
+      |   ^
+../Core/Inc/ov2640_reg.h:396:3: note: (near initialization for 'OV2640_JPEG_INIT[166]')
+../Core/Inc/ov2640_reg.h:396:11: warning: excess elements in scalar initializer
+  396 |   { 0xd3, 0x00 }, //{ 0xd3, 0x7f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:396:11: note: (near initialization for 'OV2640_JPEG_INIT[166]')
+../Core/Inc/ov2640_reg.h:397:3: warning: braces around scalar initializer
+  397 |   { 0xc3, 0xed },
+      |   ^
+../Core/Inc/ov2640_reg.h:397:3: note: (near initialization for 'OV2640_JPEG_INIT[167]')
+../Core/Inc/ov2640_reg.h:397:11: warning: excess elements in scalar initializer
+  397 |   { 0xc3, 0xed },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:397:11: note: (near initialization for 'OV2640_JPEG_INIT[167]')
+../Core/Inc/ov2640_reg.h:398:3: warning: braces around scalar initializer
+  398 |   { 0x7f, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:398:3: note: (near initialization for 'OV2640_JPEG_INIT[168]')
+../Core/Inc/ov2640_reg.h:398:11: warning: excess elements in scalar initializer
+  398 |   { 0x7f, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:398:11: note: (near initialization for 'OV2640_JPEG_INIT[168]')
+../Core/Inc/ov2640_reg.h:399:3: warning: braces around scalar initializer
+  399 |   { 0xda, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:399:3: note: (near initialization for 'OV2640_JPEG_INIT[169]')
+../Core/Inc/ov2640_reg.h:399:11: warning: excess elements in scalar initializer
+  399 |   { 0xda, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:399:11: note: (near initialization for 'OV2640_JPEG_INIT[169]')
+../Core/Inc/ov2640_reg.h:400:3: warning: braces around scalar initializer
+  400 |   { 0xe5, 0x1f },
+      |   ^
+../Core/Inc/ov2640_reg.h:400:3: note: (near initialization for 'OV2640_JPEG_INIT[170]')
+../Core/Inc/ov2640_reg.h:400:11: warning: excess elements in scalar initializer
+  400 |   { 0xe5, 0x1f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:400:11: note: (near initialization for 'OV2640_JPEG_INIT[170]')
+../Core/Inc/ov2640_reg.h:401:3: warning: braces around scalar initializer
+  401 |   { 0xe1, 0x67 },
+      |   ^
+../Core/Inc/ov2640_reg.h:401:3: note: (near initialization for 'OV2640_JPEG_INIT[171]')
+../Core/Inc/ov2640_reg.h:401:11: warning: excess elements in scalar initializer
+  401 |   { 0xe1, 0x67 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:401:11: note: (near initialization for 'OV2640_JPEG_INIT[171]')
+../Core/Inc/ov2640_reg.h:402:3: warning: braces around scalar initializer
+  402 |   { 0xe0, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:402:3: note: (near initialization for 'OV2640_JPEG_INIT[172]')
+../Core/Inc/ov2640_reg.h:402:11: warning: excess elements in scalar initializer
+  402 |   { 0xe0, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:402:11: note: (near initialization for 'OV2640_JPEG_INIT[172]')
+../Core/Inc/ov2640_reg.h:403:3: warning: braces around scalar initializer
+  403 |   { 0xdd, 0x7f },
+      |   ^
+../Core/Inc/ov2640_reg.h:403:3: note: (near initialization for 'OV2640_JPEG_INIT[173]')
+../Core/Inc/ov2640_reg.h:403:11: warning: excess elements in scalar initializer
+  403 |   { 0xdd, 0x7f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:403:11: note: (near initialization for 'OV2640_JPEG_INIT[173]')
+../Core/Inc/ov2640_reg.h:404:3: warning: braces around scalar initializer
+  404 |   { 0x05, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:404:3: note: (near initialization for 'OV2640_JPEG_INIT[174]')
+../Core/Inc/ov2640_reg.h:404:11: warning: excess elements in scalar initializer
+  404 |   { 0x05, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:404:11: note: (near initialization for 'OV2640_JPEG_INIT[174]')
+../Core/Inc/ov2640_reg.h:406:3: warning: braces around scalar initializer
+  406 |   { 0x12, 0x40 },
+      |   ^
+../Core/Inc/ov2640_reg.h:406:3: note: (near initialization for 'OV2640_JPEG_INIT[175]')
+../Core/Inc/ov2640_reg.h:406:11: warning: excess elements in scalar initializer
+  406 |   { 0x12, 0x40 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:406:11: note: (near initialization for 'OV2640_JPEG_INIT[175]')
+../Core/Inc/ov2640_reg.h:407:3: warning: braces around scalar initializer
+  407 |   { 0xd3, 0x04 }, //{ 0xd3, 0x7f },
+      |   ^
+../Core/Inc/ov2640_reg.h:407:3: note: (near initialization for 'OV2640_JPEG_INIT[176]')
+../Core/Inc/ov2640_reg.h:407:11: warning: excess elements in scalar initializer
+  407 |   { 0xd3, 0x04 }, //{ 0xd3, 0x7f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:407:11: note: (near initialization for 'OV2640_JPEG_INIT[176]')
+../Core/Inc/ov2640_reg.h:408:3: warning: braces around scalar initializer
+  408 |   { 0xc0, 0x16 },
+      |   ^
+../Core/Inc/ov2640_reg.h:408:3: note: (near initialization for 'OV2640_JPEG_INIT[177]')
+../Core/Inc/ov2640_reg.h:408:11: warning: excess elements in scalar initializer
+  408 |   { 0xc0, 0x16 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:408:11: note: (near initialization for 'OV2640_JPEG_INIT[177]')
+../Core/Inc/ov2640_reg.h:409:3: warning: braces around scalar initializer
+  409 |   { 0xC1, 0x12 },
+      |   ^
+../Core/Inc/ov2640_reg.h:409:3: note: (near initialization for 'OV2640_JPEG_INIT[178]')
+../Core/Inc/ov2640_reg.h:409:11: warning: excess elements in scalar initializer
+  409 |   { 0xC1, 0x12 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:409:11: note: (near initialization for 'OV2640_JPEG_INIT[178]')
+../Core/Inc/ov2640_reg.h:410:3: warning: braces around scalar initializer
+  410 |   { 0x8c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:410:3: note: (near initialization for 'OV2640_JPEG_INIT[179]')
+../Core/Inc/ov2640_reg.h:410:11: warning: excess elements in scalar initializer
+  410 |   { 0x8c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:410:11: note: (near initialization for 'OV2640_JPEG_INIT[179]')
+../Core/Inc/ov2640_reg.h:411:3: warning: braces around scalar initializer
+  411 |   { 0x86, 0x3d },
+      |   ^
+../Core/Inc/ov2640_reg.h:411:3: note: (near initialization for 'OV2640_JPEG_INIT[180]')
+../Core/Inc/ov2640_reg.h:411:11: warning: excess elements in scalar initializer
+  411 |   { 0x86, 0x3d },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:411:11: note: (near initialization for 'OV2640_JPEG_INIT[180]')
+../Core/Inc/ov2640_reg.h:412:3: warning: braces around scalar initializer
+  412 |   { 0x50, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:412:3: note: (near initialization for 'OV2640_JPEG_INIT[181]')
+../Core/Inc/ov2640_reg.h:412:11: warning: excess elements in scalar initializer
+  412 |   { 0x50, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:412:11: note: (near initialization for 'OV2640_JPEG_INIT[181]')
+../Core/Inc/ov2640_reg.h:413:3: warning: braces around scalar initializer
+  413 |   { 0x51, 0x2C },
+      |   ^
+../Core/Inc/ov2640_reg.h:413:3: note: (near initialization for 'OV2640_JPEG_INIT[182]')
+../Core/Inc/ov2640_reg.h:413:11: warning: excess elements in scalar initializer
+  413 |   { 0x51, 0x2C },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:413:11: note: (near initialization for 'OV2640_JPEG_INIT[182]')
+../Core/Inc/ov2640_reg.h:414:3: warning: braces around scalar initializer
+  414 |   { 0x52, 0x24 },
+      |   ^
+../Core/Inc/ov2640_reg.h:414:3: note: (near initialization for 'OV2640_JPEG_INIT[183]')
+../Core/Inc/ov2640_reg.h:414:11: warning: excess elements in scalar initializer
+  414 |   { 0x52, 0x24 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:414:11: note: (near initialization for 'OV2640_JPEG_INIT[183]')
+../Core/Inc/ov2640_reg.h:415:3: warning: braces around scalar initializer
+  415 |   { 0x53, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:415:3: note: (near initialization for 'OV2640_JPEG_INIT[184]')
+../Core/Inc/ov2640_reg.h:415:11: warning: excess elements in scalar initializer
+  415 |   { 0x53, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:415:11: note: (near initialization for 'OV2640_JPEG_INIT[184]')
+../Core/Inc/ov2640_reg.h:416:3: warning: braces around scalar initializer
+  416 |   { 0x54, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:416:3: note: (near initialization for 'OV2640_JPEG_INIT[185]')
+../Core/Inc/ov2640_reg.h:416:11: warning: excess elements in scalar initializer
+  416 |   { 0x54, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:416:11: note: (near initialization for 'OV2640_JPEG_INIT[185]')
+../Core/Inc/ov2640_reg.h:417:3: warning: braces around scalar initializer
+  417 |   { 0x55, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:417:3: note: (near initialization for 'OV2640_JPEG_INIT[186]')
+../Core/Inc/ov2640_reg.h:417:11: warning: excess elements in scalar initializer
+  417 |   { 0x55, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:417:11: note: (near initialization for 'OV2640_JPEG_INIT[186]')
+../Core/Inc/ov2640_reg.h:418:3: warning: braces around scalar initializer
+  418 |   { 0x5A, 0x2c },
+      |   ^
+../Core/Inc/ov2640_reg.h:418:3: note: (near initialization for 'OV2640_JPEG_INIT[187]')
+../Core/Inc/ov2640_reg.h:418:11: warning: excess elements in scalar initializer
+  418 |   { 0x5A, 0x2c },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:418:11: note: (near initialization for 'OV2640_JPEG_INIT[187]')
+../Core/Inc/ov2640_reg.h:419:3: warning: braces around scalar initializer
+  419 |   { 0x5b, 0x24 },
+      |   ^
+../Core/Inc/ov2640_reg.h:419:3: note: (near initialization for 'OV2640_JPEG_INIT[188]')
+../Core/Inc/ov2640_reg.h:419:11: warning: excess elements in scalar initializer
+  419 |   { 0x5b, 0x24 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:419:11: note: (near initialization for 'OV2640_JPEG_INIT[188]')
+../Core/Inc/ov2640_reg.h:420:3: warning: braces around scalar initializer
+  420 |   { 0x5c, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:420:3: note: (near initialization for 'OV2640_JPEG_INIT[189]')
+../Core/Inc/ov2640_reg.h:420:11: warning: excess elements in scalar initializer
+  420 |   { 0x5c, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:420:11: note: (near initialization for 'OV2640_JPEG_INIT[189]')
+../Core/Inc/ov2640_reg.h:421:3: warning: braces around scalar initializer
+  421 |   { 0xff, 0xff },
+      |   ^
+../Core/Inc/ov2640_reg.h:421:3: note: (near initialization for 'OV2640_JPEG_INIT[190]')
+../Core/Inc/ov2640_reg.h:421:11: warning: excess elements in scalar initializer
+  421 |   { 0xff, 0xff },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:421:11: note: (near initialization for 'OV2640_JPEG_INIT[190]')
+../Core/Inc/ov2640_reg.h:425:7: error: unknown type name 'sensor_reg'
+  425 | const sensor_reg OV2640_YUV422[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:427:3: warning: braces around scalar initializer
+  427 |   { 0xFF, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:427:3: note: (near initialization for 'OV2640_YUV422[0]')
+../Core/Inc/ov2640_reg.h:427:11: warning: excess elements in scalar initializer
+  427 |   { 0xFF, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:427:11: note: (near initialization for 'OV2640_YUV422[0]')
+../Core/Inc/ov2640_reg.h:428:3: warning: braces around scalar initializer
+  428 |   { 0x05, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:428:3: note: (near initialization for 'OV2640_YUV422[1]')
+../Core/Inc/ov2640_reg.h:428:11: warning: excess elements in scalar initializer
+  428 |   { 0x05, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:428:11: note: (near initialization for 'OV2640_YUV422[1]')
+../Core/Inc/ov2640_reg.h:429:3: warning: braces around scalar initializer
+  429 |   { 0xDA, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:429:3: note: (near initialization for 'OV2640_YUV422[2]')
+../Core/Inc/ov2640_reg.h:429:11: warning: excess elements in scalar initializer
+  429 |   { 0xDA, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:429:11: note: (near initialization for 'OV2640_YUV422[2]')
+../Core/Inc/ov2640_reg.h:430:3: warning: braces around scalar initializer
+  430 |   { 0xD7, 0x03 },
+      |   ^
+../Core/Inc/ov2640_reg.h:430:3: note: (near initialization for 'OV2640_YUV422[3]')
+../Core/Inc/ov2640_reg.h:430:11: warning: excess elements in scalar initializer
+  430 |   { 0xD7, 0x03 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:430:11: note: (near initialization for 'OV2640_YUV422[3]')
+../Core/Inc/ov2640_reg.h:431:3: warning: braces around scalar initializer
+  431 |   { 0xDF, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:431:3: note: (near initialization for 'OV2640_YUV422[4]')
+../Core/Inc/ov2640_reg.h:431:11: warning: excess elements in scalar initializer
+  431 |   { 0xDF, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:431:11: note: (near initialization for 'OV2640_YUV422[4]')
+../Core/Inc/ov2640_reg.h:432:3: warning: braces around scalar initializer
+  432 |   { 0x33, 0x80 },
+      |   ^
+../Core/Inc/ov2640_reg.h:432:3: note: (near initialization for 'OV2640_YUV422[5]')
+../Core/Inc/ov2640_reg.h:432:11: warning: excess elements in scalar initializer
+  432 |   { 0x33, 0x80 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:432:11: note: (near initialization for 'OV2640_YUV422[5]')
+../Core/Inc/ov2640_reg.h:433:3: warning: braces around scalar initializer
+  433 |   { 0x3C, 0x40 },
+      |   ^
+../Core/Inc/ov2640_reg.h:433:3: note: (near initialization for 'OV2640_YUV422[6]')
+../Core/Inc/ov2640_reg.h:433:11: warning: excess elements in scalar initializer
+  433 |   { 0x3C, 0x40 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:433:11: note: (near initialization for 'OV2640_YUV422[6]')
+../Core/Inc/ov2640_reg.h:434:3: warning: braces around scalar initializer
+  434 |   { 0xe1, 0x77 },
+      |   ^
+../Core/Inc/ov2640_reg.h:434:3: note: (near initialization for 'OV2640_YUV422[7]')
+../Core/Inc/ov2640_reg.h:434:11: warning: excess elements in scalar initializer
+  434 |   { 0xe1, 0x77 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:434:11: note: (near initialization for 'OV2640_YUV422[7]')
+../Core/Inc/ov2640_reg.h:435:3: warning: braces around scalar initializer
+  435 |   { 0x00, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:435:3: note: (near initialization for 'OV2640_YUV422[8]')
+../Core/Inc/ov2640_reg.h:435:11: warning: excess elements in scalar initializer
+  435 |   { 0x00, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:435:11: note: (near initialization for 'OV2640_YUV422[8]')
+../Core/Inc/ov2640_reg.h:436:3: warning: braces around scalar initializer
+  436 |   { 0xff, 0xff },
+      |   ^
+../Core/Inc/ov2640_reg.h:436:3: note: (near initialization for 'OV2640_YUV422[9]')
+../Core/Inc/ov2640_reg.h:436:11: warning: excess elements in scalar initializer
+  436 |   { 0xff, 0xff },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:436:11: note: (near initialization for 'OV2640_YUV422[9]')
+../Core/Inc/ov2640_reg.h:439:7: error: unknown type name 'sensor_reg'
+  439 | const sensor_reg OV2640_JPEG[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:441:3: warning: braces around scalar initializer
+  441 |   { 0xe0, 0x14 },
+      |   ^
+../Core/Inc/ov2640_reg.h:441:3: note: (near initialization for 'OV2640_JPEG[0]')
+../Core/Inc/ov2640_reg.h:441:11: warning: excess elements in scalar initializer
+  441 |   { 0xe0, 0x14 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:441:11: note: (near initialization for 'OV2640_JPEG[0]')
+../Core/Inc/ov2640_reg.h:442:3: warning: braces around scalar initializer
+  442 |   { 0xe1, 0x77 },
+      |   ^
+../Core/Inc/ov2640_reg.h:442:3: note: (near initialization for 'OV2640_JPEG[1]')
+../Core/Inc/ov2640_reg.h:442:11: warning: excess elements in scalar initializer
+  442 |   { 0xe1, 0x77 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:442:11: note: (near initialization for 'OV2640_JPEG[1]')
+../Core/Inc/ov2640_reg.h:443:3: warning: braces around scalar initializer
+  443 |   { 0xe5, 0x1f },
+      |   ^
+../Core/Inc/ov2640_reg.h:443:3: note: (near initialization for 'OV2640_JPEG[2]')
+../Core/Inc/ov2640_reg.h:443:11: warning: excess elements in scalar initializer
+  443 |   { 0xe5, 0x1f },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:443:11: note: (near initialization for 'OV2640_JPEG[2]')
+../Core/Inc/ov2640_reg.h:444:3: warning: braces around scalar initializer
+  444 |   { 0xd7, 0x03 },
+      |   ^
+../Core/Inc/ov2640_reg.h:444:3: note: (near initialization for 'OV2640_JPEG[3]')
+../Core/Inc/ov2640_reg.h:444:11: warning: excess elements in scalar initializer
+  444 |   { 0xd7, 0x03 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:444:11: note: (near initialization for 'OV2640_JPEG[3]')
+../Core/Inc/ov2640_reg.h:445:3: warning: braces around scalar initializer
+  445 |   { 0xda, 0x10 },
+      |   ^
+../Core/Inc/ov2640_reg.h:445:3: note: (near initialization for 'OV2640_JPEG[4]')
+../Core/Inc/ov2640_reg.h:445:11: warning: excess elements in scalar initializer
+  445 |   { 0xda, 0x10 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:445:11: note: (near initialization for 'OV2640_JPEG[4]')
+../Core/Inc/ov2640_reg.h:446:3: warning: braces around scalar initializer
+  446 |   { 0xe0, 0x00 },
+      |   ^
+../Core/Inc/ov2640_reg.h:446:3: note: (near initialization for 'OV2640_JPEG[5]')
+../Core/Inc/ov2640_reg.h:446:11: warning: excess elements in scalar initializer
+  446 |   { 0xe0, 0x00 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:446:11: note: (near initialization for 'OV2640_JPEG[5]')
+../Core/Inc/ov2640_reg.h:447:3: warning: braces around scalar initializer
+  447 |   { 0xFF, 0x01 },
+      |   ^
+../Core/Inc/ov2640_reg.h:447:3: note: (near initialization for 'OV2640_JPEG[6]')
+../Core/Inc/ov2640_reg.h:447:11: warning: excess elements in scalar initializer
+  447 |   { 0xFF, 0x01 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:447:11: note: (near initialization for 'OV2640_JPEG[6]')
+../Core/Inc/ov2640_reg.h:448:3: warning: braces around scalar initializer
+  448 |   { 0x04, 0x08 },
+      |   ^
+../Core/Inc/ov2640_reg.h:448:3: note: (near initialization for 'OV2640_JPEG[7]')
+../Core/Inc/ov2640_reg.h:448:11: warning: excess elements in scalar initializer
+  448 |   { 0x04, 0x08 },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:448:11: note: (near initialization for 'OV2640_JPEG[7]')
+../Core/Inc/ov2640_reg.h:449:3: warning: braces around scalar initializer
+  449 |   { 0xff, 0xff },
+      |   ^
+../Core/Inc/ov2640_reg.h:449:3: note: (near initialization for 'OV2640_JPEG[8]')
+../Core/Inc/ov2640_reg.h:449:11: warning: excess elements in scalar initializer
+  449 |   { 0xff, 0xff },
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:449:11: note: (near initialization for 'OV2640_JPEG[8]')
+../Core/Inc/ov2640_reg.h:644:7: error: unknown type name 'sensor_reg'
+  644 | const sensor_reg OV2640_640x480_JPEG[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:646:2: warning: braces around scalar initializer
+  646 |  {0xff, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:646:2: note: (near initialization for 'OV2640_640x480_JPEG[0]')
+../Core/Inc/ov2640_reg.h:646:9: warning: excess elements in scalar initializer
+  646 |  {0xff, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:646:9: note: (near initialization for 'OV2640_640x480_JPEG[0]')
+../Core/Inc/ov2640_reg.h:647:2: warning: braces around scalar initializer
+  647 |  {0x11, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:647:2: note: (near initialization for 'OV2640_640x480_JPEG[1]')
+../Core/Inc/ov2640_reg.h:647:9: warning: excess elements in scalar initializer
+  647 |  {0x11, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:647:9: note: (near initialization for 'OV2640_640x480_JPEG[1]')
+../Core/Inc/ov2640_reg.h:648:2: warning: braces around scalar initializer
+  648 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |  ^
+../Core/Inc/ov2640_reg.h:648:2: note: (near initialization for 'OV2640_640x480_JPEG[2]')
+../Core/Inc/ov2640_reg.h:648:9: warning: excess elements in scalar initializer
+  648 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:648:9: note: (near initialization for 'OV2640_640x480_JPEG[2]')
+../Core/Inc/ov2640_reg.h:649:2: warning: braces around scalar initializer
+  649 |  {0x17, 0x11}, // HREFST[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:649:2: note: (near initialization for 'OV2640_640x480_JPEG[3]')
+../Core/Inc/ov2640_reg.h:649:9: warning: excess elements in scalar initializer
+  649 |  {0x17, 0x11}, // HREFST[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:649:9: note: (near initialization for 'OV2640_640x480_JPEG[3]')
+../Core/Inc/ov2640_reg.h:650:2: warning: braces around scalar initializer
+  650 |  {0x18, 0x75}, // HREFEND[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:650:2: note: (near initialization for 'OV2640_640x480_JPEG[4]')
+../Core/Inc/ov2640_reg.h:650:9: warning: excess elements in scalar initializer
+  650 |  {0x18, 0x75}, // HREFEND[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:650:9: note: (near initialization for 'OV2640_640x480_JPEG[4]')
+../Core/Inc/ov2640_reg.h:651:2: warning: braces around scalar initializer
+  651 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:651:2: note: (near initialization for 'OV2640_640x480_JPEG[5]')
+../Core/Inc/ov2640_reg.h:651:9: warning: excess elements in scalar initializer
+  651 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:651:9: note: (near initialization for 'OV2640_640x480_JPEG[5]')
+../Core/Inc/ov2640_reg.h:652:2: warning: braces around scalar initializer
+  652 |  {0x19, 0x01}, // VSTRT[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:652:2: note: (near initialization for 'OV2640_640x480_JPEG[6]')
+../Core/Inc/ov2640_reg.h:652:9: warning: excess elements in scalar initializer
+  652 |  {0x19, 0x01}, // VSTRT[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:652:9: note: (near initialization for 'OV2640_640x480_JPEG[6]')
+../Core/Inc/ov2640_reg.h:653:2: warning: braces around scalar initializer
+  653 |  {0x1a, 0x97}, // VEND[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:653:2: note: (near initialization for 'OV2640_640x480_JPEG[7]')
+../Core/Inc/ov2640_reg.h:653:9: warning: excess elements in scalar initializer
+  653 |  {0x1a, 0x97}, // VEND[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:653:9: note: (near initialization for 'OV2640_640x480_JPEG[7]')
+../Core/Inc/ov2640_reg.h:654:2: warning: braces around scalar initializer
+  654 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:654:2: note: (near initialization for 'OV2640_640x480_JPEG[8]')
+../Core/Inc/ov2640_reg.h:654:9: warning: excess elements in scalar initializer
+  654 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:654:9: note: (near initialization for 'OV2640_640x480_JPEG[8]')
+../Core/Inc/ov2640_reg.h:655:2: warning: braces around scalar initializer
+  655 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:655:2: note: (near initialization for 'OV2640_640x480_JPEG[9]')
+../Core/Inc/ov2640_reg.h:655:9: warning: excess elements in scalar initializer
+  655 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:655:9: note: (near initialization for 'OV2640_640x480_JPEG[9]')
+../Core/Inc/ov2640_reg.h:656:2: warning: braces around scalar initializer
+  656 |  {0x4f, 0xbb},
+      |  ^
+../Core/Inc/ov2640_reg.h:656:2: note: (near initialization for 'OV2640_640x480_JPEG[10]')
+../Core/Inc/ov2640_reg.h:656:9: warning: excess elements in scalar initializer
+  656 |  {0x4f, 0xbb},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:656:9: note: (near initialization for 'OV2640_640x480_JPEG[10]')
+../Core/Inc/ov2640_reg.h:657:2: warning: braces around scalar initializer
+  657 |  {0x50, 0x9c},
+      |  ^
+../Core/Inc/ov2640_reg.h:657:2: note: (near initialization for 'OV2640_640x480_JPEG[11]')
+../Core/Inc/ov2640_reg.h:657:9: warning: excess elements in scalar initializer
+  657 |  {0x50, 0x9c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:657:9: note: (near initialization for 'OV2640_640x480_JPEG[11]')
+../Core/Inc/ov2640_reg.h:658:2: warning: braces around scalar initializer
+  658 |  {0x5a, 0x57},
+      |  ^
+../Core/Inc/ov2640_reg.h:658:2: note: (near initialization for 'OV2640_640x480_JPEG[12]')
+../Core/Inc/ov2640_reg.h:658:9: warning: excess elements in scalar initializer
+  658 |  {0x5a, 0x57},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:658:9: note: (near initialization for 'OV2640_640x480_JPEG[12]')
+../Core/Inc/ov2640_reg.h:659:2: warning: braces around scalar initializer
+  659 |  {0x6d, 0x80},
+      |  ^
+../Core/Inc/ov2640_reg.h:659:2: note: (near initialization for 'OV2640_640x480_JPEG[13]')
+../Core/Inc/ov2640_reg.h:659:9: warning: excess elements in scalar initializer
+  659 |  {0x6d, 0x80},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:659:9: note: (near initialization for 'OV2640_640x480_JPEG[13]')
+../Core/Inc/ov2640_reg.h:660:2: warning: braces around scalar initializer
+  660 |  {0x3d, 0x34},
+      |  ^
+../Core/Inc/ov2640_reg.h:660:2: note: (near initialization for 'OV2640_640x480_JPEG[14]')
+../Core/Inc/ov2640_reg.h:660:9: warning: excess elements in scalar initializer
+  660 |  {0x3d, 0x34},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:660:9: note: (near initialization for 'OV2640_640x480_JPEG[14]')
+../Core/Inc/ov2640_reg.h:661:2: warning: braces around scalar initializer
+  661 |  {0x39, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:661:2: note: (near initialization for 'OV2640_640x480_JPEG[15]')
+../Core/Inc/ov2640_reg.h:661:9: warning: excess elements in scalar initializer
+  661 |  {0x39, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:661:9: note: (near initialization for 'OV2640_640x480_JPEG[15]')
+../Core/Inc/ov2640_reg.h:662:2: warning: braces around scalar initializer
+  662 |  {0x35, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:662:2: note: (near initialization for 'OV2640_640x480_JPEG[16]')
+../Core/Inc/ov2640_reg.h:662:9: warning: excess elements in scalar initializer
+  662 |  {0x35, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:662:9: note: (near initialization for 'OV2640_640x480_JPEG[16]')
+../Core/Inc/ov2640_reg.h:663:2: warning: braces around scalar initializer
+  663 |  {0x22, 0x0a},
+      |  ^
+../Core/Inc/ov2640_reg.h:663:2: note: (near initialization for 'OV2640_640x480_JPEG[17]')
+../Core/Inc/ov2640_reg.h:663:9: warning: excess elements in scalar initializer
+  663 |  {0x22, 0x0a},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:663:9: note: (near initialization for 'OV2640_640x480_JPEG[17]')
+../Core/Inc/ov2640_reg.h:664:2: warning: braces around scalar initializer
+  664 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:664:2: note: (near initialization for 'OV2640_640x480_JPEG[18]')
+../Core/Inc/ov2640_reg.h:664:9: warning: excess elements in scalar initializer
+  664 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:664:9: note: (near initialization for 'OV2640_640x480_JPEG[18]')
+../Core/Inc/ov2640_reg.h:665:2: warning: braces around scalar initializer
+  665 |  {0x34, 0xa0},
+      |  ^
+../Core/Inc/ov2640_reg.h:665:2: note: (near initialization for 'OV2640_640x480_JPEG[19]')
+../Core/Inc/ov2640_reg.h:665:9: warning: excess elements in scalar initializer
+  665 |  {0x34, 0xa0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:665:9: note: (near initialization for 'OV2640_640x480_JPEG[19]')
+../Core/Inc/ov2640_reg.h:666:2: warning: braces around scalar initializer
+  666 |  {0x06, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:666:2: note: (near initialization for 'OV2640_640x480_JPEG[20]')
+../Core/Inc/ov2640_reg.h:666:9: warning: excess elements in scalar initializer
+  666 |  {0x06, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:666:9: note: (near initialization for 'OV2640_640x480_JPEG[20]')
+../Core/Inc/ov2640_reg.h:667:2: warning: braces around scalar initializer
+  667 |  {0x0d, 0xb7},
+      |  ^
+../Core/Inc/ov2640_reg.h:667:2: note: (near initialization for 'OV2640_640x480_JPEG[21]')
+../Core/Inc/ov2640_reg.h:667:9: warning: excess elements in scalar initializer
+  667 |  {0x0d, 0xb7},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:667:9: note: (near initialization for 'OV2640_640x480_JPEG[21]')
+../Core/Inc/ov2640_reg.h:668:2: warning: braces around scalar initializer
+  668 |  {0x0e, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:668:2: note: (near initialization for 'OV2640_640x480_JPEG[22]')
+../Core/Inc/ov2640_reg.h:668:9: warning: excess elements in scalar initializer
+  668 |  {0x0e, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:668:9: note: (near initialization for 'OV2640_640x480_JPEG[22]')
+../Core/Inc/ov2640_reg.h:670:2: warning: braces around scalar initializer
+  670 |  {0xff, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:670:2: note: (near initialization for 'OV2640_640x480_JPEG[23]')
+../Core/Inc/ov2640_reg.h:670:9: warning: excess elements in scalar initializer
+  670 |  {0xff, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:670:9: note: (near initialization for 'OV2640_640x480_JPEG[23]')
+../Core/Inc/ov2640_reg.h:671:2: warning: braces around scalar initializer
+  671 |  {0xe0, 0x04},
+      |  ^
+../Core/Inc/ov2640_reg.h:671:2: note: (near initialization for 'OV2640_640x480_JPEG[24]')
+../Core/Inc/ov2640_reg.h:671:9: warning: excess elements in scalar initializer
+  671 |  {0xe0, 0x04},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:671:9: note: (near initialization for 'OV2640_640x480_JPEG[24]')
+../Core/Inc/ov2640_reg.h:672:2: warning: braces around scalar initializer
+  672 |  {0xc0, 0xc8},
+      |  ^
+../Core/Inc/ov2640_reg.h:672:2: note: (near initialization for 'OV2640_640x480_JPEG[25]')
+../Core/Inc/ov2640_reg.h:672:9: warning: excess elements in scalar initializer
+  672 |  {0xc0, 0xc8},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:672:9: note: (near initialization for 'OV2640_640x480_JPEG[25]')
+../Core/Inc/ov2640_reg.h:673:2: warning: braces around scalar initializer
+  673 |  {0xc1, 0x96},
+      |  ^
+../Core/Inc/ov2640_reg.h:673:2: note: (near initialization for 'OV2640_640x480_JPEG[26]')
+../Core/Inc/ov2640_reg.h:673:9: warning: excess elements in scalar initializer
+  673 |  {0xc1, 0x96},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:673:9: note: (near initialization for 'OV2640_640x480_JPEG[26]')
+../Core/Inc/ov2640_reg.h:674:2: warning: braces around scalar initializer
+  674 |  {0x86, 0x3d},
+      |  ^
+../Core/Inc/ov2640_reg.h:674:2: note: (near initialization for 'OV2640_640x480_JPEG[27]')
+../Core/Inc/ov2640_reg.h:674:9: warning: excess elements in scalar initializer
+  674 |  {0x86, 0x3d},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:674:9: note: (near initialization for 'OV2640_640x480_JPEG[27]')
+../Core/Inc/ov2640_reg.h:675:2: warning: braces around scalar initializer
+  675 |  {0x50, 0x89},
+      |  ^
+../Core/Inc/ov2640_reg.h:675:2: note: (near initialization for 'OV2640_640x480_JPEG[28]')
+../Core/Inc/ov2640_reg.h:675:9: warning: excess elements in scalar initializer
+  675 |  {0x50, 0x89},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:675:9: note: (near initialization for 'OV2640_640x480_JPEG[28]')
+../Core/Inc/ov2640_reg.h:676:2: warning: braces around scalar initializer
+  676 |  {0x51, 0x90},
+      |  ^
+../Core/Inc/ov2640_reg.h:676:2: note: (near initialization for 'OV2640_640x480_JPEG[29]')
+../Core/Inc/ov2640_reg.h:676:9: warning: excess elements in scalar initializer
+  676 |  {0x51, 0x90},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:676:9: note: (near initialization for 'OV2640_640x480_JPEG[29]')
+../Core/Inc/ov2640_reg.h:677:2: warning: braces around scalar initializer
+  677 |  {0x52, 0x2c},
+      |  ^
+../Core/Inc/ov2640_reg.h:677:2: note: (near initialization for 'OV2640_640x480_JPEG[30]')
+../Core/Inc/ov2640_reg.h:677:9: warning: excess elements in scalar initializer
+  677 |  {0x52, 0x2c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:677:9: note: (near initialization for 'OV2640_640x480_JPEG[30]')
+../Core/Inc/ov2640_reg.h:678:2: warning: braces around scalar initializer
+  678 |  {0x53, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:678:2: note: (near initialization for 'OV2640_640x480_JPEG[31]')
+../Core/Inc/ov2640_reg.h:678:9: warning: excess elements in scalar initializer
+  678 |  {0x53, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:678:9: note: (near initialization for 'OV2640_640x480_JPEG[31]')
+../Core/Inc/ov2640_reg.h:679:2: warning: braces around scalar initializer
+  679 |  {0x54, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:679:2: note: (near initialization for 'OV2640_640x480_JPEG[32]')
+../Core/Inc/ov2640_reg.h:679:9: warning: excess elements in scalar initializer
+  679 |  {0x54, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:679:9: note: (near initialization for 'OV2640_640x480_JPEG[32]')
+../Core/Inc/ov2640_reg.h:680:2: warning: braces around scalar initializer
+  680 |  {0x55, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:680:2: note: (near initialization for 'OV2640_640x480_JPEG[33]')
+../Core/Inc/ov2640_reg.h:680:9: warning: excess elements in scalar initializer
+  680 |  {0x55, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:680:9: note: (near initialization for 'OV2640_640x480_JPEG[33]')
+../Core/Inc/ov2640_reg.h:681:2: warning: braces around scalar initializer
+  681 |  {0x57, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:681:2: note: (near initialization for 'OV2640_640x480_JPEG[34]')
+../Core/Inc/ov2640_reg.h:681:9: warning: excess elements in scalar initializer
+  681 |  {0x57, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:681:9: note: (near initialization for 'OV2640_640x480_JPEG[34]')
+../Core/Inc/ov2640_reg.h:682:2: warning: braces around scalar initializer
+  682 |  {0x5a, 0xa0},
+      |  ^
+../Core/Inc/ov2640_reg.h:682:2: note: (near initialization for 'OV2640_640x480_JPEG[35]')
+../Core/Inc/ov2640_reg.h:682:9: warning: excess elements in scalar initializer
+  682 |  {0x5a, 0xa0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:682:9: note: (near initialization for 'OV2640_640x480_JPEG[35]')
+../Core/Inc/ov2640_reg.h:683:2: warning: braces around scalar initializer
+  683 |  {0x5b, 0x78},
+      |  ^
+../Core/Inc/ov2640_reg.h:683:2: note: (near initialization for 'OV2640_640x480_JPEG[36]')
+../Core/Inc/ov2640_reg.h:683:9: warning: excess elements in scalar initializer
+  683 |  {0x5b, 0x78},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:683:9: note: (near initialization for 'OV2640_640x480_JPEG[36]')
+../Core/Inc/ov2640_reg.h:684:2: warning: braces around scalar initializer
+  684 |  {0x5c, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:684:2: note: (near initialization for 'OV2640_640x480_JPEG[37]')
+../Core/Inc/ov2640_reg.h:684:9: warning: excess elements in scalar initializer
+  684 |  {0x5c, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:684:9: note: (near initialization for 'OV2640_640x480_JPEG[37]')
+../Core/Inc/ov2640_reg.h:685:2: warning: braces around scalar initializer
+  685 |  {0xd3, 0x04},
+      |  ^
+../Core/Inc/ov2640_reg.h:685:2: note: (near initialization for 'OV2640_640x480_JPEG[38]')
+../Core/Inc/ov2640_reg.h:685:9: warning: excess elements in scalar initializer
+  685 |  {0xd3, 0x04},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:685:9: note: (near initialization for 'OV2640_640x480_JPEG[38]')
+../Core/Inc/ov2640_reg.h:686:2: warning: braces around scalar initializer
+  686 |  {0xe0, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:686:2: note: (near initialization for 'OV2640_640x480_JPEG[39]')
+../Core/Inc/ov2640_reg.h:686:9: warning: excess elements in scalar initializer
+  686 |  {0xe0, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:686:9: note: (near initialization for 'OV2640_640x480_JPEG[39]')
+../Core/Inc/ov2640_reg.h:688:4: warning: braces around scalar initializer
+  688 |    {0xff, 0xff},
+      |    ^
+../Core/Inc/ov2640_reg.h:688:4: note: (near initialization for 'OV2640_640x480_JPEG[40]')
+../Core/Inc/ov2640_reg.h:688:11: warning: excess elements in scalar initializer
+  688 |    {0xff, 0xff},
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:688:11: note: (near initialization for 'OV2640_640x480_JPEG[40]')
+../Core/Inc/ov2640_reg.h:692:7: error: unknown type name 'sensor_reg'
+  692 | const sensor_reg OV2640_800x600_JPEG[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:694:2: warning: braces around scalar initializer
+  694 |  {0xff, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:694:2: note: (near initialization for 'OV2640_800x600_JPEG[0]')
+../Core/Inc/ov2640_reg.h:694:9: warning: excess elements in scalar initializer
+  694 |  {0xff, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:694:9: note: (near initialization for 'OV2640_800x600_JPEG[0]')
+../Core/Inc/ov2640_reg.h:695:2: warning: braces around scalar initializer
+  695 |  {0x11, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:695:2: note: (near initialization for 'OV2640_800x600_JPEG[1]')
+../Core/Inc/ov2640_reg.h:695:9: warning: excess elements in scalar initializer
+  695 |  {0x11, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:695:9: note: (near initialization for 'OV2640_800x600_JPEG[1]')
+../Core/Inc/ov2640_reg.h:696:2: warning: braces around scalar initializer
+  696 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |  ^
+../Core/Inc/ov2640_reg.h:696:2: note: (near initialization for 'OV2640_800x600_JPEG[2]')
+../Core/Inc/ov2640_reg.h:696:9: warning: excess elements in scalar initializer
+  696 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:696:9: note: (near initialization for 'OV2640_800x600_JPEG[2]')
+../Core/Inc/ov2640_reg.h:697:2: warning: braces around scalar initializer
+  697 |  {0x17, 0x11}, // HREFST[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:697:2: note: (near initialization for 'OV2640_800x600_JPEG[3]')
+../Core/Inc/ov2640_reg.h:697:9: warning: excess elements in scalar initializer
+  697 |  {0x17, 0x11}, // HREFST[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:697:9: note: (near initialization for 'OV2640_800x600_JPEG[3]')
+../Core/Inc/ov2640_reg.h:698:2: warning: braces around scalar initializer
+  698 |  {0x18, 0x75}, // HREFEND[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:698:2: note: (near initialization for 'OV2640_800x600_JPEG[4]')
+../Core/Inc/ov2640_reg.h:698:9: warning: excess elements in scalar initializer
+  698 |  {0x18, 0x75}, // HREFEND[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:698:9: note: (near initialization for 'OV2640_800x600_JPEG[4]')
+../Core/Inc/ov2640_reg.h:699:2: warning: braces around scalar initializer
+  699 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:699:2: note: (near initialization for 'OV2640_800x600_JPEG[5]')
+../Core/Inc/ov2640_reg.h:699:9: warning: excess elements in scalar initializer
+  699 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:699:9: note: (near initialization for 'OV2640_800x600_JPEG[5]')
+../Core/Inc/ov2640_reg.h:700:2: warning: braces around scalar initializer
+  700 |  {0x19, 0x01}, // VSTRT[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:700:2: note: (near initialization for 'OV2640_800x600_JPEG[6]')
+../Core/Inc/ov2640_reg.h:700:9: warning: excess elements in scalar initializer
+  700 |  {0x19, 0x01}, // VSTRT[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:700:9: note: (near initialization for 'OV2640_800x600_JPEG[6]')
+../Core/Inc/ov2640_reg.h:701:2: warning: braces around scalar initializer
+  701 |  {0x1a, 0x97}, // VEND[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:701:2: note: (near initialization for 'OV2640_800x600_JPEG[7]')
+../Core/Inc/ov2640_reg.h:701:9: warning: excess elements in scalar initializer
+  701 |  {0x1a, 0x97}, // VEND[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:701:9: note: (near initialization for 'OV2640_800x600_JPEG[7]')
+../Core/Inc/ov2640_reg.h:702:2: warning: braces around scalar initializer
+  702 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:702:2: note: (near initialization for 'OV2640_800x600_JPEG[8]')
+../Core/Inc/ov2640_reg.h:702:9: warning: excess elements in scalar initializer
+  702 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:702:9: note: (near initialization for 'OV2640_800x600_JPEG[8]')
+../Core/Inc/ov2640_reg.h:703:2: warning: braces around scalar initializer
+  703 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:703:2: note: (near initialization for 'OV2640_800x600_JPEG[9]')
+../Core/Inc/ov2640_reg.h:703:9: warning: excess elements in scalar initializer
+  703 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:703:9: note: (near initialization for 'OV2640_800x600_JPEG[9]')
+../Core/Inc/ov2640_reg.h:704:2: warning: braces around scalar initializer
+  704 |  {0x4f, 0xbb},
+      |  ^
+../Core/Inc/ov2640_reg.h:704:2: note: (near initialization for 'OV2640_800x600_JPEG[10]')
+../Core/Inc/ov2640_reg.h:704:9: warning: excess elements in scalar initializer
+  704 |  {0x4f, 0xbb},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:704:9: note: (near initialization for 'OV2640_800x600_JPEG[10]')
+../Core/Inc/ov2640_reg.h:705:2: warning: braces around scalar initializer
+  705 |  {0x50, 0x9c},
+      |  ^
+../Core/Inc/ov2640_reg.h:705:2: note: (near initialization for 'OV2640_800x600_JPEG[11]')
+../Core/Inc/ov2640_reg.h:705:9: warning: excess elements in scalar initializer
+  705 |  {0x50, 0x9c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:705:9: note: (near initialization for 'OV2640_800x600_JPEG[11]')
+../Core/Inc/ov2640_reg.h:706:2: warning: braces around scalar initializer
+  706 |  {0x5a, 0x57},
+      |  ^
+../Core/Inc/ov2640_reg.h:706:2: note: (near initialization for 'OV2640_800x600_JPEG[12]')
+../Core/Inc/ov2640_reg.h:706:9: warning: excess elements in scalar initializer
+  706 |  {0x5a, 0x57},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:706:9: note: (near initialization for 'OV2640_800x600_JPEG[12]')
+../Core/Inc/ov2640_reg.h:707:2: warning: braces around scalar initializer
+  707 |  {0x6d, 0x80},
+      |  ^
+../Core/Inc/ov2640_reg.h:707:2: note: (near initialization for 'OV2640_800x600_JPEG[13]')
+../Core/Inc/ov2640_reg.h:707:9: warning: excess elements in scalar initializer
+  707 |  {0x6d, 0x80},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:707:9: note: (near initialization for 'OV2640_800x600_JPEG[13]')
+../Core/Inc/ov2640_reg.h:708:2: warning: braces around scalar initializer
+  708 |  {0x3d, 0x34},
+      |  ^
+../Core/Inc/ov2640_reg.h:708:2: note: (near initialization for 'OV2640_800x600_JPEG[14]')
+../Core/Inc/ov2640_reg.h:708:9: warning: excess elements in scalar initializer
+  708 |  {0x3d, 0x34},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:708:9: note: (near initialization for 'OV2640_800x600_JPEG[14]')
+../Core/Inc/ov2640_reg.h:709:2: warning: braces around scalar initializer
+  709 |  {0x39, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:709:2: note: (near initialization for 'OV2640_800x600_JPEG[15]')
+../Core/Inc/ov2640_reg.h:709:9: warning: excess elements in scalar initializer
+  709 |  {0x39, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:709:9: note: (near initialization for 'OV2640_800x600_JPEG[15]')
+../Core/Inc/ov2640_reg.h:710:2: warning: braces around scalar initializer
+  710 |  {0x35, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:710:2: note: (near initialization for 'OV2640_800x600_JPEG[16]')
+../Core/Inc/ov2640_reg.h:710:9: warning: excess elements in scalar initializer
+  710 |  {0x35, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:710:9: note: (near initialization for 'OV2640_800x600_JPEG[16]')
+../Core/Inc/ov2640_reg.h:711:2: warning: braces around scalar initializer
+  711 |  {0x22, 0x0a},
+      |  ^
+../Core/Inc/ov2640_reg.h:711:2: note: (near initialization for 'OV2640_800x600_JPEG[17]')
+../Core/Inc/ov2640_reg.h:711:9: warning: excess elements in scalar initializer
+  711 |  {0x22, 0x0a},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:711:9: note: (near initialization for 'OV2640_800x600_JPEG[17]')
+../Core/Inc/ov2640_reg.h:712:2: warning: braces around scalar initializer
+  712 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:712:2: note: (near initialization for 'OV2640_800x600_JPEG[18]')
+../Core/Inc/ov2640_reg.h:712:9: warning: excess elements in scalar initializer
+  712 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:712:9: note: (near initialization for 'OV2640_800x600_JPEG[18]')
+../Core/Inc/ov2640_reg.h:713:2: warning: braces around scalar initializer
+  713 |  {0x34, 0xa0},
+      |  ^
+../Core/Inc/ov2640_reg.h:713:2: note: (near initialization for 'OV2640_800x600_JPEG[19]')
+../Core/Inc/ov2640_reg.h:713:9: warning: excess elements in scalar initializer
+  713 |  {0x34, 0xa0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:713:9: note: (near initialization for 'OV2640_800x600_JPEG[19]')
+../Core/Inc/ov2640_reg.h:714:2: warning: braces around scalar initializer
+  714 |  {0x06, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:714:2: note: (near initialization for 'OV2640_800x600_JPEG[20]')
+../Core/Inc/ov2640_reg.h:714:9: warning: excess elements in scalar initializer
+  714 |  {0x06, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:714:9: note: (near initialization for 'OV2640_800x600_JPEG[20]')
+../Core/Inc/ov2640_reg.h:715:2: warning: braces around scalar initializer
+  715 |  {0x0d, 0xb7},
+      |  ^
+../Core/Inc/ov2640_reg.h:715:2: note: (near initialization for 'OV2640_800x600_JPEG[21]')
+../Core/Inc/ov2640_reg.h:715:9: warning: excess elements in scalar initializer
+  715 |  {0x0d, 0xb7},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:715:9: note: (near initialization for 'OV2640_800x600_JPEG[21]')
+../Core/Inc/ov2640_reg.h:716:2: warning: braces around scalar initializer
+  716 |  {0x0e, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:716:2: note: (near initialization for 'OV2640_800x600_JPEG[22]')
+../Core/Inc/ov2640_reg.h:716:9: warning: excess elements in scalar initializer
+  716 |  {0x0e, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:716:9: note: (near initialization for 'OV2640_800x600_JPEG[22]')
+../Core/Inc/ov2640_reg.h:718:2: warning: braces around scalar initializer
+  718 |  {0xff, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:718:2: note: (near initialization for 'OV2640_800x600_JPEG[23]')
+../Core/Inc/ov2640_reg.h:718:9: warning: excess elements in scalar initializer
+  718 |  {0xff, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:718:9: note: (near initialization for 'OV2640_800x600_JPEG[23]')
+../Core/Inc/ov2640_reg.h:719:2: warning: braces around scalar initializer
+  719 |  {0xe0, 0x04},
+      |  ^
+../Core/Inc/ov2640_reg.h:719:2: note: (near initialization for 'OV2640_800x600_JPEG[24]')
+../Core/Inc/ov2640_reg.h:719:9: warning: excess elements in scalar initializer
+  719 |  {0xe0, 0x04},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:719:9: note: (near initialization for 'OV2640_800x600_JPEG[24]')
+../Core/Inc/ov2640_reg.h:720:2: warning: braces around scalar initializer
+  720 |  {0xc0, 0xc8},
+      |  ^
+../Core/Inc/ov2640_reg.h:720:2: note: (near initialization for 'OV2640_800x600_JPEG[25]')
+../Core/Inc/ov2640_reg.h:720:9: warning: excess elements in scalar initializer
+  720 |  {0xc0, 0xc8},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:720:9: note: (near initialization for 'OV2640_800x600_JPEG[25]')
+../Core/Inc/ov2640_reg.h:721:2: warning: braces around scalar initializer
+  721 |  {0xc1, 0x96},
+      |  ^
+../Core/Inc/ov2640_reg.h:721:2: note: (near initialization for 'OV2640_800x600_JPEG[26]')
+../Core/Inc/ov2640_reg.h:721:9: warning: excess elements in scalar initializer
+  721 |  {0xc1, 0x96},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:721:9: note: (near initialization for 'OV2640_800x600_JPEG[26]')
+../Core/Inc/ov2640_reg.h:722:2: warning: braces around scalar initializer
+  722 |  {0x86, 0x35},
+      |  ^
+../Core/Inc/ov2640_reg.h:722:2: note: (near initialization for 'OV2640_800x600_JPEG[27]')
+../Core/Inc/ov2640_reg.h:722:9: warning: excess elements in scalar initializer
+  722 |  {0x86, 0x35},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:722:9: note: (near initialization for 'OV2640_800x600_JPEG[27]')
+../Core/Inc/ov2640_reg.h:723:2: warning: braces around scalar initializer
+  723 |  {0x50, 0x89},
+      |  ^
+../Core/Inc/ov2640_reg.h:723:2: note: (near initialization for 'OV2640_800x600_JPEG[28]')
+../Core/Inc/ov2640_reg.h:723:9: warning: excess elements in scalar initializer
+  723 |  {0x50, 0x89},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:723:9: note: (near initialization for 'OV2640_800x600_JPEG[28]')
+../Core/Inc/ov2640_reg.h:724:2: warning: braces around scalar initializer
+  724 |  {0x51, 0x90},
+      |  ^
+../Core/Inc/ov2640_reg.h:724:2: note: (near initialization for 'OV2640_800x600_JPEG[29]')
+../Core/Inc/ov2640_reg.h:724:9: warning: excess elements in scalar initializer
+  724 |  {0x51, 0x90},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:724:9: note: (near initialization for 'OV2640_800x600_JPEG[29]')
+../Core/Inc/ov2640_reg.h:725:2: warning: braces around scalar initializer
+  725 |  {0x52, 0x2c},
+      |  ^
+../Core/Inc/ov2640_reg.h:725:2: note: (near initialization for 'OV2640_800x600_JPEG[30]')
+../Core/Inc/ov2640_reg.h:725:9: warning: excess elements in scalar initializer
+  725 |  {0x52, 0x2c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:725:9: note: (near initialization for 'OV2640_800x600_JPEG[30]')
+../Core/Inc/ov2640_reg.h:726:2: warning: braces around scalar initializer
+  726 |  {0x53, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:726:2: note: (near initialization for 'OV2640_800x600_JPEG[31]')
+../Core/Inc/ov2640_reg.h:726:9: warning: excess elements in scalar initializer
+  726 |  {0x53, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:726:9: note: (near initialization for 'OV2640_800x600_JPEG[31]')
+../Core/Inc/ov2640_reg.h:727:2: warning: braces around scalar initializer
+  727 |  {0x54, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:727:2: note: (near initialization for 'OV2640_800x600_JPEG[32]')
+../Core/Inc/ov2640_reg.h:727:9: warning: excess elements in scalar initializer
+  727 |  {0x54, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:727:9: note: (near initialization for 'OV2640_800x600_JPEG[32]')
+../Core/Inc/ov2640_reg.h:728:2: warning: braces around scalar initializer
+  728 |  {0x55, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:728:2: note: (near initialization for 'OV2640_800x600_JPEG[33]')
+../Core/Inc/ov2640_reg.h:728:9: warning: excess elements in scalar initializer
+  728 |  {0x55, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:728:9: note: (near initialization for 'OV2640_800x600_JPEG[33]')
+../Core/Inc/ov2640_reg.h:729:2: warning: braces around scalar initializer
+  729 |  {0x57, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:729:2: note: (near initialization for 'OV2640_800x600_JPEG[34]')
+../Core/Inc/ov2640_reg.h:729:9: warning: excess elements in scalar initializer
+  729 |  {0x57, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:729:9: note: (near initialization for 'OV2640_800x600_JPEG[34]')
+../Core/Inc/ov2640_reg.h:730:2: warning: braces around scalar initializer
+  730 |  {0x5a, 0xc8},
+      |  ^
+../Core/Inc/ov2640_reg.h:730:2: note: (near initialization for 'OV2640_800x600_JPEG[35]')
+../Core/Inc/ov2640_reg.h:730:9: warning: excess elements in scalar initializer
+  730 |  {0x5a, 0xc8},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:730:9: note: (near initialization for 'OV2640_800x600_JPEG[35]')
+../Core/Inc/ov2640_reg.h:731:2: warning: braces around scalar initializer
+  731 |  {0x5b, 0x96},
+      |  ^
+../Core/Inc/ov2640_reg.h:731:2: note: (near initialization for 'OV2640_800x600_JPEG[36]')
+../Core/Inc/ov2640_reg.h:731:9: warning: excess elements in scalar initializer
+  731 |  {0x5b, 0x96},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:731:9: note: (near initialization for 'OV2640_800x600_JPEG[36]')
+../Core/Inc/ov2640_reg.h:732:2: warning: braces around scalar initializer
+  732 |  {0x5c, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:732:2: note: (near initialization for 'OV2640_800x600_JPEG[37]')
+../Core/Inc/ov2640_reg.h:732:9: warning: excess elements in scalar initializer
+  732 |  {0x5c, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:732:9: note: (near initialization for 'OV2640_800x600_JPEG[37]')
+../Core/Inc/ov2640_reg.h:733:2: warning: braces around scalar initializer
+  733 |  {0xd3, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:733:2: note: (near initialization for 'OV2640_800x600_JPEG[38]')
+../Core/Inc/ov2640_reg.h:733:9: warning: excess elements in scalar initializer
+  733 |  {0xd3, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:733:9: note: (near initialization for 'OV2640_800x600_JPEG[38]')
+../Core/Inc/ov2640_reg.h:734:2: warning: braces around scalar initializer
+  734 |  {0xe0, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:734:2: note: (near initialization for 'OV2640_800x600_JPEG[39]')
+../Core/Inc/ov2640_reg.h:734:9: warning: excess elements in scalar initializer
+  734 |  {0xe0, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:734:9: note: (near initialization for 'OV2640_800x600_JPEG[39]')
+../Core/Inc/ov2640_reg.h:736:4: warning: braces around scalar initializer
+  736 |    {0xff, 0xff},
+      |    ^
+../Core/Inc/ov2640_reg.h:736:4: note: (near initialization for 'OV2640_800x600_JPEG[40]')
+../Core/Inc/ov2640_reg.h:736:11: warning: excess elements in scalar initializer
+  736 |    {0xff, 0xff},
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:736:11: note: (near initialization for 'OV2640_800x600_JPEG[40]')
+../Core/Inc/ov2640_reg.h:740:7: error: unknown type name 'sensor_reg'
+  740 | const sensor_reg OV2640_1024x768_JPEG[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:742:2: warning: braces around scalar initializer
+  742 |  {0xff, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:742:2: note: (near initialization for 'OV2640_1024x768_JPEG[0]')
+../Core/Inc/ov2640_reg.h:742:9: warning: excess elements in scalar initializer
+  742 |  {0xff, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:742:9: note: (near initialization for 'OV2640_1024x768_JPEG[0]')
+../Core/Inc/ov2640_reg.h:743:2: warning: braces around scalar initializer
+  743 |  {0x11, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:743:2: note: (near initialization for 'OV2640_1024x768_JPEG[1]')
+../Core/Inc/ov2640_reg.h:743:9: warning: excess elements in scalar initializer
+  743 |  {0x11, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:743:9: note: (near initialization for 'OV2640_1024x768_JPEG[1]')
+../Core/Inc/ov2640_reg.h:744:2: warning: braces around scalar initializer
+  744 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |  ^
+../Core/Inc/ov2640_reg.h:744:2: note: (near initialization for 'OV2640_1024x768_JPEG[2]')
+../Core/Inc/ov2640_reg.h:744:9: warning: excess elements in scalar initializer
+  744 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:744:9: note: (near initialization for 'OV2640_1024x768_JPEG[2]')
+../Core/Inc/ov2640_reg.h:745:2: warning: braces around scalar initializer
+  745 |  {0x17, 0x11}, // HREFST[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:745:2: note: (near initialization for 'OV2640_1024x768_JPEG[3]')
+../Core/Inc/ov2640_reg.h:745:9: warning: excess elements in scalar initializer
+  745 |  {0x17, 0x11}, // HREFST[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:745:9: note: (near initialization for 'OV2640_1024x768_JPEG[3]')
+../Core/Inc/ov2640_reg.h:746:2: warning: braces around scalar initializer
+  746 |  {0x18, 0x75}, // HREFEND[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:746:2: note: (near initialization for 'OV2640_1024x768_JPEG[4]')
+../Core/Inc/ov2640_reg.h:746:9: warning: excess elements in scalar initializer
+  746 |  {0x18, 0x75}, // HREFEND[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:746:9: note: (near initialization for 'OV2640_1024x768_JPEG[4]')
+../Core/Inc/ov2640_reg.h:747:2: warning: braces around scalar initializer
+  747 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:747:2: note: (near initialization for 'OV2640_1024x768_JPEG[5]')
+../Core/Inc/ov2640_reg.h:747:9: warning: excess elements in scalar initializer
+  747 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:747:9: note: (near initialization for 'OV2640_1024x768_JPEG[5]')
+../Core/Inc/ov2640_reg.h:748:2: warning: braces around scalar initializer
+  748 |  {0x19, 0x01}, // VSTRT[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:748:2: note: (near initialization for 'OV2640_1024x768_JPEG[6]')
+../Core/Inc/ov2640_reg.h:748:9: warning: excess elements in scalar initializer
+  748 |  {0x19, 0x01}, // VSTRT[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:748:9: note: (near initialization for 'OV2640_1024x768_JPEG[6]')
+../Core/Inc/ov2640_reg.h:749:2: warning: braces around scalar initializer
+  749 |  {0x1a, 0x97}, // VEND[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:749:2: note: (near initialization for 'OV2640_1024x768_JPEG[7]')
+../Core/Inc/ov2640_reg.h:749:9: warning: excess elements in scalar initializer
+  749 |  {0x1a, 0x97}, // VEND[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:749:9: note: (near initialization for 'OV2640_1024x768_JPEG[7]')
+../Core/Inc/ov2640_reg.h:750:2: warning: braces around scalar initializer
+  750 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:750:2: note: (near initialization for 'OV2640_1024x768_JPEG[8]')
+../Core/Inc/ov2640_reg.h:750:9: warning: excess elements in scalar initializer
+  750 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:750:9: note: (near initialization for 'OV2640_1024x768_JPEG[8]')
+../Core/Inc/ov2640_reg.h:751:2: warning: braces around scalar initializer
+  751 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:751:2: note: (near initialization for 'OV2640_1024x768_JPEG[9]')
+../Core/Inc/ov2640_reg.h:751:9: warning: excess elements in scalar initializer
+  751 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:751:9: note: (near initialization for 'OV2640_1024x768_JPEG[9]')
+../Core/Inc/ov2640_reg.h:752:2: warning: braces around scalar initializer
+  752 |  {0x4f, 0xbb},
+      |  ^
+../Core/Inc/ov2640_reg.h:752:2: note: (near initialization for 'OV2640_1024x768_JPEG[10]')
+../Core/Inc/ov2640_reg.h:752:9: warning: excess elements in scalar initializer
+  752 |  {0x4f, 0xbb},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:752:9: note: (near initialization for 'OV2640_1024x768_JPEG[10]')
+../Core/Inc/ov2640_reg.h:753:2: warning: braces around scalar initializer
+  753 |  {0x50, 0x9c},
+      |  ^
+../Core/Inc/ov2640_reg.h:753:2: note: (near initialization for 'OV2640_1024x768_JPEG[11]')
+../Core/Inc/ov2640_reg.h:753:9: warning: excess elements in scalar initializer
+  753 |  {0x50, 0x9c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:753:9: note: (near initialization for 'OV2640_1024x768_JPEG[11]')
+../Core/Inc/ov2640_reg.h:754:2: warning: braces around scalar initializer
+  754 |  {0x5a, 0x57},
+      |  ^
+../Core/Inc/ov2640_reg.h:754:2: note: (near initialization for 'OV2640_1024x768_JPEG[12]')
+../Core/Inc/ov2640_reg.h:754:9: warning: excess elements in scalar initializer
+  754 |  {0x5a, 0x57},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:754:9: note: (near initialization for 'OV2640_1024x768_JPEG[12]')
+../Core/Inc/ov2640_reg.h:755:2: warning: braces around scalar initializer
+  755 |  {0x6d, 0x80},
+      |  ^
+../Core/Inc/ov2640_reg.h:755:2: note: (near initialization for 'OV2640_1024x768_JPEG[13]')
+../Core/Inc/ov2640_reg.h:755:9: warning: excess elements in scalar initializer
+  755 |  {0x6d, 0x80},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:755:9: note: (near initialization for 'OV2640_1024x768_JPEG[13]')
+../Core/Inc/ov2640_reg.h:756:2: warning: braces around scalar initializer
+  756 |  {0x3d, 0x34},
+      |  ^
+../Core/Inc/ov2640_reg.h:756:2: note: (near initialization for 'OV2640_1024x768_JPEG[14]')
+../Core/Inc/ov2640_reg.h:756:9: warning: excess elements in scalar initializer
+  756 |  {0x3d, 0x34},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:756:9: note: (near initialization for 'OV2640_1024x768_JPEG[14]')
+../Core/Inc/ov2640_reg.h:757:2: warning: braces around scalar initializer
+  757 |  {0x39, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:757:2: note: (near initialization for 'OV2640_1024x768_JPEG[15]')
+../Core/Inc/ov2640_reg.h:757:9: warning: excess elements in scalar initializer
+  757 |  {0x39, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:757:9: note: (near initialization for 'OV2640_1024x768_JPEG[15]')
+../Core/Inc/ov2640_reg.h:758:2: warning: braces around scalar initializer
+  758 |  {0x35, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:758:2: note: (near initialization for 'OV2640_1024x768_JPEG[16]')
+../Core/Inc/ov2640_reg.h:758:9: warning: excess elements in scalar initializer
+  758 |  {0x35, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:758:9: note: (near initialization for 'OV2640_1024x768_JPEG[16]')
+../Core/Inc/ov2640_reg.h:759:2: warning: braces around scalar initializer
+  759 |  {0x22, 0x0a},
+      |  ^
+../Core/Inc/ov2640_reg.h:759:2: note: (near initialization for 'OV2640_1024x768_JPEG[17]')
+../Core/Inc/ov2640_reg.h:759:9: warning: excess elements in scalar initializer
+  759 |  {0x22, 0x0a},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:759:9: note: (near initialization for 'OV2640_1024x768_JPEG[17]')
+../Core/Inc/ov2640_reg.h:760:2: warning: braces around scalar initializer
+  760 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:760:2: note: (near initialization for 'OV2640_1024x768_JPEG[18]')
+../Core/Inc/ov2640_reg.h:760:9: warning: excess elements in scalar initializer
+  760 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:760:9: note: (near initialization for 'OV2640_1024x768_JPEG[18]')
+../Core/Inc/ov2640_reg.h:761:2: warning: braces around scalar initializer
+  761 |  {0x34, 0xa0},
+      |  ^
+../Core/Inc/ov2640_reg.h:761:2: note: (near initialization for 'OV2640_1024x768_JPEG[19]')
+../Core/Inc/ov2640_reg.h:761:9: warning: excess elements in scalar initializer
+  761 |  {0x34, 0xa0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:761:9: note: (near initialization for 'OV2640_1024x768_JPEG[19]')
+../Core/Inc/ov2640_reg.h:762:2: warning: braces around scalar initializer
+  762 |  {0x06, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:762:2: note: (near initialization for 'OV2640_1024x768_JPEG[20]')
+../Core/Inc/ov2640_reg.h:762:9: warning: excess elements in scalar initializer
+  762 |  {0x06, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:762:9: note: (near initialization for 'OV2640_1024x768_JPEG[20]')
+../Core/Inc/ov2640_reg.h:763:2: warning: braces around scalar initializer
+  763 |  {0x0d, 0xb7},
+      |  ^
+../Core/Inc/ov2640_reg.h:763:2: note: (near initialization for 'OV2640_1024x768_JPEG[21]')
+../Core/Inc/ov2640_reg.h:763:9: warning: excess elements in scalar initializer
+  763 |  {0x0d, 0xb7},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:763:9: note: (near initialization for 'OV2640_1024x768_JPEG[21]')
+../Core/Inc/ov2640_reg.h:764:2: warning: braces around scalar initializer
+  764 |  {0x0e, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:764:2: note: (near initialization for 'OV2640_1024x768_JPEG[22]')
+../Core/Inc/ov2640_reg.h:764:9: warning: excess elements in scalar initializer
+  764 |  {0x0e, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:764:9: note: (near initialization for 'OV2640_1024x768_JPEG[22]')
+../Core/Inc/ov2640_reg.h:766:2: warning: braces around scalar initializer
+  766 |  {0xff, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:766:2: note: (near initialization for 'OV2640_1024x768_JPEG[23]')
+../Core/Inc/ov2640_reg.h:766:9: warning: excess elements in scalar initializer
+  766 |  {0xff, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:766:9: note: (near initialization for 'OV2640_1024x768_JPEG[23]')
+../Core/Inc/ov2640_reg.h:767:2: warning: braces around scalar initializer
+  767 |  {0xc0, 0xC8},
+      |  ^
+../Core/Inc/ov2640_reg.h:767:2: note: (near initialization for 'OV2640_1024x768_JPEG[24]')
+../Core/Inc/ov2640_reg.h:767:9: warning: excess elements in scalar initializer
+  767 |  {0xc0, 0xC8},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:767:9: note: (near initialization for 'OV2640_1024x768_JPEG[24]')
+../Core/Inc/ov2640_reg.h:768:2: warning: braces around scalar initializer
+  768 |  {0xc1, 0x96},
+      |  ^
+../Core/Inc/ov2640_reg.h:768:2: note: (near initialization for 'OV2640_1024x768_JPEG[25]')
+../Core/Inc/ov2640_reg.h:768:9: warning: excess elements in scalar initializer
+  768 |  {0xc1, 0x96},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:768:9: note: (near initialization for 'OV2640_1024x768_JPEG[25]')
+../Core/Inc/ov2640_reg.h:769:2: warning: braces around scalar initializer
+  769 |  {0x8c, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:769:2: note: (near initialization for 'OV2640_1024x768_JPEG[26]')
+../Core/Inc/ov2640_reg.h:769:9: warning: excess elements in scalar initializer
+  769 |  {0x8c, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:769:9: note: (near initialization for 'OV2640_1024x768_JPEG[26]')
+../Core/Inc/ov2640_reg.h:770:2: warning: braces around scalar initializer
+  770 |  {0x86, 0x3D},
+      |  ^
+../Core/Inc/ov2640_reg.h:770:2: note: (near initialization for 'OV2640_1024x768_JPEG[27]')
+../Core/Inc/ov2640_reg.h:770:9: warning: excess elements in scalar initializer
+  770 |  {0x86, 0x3D},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:770:9: note: (near initialization for 'OV2640_1024x768_JPEG[27]')
+../Core/Inc/ov2640_reg.h:771:2: warning: braces around scalar initializer
+  771 |  {0x50, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:771:2: note: (near initialization for 'OV2640_1024x768_JPEG[28]')
+../Core/Inc/ov2640_reg.h:771:9: warning: excess elements in scalar initializer
+  771 |  {0x50, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:771:9: note: (near initialization for 'OV2640_1024x768_JPEG[28]')
+../Core/Inc/ov2640_reg.h:772:2: warning: braces around scalar initializer
+  772 |  {0x51, 0x90},
+      |  ^
+../Core/Inc/ov2640_reg.h:772:2: note: (near initialization for 'OV2640_1024x768_JPEG[29]')
+../Core/Inc/ov2640_reg.h:772:9: warning: excess elements in scalar initializer
+  772 |  {0x51, 0x90},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:772:9: note: (near initialization for 'OV2640_1024x768_JPEG[29]')
+../Core/Inc/ov2640_reg.h:773:2: warning: braces around scalar initializer
+  773 |  {0x52, 0x2C},
+      |  ^
+../Core/Inc/ov2640_reg.h:773:2: note: (near initialization for 'OV2640_1024x768_JPEG[30]')
+../Core/Inc/ov2640_reg.h:773:9: warning: excess elements in scalar initializer
+  773 |  {0x52, 0x2C},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:773:9: note: (near initialization for 'OV2640_1024x768_JPEG[30]')
+../Core/Inc/ov2640_reg.h:774:2: warning: braces around scalar initializer
+  774 |  {0x53, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:774:2: note: (near initialization for 'OV2640_1024x768_JPEG[31]')
+../Core/Inc/ov2640_reg.h:774:9: warning: excess elements in scalar initializer
+  774 |  {0x53, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:774:9: note: (near initialization for 'OV2640_1024x768_JPEG[31]')
+../Core/Inc/ov2640_reg.h:775:2: warning: braces around scalar initializer
+  775 |  {0x54, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:775:2: note: (near initialization for 'OV2640_1024x768_JPEG[32]')
+../Core/Inc/ov2640_reg.h:775:9: warning: excess elements in scalar initializer
+  775 |  {0x54, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:775:9: note: (near initialization for 'OV2640_1024x768_JPEG[32]')
+../Core/Inc/ov2640_reg.h:776:2: warning: braces around scalar initializer
+  776 |  {0x55, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:776:2: note: (near initialization for 'OV2640_1024x768_JPEG[33]')
+../Core/Inc/ov2640_reg.h:776:9: warning: excess elements in scalar initializer
+  776 |  {0x55, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:776:9: note: (near initialization for 'OV2640_1024x768_JPEG[33]')
+../Core/Inc/ov2640_reg.h:777:2: warning: braces around scalar initializer
+  777 |  {0x5a, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:777:2: note: (near initialization for 'OV2640_1024x768_JPEG[34]')
+../Core/Inc/ov2640_reg.h:777:9: warning: excess elements in scalar initializer
+  777 |  {0x5a, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:777:9: note: (near initialization for 'OV2640_1024x768_JPEG[34]')
+../Core/Inc/ov2640_reg.h:778:2: warning: braces around scalar initializer
+  778 |  {0x5b, 0xC0},
+      |  ^
+../Core/Inc/ov2640_reg.h:778:2: note: (near initialization for 'OV2640_1024x768_JPEG[35]')
+../Core/Inc/ov2640_reg.h:778:9: warning: excess elements in scalar initializer
+  778 |  {0x5b, 0xC0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:778:9: note: (near initialization for 'OV2640_1024x768_JPEG[35]')
+../Core/Inc/ov2640_reg.h:779:2: warning: braces around scalar initializer
+  779 |  {0x5c, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:779:2: note: (near initialization for 'OV2640_1024x768_JPEG[36]')
+../Core/Inc/ov2640_reg.h:779:9: warning: excess elements in scalar initializer
+  779 |  {0x5c, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:779:9: note: (near initialization for 'OV2640_1024x768_JPEG[36]')
+../Core/Inc/ov2640_reg.h:780:2: warning: braces around scalar initializer
+  780 |  {0xd3, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:780:2: note: (near initialization for 'OV2640_1024x768_JPEG[37]')
+../Core/Inc/ov2640_reg.h:780:9: warning: excess elements in scalar initializer
+  780 |  {0xd3, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:780:9: note: (near initialization for 'OV2640_1024x768_JPEG[37]')
+../Core/Inc/ov2640_reg.h:783:3: warning: braces around scalar initializer
+  783 |   {0xff, 0xff},
+      |   ^
+../Core/Inc/ov2640_reg.h:783:3: note: (near initialization for 'OV2640_1024x768_JPEG[38]')
+../Core/Inc/ov2640_reg.h:783:10: warning: excess elements in scalar initializer
+  783 |   {0xff, 0xff},
+      |          ^~~~
+../Core/Inc/ov2640_reg.h:783:10: note: (near initialization for 'OV2640_1024x768_JPEG[38]')
+../Core/Inc/ov2640_reg.h:787:7: error: unknown type name 'sensor_reg'
+  787 | const sensor_reg OV2640_1280x1024_JPEG[] =
+      |       ^~~~~~~~~~
+../Core/Inc/ov2640_reg.h:789:2: warning: braces around scalar initializer
+  789 |  {0xff, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:789:2: note: (near initialization for 'OV2640_1280x1024_JPEG[0]')
+../Core/Inc/ov2640_reg.h:789:9: warning: excess elements in scalar initializer
+  789 |  {0xff, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:789:9: note: (near initialization for 'OV2640_1280x1024_JPEG[0]')
+../Core/Inc/ov2640_reg.h:790:2: warning: braces around scalar initializer
+  790 |  {0x11, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:790:2: note: (near initialization for 'OV2640_1280x1024_JPEG[1]')
+../Core/Inc/ov2640_reg.h:790:9: warning: excess elements in scalar initializer
+  790 |  {0x11, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:790:9: note: (near initialization for 'OV2640_1280x1024_JPEG[1]')
+../Core/Inc/ov2640_reg.h:791:2: warning: braces around scalar initializer
+  791 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |  ^
+../Core/Inc/ov2640_reg.h:791:2: note: (near initialization for 'OV2640_1280x1024_JPEG[2]')
+../Core/Inc/ov2640_reg.h:791:9: warning: excess elements in scalar initializer
+  791 |  {0x12, 0x00}, // Bit[6:4]: Resolution selection//0x02ä¸ºå½©æ?¡
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:791:9: note: (near initialization for 'OV2640_1280x1024_JPEG[2]')
+../Core/Inc/ov2640_reg.h:792:2: warning: braces around scalar initializer
+  792 |  {0x17, 0x11}, // HREFST[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:792:2: note: (near initialization for 'OV2640_1280x1024_JPEG[3]')
+../Core/Inc/ov2640_reg.h:792:9: warning: excess elements in scalar initializer
+  792 |  {0x17, 0x11}, // HREFST[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:792:9: note: (near initialization for 'OV2640_1280x1024_JPEG[3]')
+../Core/Inc/ov2640_reg.h:793:2: warning: braces around scalar initializer
+  793 |  {0x18, 0x75}, // HREFEND[10:3]
+      |  ^
+../Core/Inc/ov2640_reg.h:793:2: note: (near initialization for 'OV2640_1280x1024_JPEG[4]')
+../Core/Inc/ov2640_reg.h:793:9: warning: excess elements in scalar initializer
+  793 |  {0x18, 0x75}, // HREFEND[10:3]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:793:9: note: (near initialization for 'OV2640_1280x1024_JPEG[4]')
+../Core/Inc/ov2640_reg.h:794:2: warning: braces around scalar initializer
+  794 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:794:2: note: (near initialization for 'OV2640_1280x1024_JPEG[5]')
+../Core/Inc/ov2640_reg.h:794:9: warning: excess elements in scalar initializer
+  794 |  {0x32, 0x36}, // Bit[5:3]: HREFEND[2:0]; Bit[2:0]: HREFST[2:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:794:9: note: (near initialization for 'OV2640_1280x1024_JPEG[5]')
+../Core/Inc/ov2640_reg.h:795:2: warning: braces around scalar initializer
+  795 |  {0x19, 0x01}, // VSTRT[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:795:2: note: (near initialization for 'OV2640_1280x1024_JPEG[6]')
+../Core/Inc/ov2640_reg.h:795:9: warning: excess elements in scalar initializer
+  795 |  {0x19, 0x01}, // VSTRT[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:795:9: note: (near initialization for 'OV2640_1280x1024_JPEG[6]')
+../Core/Inc/ov2640_reg.h:796:2: warning: braces around scalar initializer
+  796 |  {0x1a, 0x97}, // VEND[9:2]
+      |  ^
+../Core/Inc/ov2640_reg.h:796:2: note: (near initialization for 'OV2640_1280x1024_JPEG[7]')
+../Core/Inc/ov2640_reg.h:796:9: warning: excess elements in scalar initializer
+  796 |  {0x1a, 0x97}, // VEND[9:2]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:796:9: note: (near initialization for 'OV2640_1280x1024_JPEG[7]')
+../Core/Inc/ov2640_reg.h:797:2: warning: braces around scalar initializer
+  797 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |  ^
+../Core/Inc/ov2640_reg.h:797:2: note: (near initialization for 'OV2640_1280x1024_JPEG[8]')
+../Core/Inc/ov2640_reg.h:797:9: warning: excess elements in scalar initializer
+  797 |  {0x03, 0x0f}, // Bit[3:2]: VEND[1:0]; Bit[1:0]: VSTRT[1:0]
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:797:9: note: (near initialization for 'OV2640_1280x1024_JPEG[8]')
+../Core/Inc/ov2640_reg.h:798:2: warning: braces around scalar initializer
+  798 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:798:2: note: (near initialization for 'OV2640_1280x1024_JPEG[9]')
+../Core/Inc/ov2640_reg.h:798:9: warning: excess elements in scalar initializer
+  798 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:798:9: note: (near initialization for 'OV2640_1280x1024_JPEG[9]')
+../Core/Inc/ov2640_reg.h:799:2: warning: braces around scalar initializer
+  799 |  {0x4f, 0xbb},
+      |  ^
+../Core/Inc/ov2640_reg.h:799:2: note: (near initialization for 'OV2640_1280x1024_JPEG[10]')
+../Core/Inc/ov2640_reg.h:799:9: warning: excess elements in scalar initializer
+  799 |  {0x4f, 0xbb},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:799:9: note: (near initialization for 'OV2640_1280x1024_JPEG[10]')
+../Core/Inc/ov2640_reg.h:800:2: warning: braces around scalar initializer
+  800 |  {0x50, 0x9c},
+      |  ^
+../Core/Inc/ov2640_reg.h:800:2: note: (near initialization for 'OV2640_1280x1024_JPEG[11]')
+../Core/Inc/ov2640_reg.h:800:9: warning: excess elements in scalar initializer
+  800 |  {0x50, 0x9c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:800:9: note: (near initialization for 'OV2640_1280x1024_JPEG[11]')
+../Core/Inc/ov2640_reg.h:801:2: warning: braces around scalar initializer
+  801 |  {0x5a, 0x57},
+      |  ^
+../Core/Inc/ov2640_reg.h:801:2: note: (near initialization for 'OV2640_1280x1024_JPEG[12]')
+../Core/Inc/ov2640_reg.h:801:9: warning: excess elements in scalar initializer
+  801 |  {0x5a, 0x57},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:801:9: note: (near initialization for 'OV2640_1280x1024_JPEG[12]')
+../Core/Inc/ov2640_reg.h:802:2: warning: braces around scalar initializer
+  802 |  {0x6d, 0x80},
+      |  ^
+../Core/Inc/ov2640_reg.h:802:2: note: (near initialization for 'OV2640_1280x1024_JPEG[13]')
+../Core/Inc/ov2640_reg.h:802:9: warning: excess elements in scalar initializer
+  802 |  {0x6d, 0x80},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:802:9: note: (near initialization for 'OV2640_1280x1024_JPEG[13]')
+../Core/Inc/ov2640_reg.h:803:2: warning: braces around scalar initializer
+  803 |  {0x3d, 0x34},
+      |  ^
+../Core/Inc/ov2640_reg.h:803:2: note: (near initialization for 'OV2640_1280x1024_JPEG[14]')
+../Core/Inc/ov2640_reg.h:803:9: warning: excess elements in scalar initializer
+  803 |  {0x3d, 0x34},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:803:9: note: (near initialization for 'OV2640_1280x1024_JPEG[14]')
+../Core/Inc/ov2640_reg.h:804:2: warning: braces around scalar initializer
+  804 |  {0x39, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:804:2: note: (near initialization for 'OV2640_1280x1024_JPEG[15]')
+../Core/Inc/ov2640_reg.h:804:9: warning: excess elements in scalar initializer
+  804 |  {0x39, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:804:9: note: (near initialization for 'OV2640_1280x1024_JPEG[15]')
+../Core/Inc/ov2640_reg.h:805:2: warning: braces around scalar initializer
+  805 |  {0x35, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:805:2: note: (near initialization for 'OV2640_1280x1024_JPEG[16]')
+../Core/Inc/ov2640_reg.h:805:9: warning: excess elements in scalar initializer
+  805 |  {0x35, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:805:9: note: (near initialization for 'OV2640_1280x1024_JPEG[16]')
+../Core/Inc/ov2640_reg.h:806:2: warning: braces around scalar initializer
+  806 |  {0x22, 0x0a},
+      |  ^
+../Core/Inc/ov2640_reg.h:806:2: note: (near initialization for 'OV2640_1280x1024_JPEG[17]')
+../Core/Inc/ov2640_reg.h:806:9: warning: excess elements in scalar initializer
+  806 |  {0x22, 0x0a},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:806:9: note: (near initialization for 'OV2640_1280x1024_JPEG[17]')
+../Core/Inc/ov2640_reg.h:807:2: warning: braces around scalar initializer
+  807 |  {0x37, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:807:2: note: (near initialization for 'OV2640_1280x1024_JPEG[18]')
+../Core/Inc/ov2640_reg.h:807:9: warning: excess elements in scalar initializer
+  807 |  {0x37, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:807:9: note: (near initialization for 'OV2640_1280x1024_JPEG[18]')
+../Core/Inc/ov2640_reg.h:808:2: warning: braces around scalar initializer
+  808 |  {0x34, 0xa0},
+      |  ^
+../Core/Inc/ov2640_reg.h:808:2: note: (near initialization for 'OV2640_1280x1024_JPEG[19]')
+../Core/Inc/ov2640_reg.h:808:9: warning: excess elements in scalar initializer
+  808 |  {0x34, 0xa0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:808:9: note: (near initialization for 'OV2640_1280x1024_JPEG[19]')
+../Core/Inc/ov2640_reg.h:809:2: warning: braces around scalar initializer
+  809 |  {0x06, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:809:2: note: (near initialization for 'OV2640_1280x1024_JPEG[20]')
+../Core/Inc/ov2640_reg.h:809:9: warning: excess elements in scalar initializer
+  809 |  {0x06, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:809:9: note: (near initialization for 'OV2640_1280x1024_JPEG[20]')
+../Core/Inc/ov2640_reg.h:810:2: warning: braces around scalar initializer
+  810 |  {0x0d, 0xb7},
+      |  ^
+../Core/Inc/ov2640_reg.h:810:2: note: (near initialization for 'OV2640_1280x1024_JPEG[21]')
+../Core/Inc/ov2640_reg.h:810:9: warning: excess elements in scalar initializer
+  810 |  {0x0d, 0xb7},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:810:9: note: (near initialization for 'OV2640_1280x1024_JPEG[21]')
+../Core/Inc/ov2640_reg.h:811:2: warning: braces around scalar initializer
+  811 |  {0x0e, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:811:2: note: (near initialization for 'OV2640_1280x1024_JPEG[22]')
+../Core/Inc/ov2640_reg.h:811:9: warning: excess elements in scalar initializer
+  811 |  {0x0e, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:811:9: note: (near initialization for 'OV2640_1280x1024_JPEG[22]')
+../Core/Inc/ov2640_reg.h:813:2: warning: braces around scalar initializer
+  813 |  {0xff, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:813:2: note: (near initialization for 'OV2640_1280x1024_JPEG[23]')
+../Core/Inc/ov2640_reg.h:813:9: warning: excess elements in scalar initializer
+  813 |  {0xff, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:813:9: note: (near initialization for 'OV2640_1280x1024_JPEG[23]')
+../Core/Inc/ov2640_reg.h:814:2: warning: braces around scalar initializer
+  814 |  {0xe0, 0x04},
+      |  ^
+../Core/Inc/ov2640_reg.h:814:2: note: (near initialization for 'OV2640_1280x1024_JPEG[24]')
+../Core/Inc/ov2640_reg.h:814:9: warning: excess elements in scalar initializer
+  814 |  {0xe0, 0x04},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:814:9: note: (near initialization for 'OV2640_1280x1024_JPEG[24]')
+../Core/Inc/ov2640_reg.h:815:2: warning: braces around scalar initializer
+  815 |  {0xc0, 0xc8},
+      |  ^
+../Core/Inc/ov2640_reg.h:815:2: note: (near initialization for 'OV2640_1280x1024_JPEG[25]')
+../Core/Inc/ov2640_reg.h:815:9: warning: excess elements in scalar initializer
+  815 |  {0xc0, 0xc8},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:815:9: note: (near initialization for 'OV2640_1280x1024_JPEG[25]')
+../Core/Inc/ov2640_reg.h:816:2: warning: braces around scalar initializer
+  816 |  {0xc1, 0x96},
+      |  ^
+../Core/Inc/ov2640_reg.h:816:2: note: (near initialization for 'OV2640_1280x1024_JPEG[26]')
+../Core/Inc/ov2640_reg.h:816:9: warning: excess elements in scalar initializer
+  816 |  {0xc1, 0x96},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:816:9: note: (near initialization for 'OV2640_1280x1024_JPEG[26]')
+../Core/Inc/ov2640_reg.h:817:2: warning: braces around scalar initializer
+  817 |  {0x86, 0x3d},
+      |  ^
+../Core/Inc/ov2640_reg.h:817:2: note: (near initialization for 'OV2640_1280x1024_JPEG[27]')
+../Core/Inc/ov2640_reg.h:817:9: warning: excess elements in scalar initializer
+  817 |  {0x86, 0x3d},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:817:9: note: (near initialization for 'OV2640_1280x1024_JPEG[27]')
+../Core/Inc/ov2640_reg.h:818:2: warning: braces around scalar initializer
+  818 |  {0x50, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:818:2: note: (near initialization for 'OV2640_1280x1024_JPEG[28]')
+../Core/Inc/ov2640_reg.h:818:9: warning: excess elements in scalar initializer
+  818 |  {0x50, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:818:9: note: (near initialization for 'OV2640_1280x1024_JPEG[28]')
+../Core/Inc/ov2640_reg.h:819:2: warning: braces around scalar initializer
+  819 |  {0x51, 0x90},
+      |  ^
+../Core/Inc/ov2640_reg.h:819:2: note: (near initialization for 'OV2640_1280x1024_JPEG[29]')
+../Core/Inc/ov2640_reg.h:819:9: warning: excess elements in scalar initializer
+  819 |  {0x51, 0x90},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:819:9: note: (near initialization for 'OV2640_1280x1024_JPEG[29]')
+../Core/Inc/ov2640_reg.h:820:2: warning: braces around scalar initializer
+  820 |  {0x52, 0x2c},
+      |  ^
+../Core/Inc/ov2640_reg.h:820:2: note: (near initialization for 'OV2640_1280x1024_JPEG[30]')
+../Core/Inc/ov2640_reg.h:820:9: warning: excess elements in scalar initializer
+  820 |  {0x52, 0x2c},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:820:9: note: (near initialization for 'OV2640_1280x1024_JPEG[30]')
+../Core/Inc/ov2640_reg.h:821:2: warning: braces around scalar initializer
+  821 |  {0x53, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:821:2: note: (near initialization for 'OV2640_1280x1024_JPEG[31]')
+../Core/Inc/ov2640_reg.h:821:9: warning: excess elements in scalar initializer
+  821 |  {0x53, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:821:9: note: (near initialization for 'OV2640_1280x1024_JPEG[31]')
+../Core/Inc/ov2640_reg.h:822:2: warning: braces around scalar initializer
+  822 |  {0x54, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:822:2: note: (near initialization for 'OV2640_1280x1024_JPEG[32]')
+../Core/Inc/ov2640_reg.h:822:9: warning: excess elements in scalar initializer
+  822 |  {0x54, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:822:9: note: (near initialization for 'OV2640_1280x1024_JPEG[32]')
+../Core/Inc/ov2640_reg.h:823:2: warning: braces around scalar initializer
+  823 |  {0x55, 0x88},
+      |  ^
+../Core/Inc/ov2640_reg.h:823:2: note: (near initialization for 'OV2640_1280x1024_JPEG[33]')
+../Core/Inc/ov2640_reg.h:823:9: warning: excess elements in scalar initializer
+  823 |  {0x55, 0x88},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:823:9: note: (near initialization for 'OV2640_1280x1024_JPEG[33]')
+../Core/Inc/ov2640_reg.h:824:2: warning: braces around scalar initializer
+  824 |  {0x57, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:824:2: note: (near initialization for 'OV2640_1280x1024_JPEG[34]')
+../Core/Inc/ov2640_reg.h:824:9: warning: excess elements in scalar initializer
+  824 |  {0x57, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:824:9: note: (near initialization for 'OV2640_1280x1024_JPEG[34]')
+../Core/Inc/ov2640_reg.h:825:2: warning: braces around scalar initializer
+  825 |  {0x5a, 0x40},
+      |  ^
+../Core/Inc/ov2640_reg.h:825:2: note: (near initialization for 'OV2640_1280x1024_JPEG[35]')
+../Core/Inc/ov2640_reg.h:825:9: warning: excess elements in scalar initializer
+  825 |  {0x5a, 0x40},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:825:9: note: (near initialization for 'OV2640_1280x1024_JPEG[35]')
+../Core/Inc/ov2640_reg.h:826:2: warning: braces around scalar initializer
+  826 |  {0x5b, 0xf0},
+      |  ^
+../Core/Inc/ov2640_reg.h:826:2: note: (near initialization for 'OV2640_1280x1024_JPEG[36]')
+../Core/Inc/ov2640_reg.h:826:9: warning: excess elements in scalar initializer
+  826 |  {0x5b, 0xf0},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:826:9: note: (near initialization for 'OV2640_1280x1024_JPEG[36]')
+../Core/Inc/ov2640_reg.h:827:2: warning: braces around scalar initializer
+  827 |  {0x5c, 0x01},
+      |  ^
+../Core/Inc/ov2640_reg.h:827:2: note: (near initialization for 'OV2640_1280x1024_JPEG[37]')
+../Core/Inc/ov2640_reg.h:827:9: warning: excess elements in scalar initializer
+  827 |  {0x5c, 0x01},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:827:9: note: (near initialization for 'OV2640_1280x1024_JPEG[37]')
+../Core/Inc/ov2640_reg.h:828:2: warning: braces around scalar initializer
+  828 |  {0xd3, 0x02},
+      |  ^
+../Core/Inc/ov2640_reg.h:828:2: note: (near initialization for 'OV2640_1280x1024_JPEG[38]')
+../Core/Inc/ov2640_reg.h:828:9: warning: excess elements in scalar initializer
+  828 |  {0xd3, 0x02},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:828:9: note: (near initialization for 'OV2640_1280x1024_JPEG[38]')
+../Core/Inc/ov2640_reg.h:829:2: warning: braces around scalar initializer
+  829 |  {0xe0, 0x00},
+      |  ^
+../Core/Inc/ov2640_reg.h:829:2: note: (near initialization for 'OV2640_1280x1024_JPEG[39]')
+../Core/Inc/ov2640_reg.h:829:9: warning: excess elements in scalar initializer
+  829 |  {0xe0, 0x00},
+      |         ^~~~
+../Core/Inc/ov2640_reg.h:829:9: note: (near initialization for 'OV2640_1280x1024_JPEG[39]')
+../Core/Inc/ov2640_reg.h:831:4: warning: braces around scalar initializer
+  831 |    {0xff, 0xff},
+      |    ^
+../Core/Inc/ov2640_reg.h:831:4: note: (near initialization for 'OV2640_1280x1024_JPEG[40]')
+../Core/Inc/ov2640_reg.h:831:11: warning: excess elements in scalar initializer
+  831 |    {0xff, 0xff},
+      |           ^~~~
+../Core/Inc/ov2640_reg.h:831:11: note: (near initialization for 'OV2640_1280x1024_JPEG[40]')
+make: *** [Core/Src/subdir.mk:46: Core/Src/i2c.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-15:22:25 Build Finished. 0 errors, 0 warnings. (took 293ms)
+15:29:56 Build Failed. 9 errors, 748 warnings. (took 2s.262ms)
 

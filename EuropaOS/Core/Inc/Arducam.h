@@ -8,12 +8,18 @@
 #ifndef INC_ARDUCAM_H_
 #define INC_ARDUCAM_H_
 
+#include "ov2640_reg.h"
+#include "stm32l4xx_hal.h"
+#include "i2c.h"
+#include "uart.h"
+#include <stdio.h>
+
 #define SIZE_8 (8)
 
 #define DEF_TIMEOUT (100)
 
 #define I2C_SLAVE_WRITE_ADDR (0x60)
-#define I2C_SLAVE_READ_ADDR (0x61)
+#define I2C_SLAVE_READ_ADDR  (0x61)
 
 #define OV2640_160x120          0    //160x120
 #define OV2640_176x144          1    //176x144

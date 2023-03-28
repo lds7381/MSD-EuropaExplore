@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;EuropaOS/Core/Inc/ov2650_reg.h&apos; to &apos;ov2640_reg.h&apos;" description="Rename resource &apos;ov2650_reg.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Core/Inc/ov2650_reg.h" name="ov2640_reg.h" stamp="1679504630166" updateReferences="true"/>
+</session>

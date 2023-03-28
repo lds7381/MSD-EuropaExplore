@@ -1,0 +1,71 @@
+/*
+ * i2c.c
+ *
+ *  Created on: Mar 27, 2023
+ *      Author: liams
+ */
+#include "i2c.h"
+
+int i2c_wr_8(I2C_HandleTypeDef *i2c, uint8_t reg, uint8_t val) {
+	if ( HAL_I2C_Master_Transmit(i2c, reg, val, 8, TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}
+
+int i2c_wr_8_reg(I2C_HandleTypeDef *i2c, sensor_reg sensor_reg) {
+	if ( HAL_I2C_Master_Transmit(i2c, sensor_reg.reg, sensor_reg.val, 8, TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}
+
+int i2c_wr_8_regs(I2C_HandleTypeDef *i2c, sensor_reg sensor_regs[]) {
+	int err = 0;
+	uint16_t reg_addr = 0;
+	uint16_t reg_val = 0;
+	const struct sensor_reg *next = sensor_regs;
+	while((reg_addr != 0xff) | (reg_val != 0xff)) {
+		reg_addr = next->reg;
+		reg_val = next->val;
+		err = i2c_wr_8(i2c, (uint8_t)reg_addr, (uint8_t)reg_val);
+		if (err != HAL_OK) {
+			return 1;
+		}
+	}
+	return HAL_OK;
+}
+
+int i2c_wr_16(I2C_HandleTypeDef *i2c, uint16_t reg, uint16_t val) {
+	if ( HAL_I2C_Master_Transmit(i2c, reg, val, 16, TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}
+
+int i2c_wr_16_reg(I2C_HandleTypeDef *i2c,  sensor_reg sensor_reg) {
+	if ( HAL_I2C_Master_Transmit(i2c, sensor_reg.reg, sensor_reg.val, 16, TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}
+
+int i2c_wr_16_regs(I2C_HandleTypeDef *i2c,  sensor_reg sensor_regs[]) {
+	int err = 0;
+	uint16_t reg_addr = 0;
+	uint16_t reg_val = 0;
+	const struct sensor_reg *next = sensor_regs;
+	while((reg_addr != 0xffff) | (reg_val != 0xffff)) {
+		reg_addr = next->reg;
+		reg_val = next->val;
+		err = i2c_wr_16(i2c, reg_addr, reg_val);
+		if (err != HAL_OK) {
+			return 1;
+		}
+	}
+	return HAL_OK;
+}

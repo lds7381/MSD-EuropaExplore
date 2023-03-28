@@ -1,0 +1,2 @@
+../Core/Src/Arducam.c:11:6:init_arducam	16	static
+../Core/Src/Arducam.c:26:6:capture_arducam	16	static

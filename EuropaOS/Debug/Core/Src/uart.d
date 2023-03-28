@@ -31,11 +31,14 @@ Core/Src/uart.o: ../Core/Src/uart.c ../Core/Inc/uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h \
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Core/Inc/main.h ../Core/Inc/VASensors.h ../Core/Inc/uart.h
+ ../Core/Inc/main.h ../Core/Inc/VASensors.h ../Core/Inc/uart.h \
+ ../Core/Inc/Arducam.h ../Core/Inc/ov2640_reg.h ../Core/Inc/i2c.h
 ../Core/Inc/uart.h:
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4r5xx.h:
@@ -69,6 +72,8 @@ Core/Src/uart.o: ../Core/Src/uart.c ../Core/Inc/uart.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_i2c_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
@@ -76,3 +81,6 @@ Core/Src/uart.o: ../Core/Src/uart.c ../Core/Inc/uart.h \
 ../Core/Inc/main.h:
 ../Core/Inc/VASensors.h:
 ../Core/Inc/uart.h:
+../Core/Inc/Arducam.h:
+../Core/Inc/ov2640_reg.h:
+../Core/Inc/i2c.h:

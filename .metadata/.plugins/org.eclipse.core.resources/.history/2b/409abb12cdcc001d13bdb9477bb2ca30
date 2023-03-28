@@ -1,0 +1,23 @@
+/*
+ * i2c.c
+ *
+ *  Created on: Mar 27, 2023
+ *      Author: liams
+ */
+#include "i2c.h"
+
+int i2c_wr(I2C_HandleTypeDef *i2c, uint16_t reg, uint16_t val) {
+	if ( HAL_I2C_Master_Transmit(i2c, reg, val, SIZE_8, DEF_TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}
+
+int i2c_wr(struct sensor_reg sensor_reg) {
+	if ( HAL_I2C_Master_Transmit(i2c, sensor_reg.reg, sensor_reg.val, SIZE_8, DEF_TIMEOUT) != HAL_OK ) {
+		return 1;
+	} else {
+		return HAL_OK;
+	}
+}

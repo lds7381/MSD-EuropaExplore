@@ -33,6 +33,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "time.h"
 #include "VASensors.h"
+#include "Arducam.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -1,0 +1,28 @@
+/*
+ * i2c.h
+ *
+ *  Created on: Mar 27, 2023
+ *      Author: liams
+ */
+
+#ifndef INC_I2C_H_
+#define INC_I2C_H_
+
+#include "ov2640_reg.h"
+#include "stm32l4xx_hal.h"
+
+struct sensor_reg {
+	uint16_t reg;
+	uint16_t val;
+};
+
+int i2c_wr_8(I2C_HandleTypeDef *i2c, uint16_t reg, uint16_t val);
+int i2c_wr_8(I2C_HandleTypeDef *i2c, struct sensor_reg reg_val);
+int i2c_wr_8_regs(I2C_HandleTypeDef *i2c, struct sensor_reg sensor_regs[]);
+
+int i2c_wr_16(I2C_HandleTypeDef *i2c, uint16_t reg, uint16_t val);
+int i2c_wr_16(I2C_HandleTypeDef *i2c, struct sensor_reg reg_val);
+int i2c_wr_16_regs(I2C_HandleTypeDef *i2c, struct sensor_reg sensor_regs[]);
+
+
+#endif /* INC_I2C_H_ */

@@ -33534,3 +33534,76 @@
 2023-03-06 15:31:40,064 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 2670mS.
 2023-03-06 15:31:40,066 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
 2023-03-06 15:31:40,075 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-03-06 15:43:03,184 [INFO] I2cTimingTraitement:329 - 0x107075B0
+2023-03-06 15:43:08,109 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:43:21,232 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:43:27,990 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:36,261 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:36,424 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:38,506 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:38,664 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:44,118 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:44,278 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:45,882 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:56:46,121 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:00,199 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:00,387 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:02,713 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:02,926 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:04,525 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:04,687 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:06,319 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:06,509 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:10,580 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:10,762 [INFO] NvicIntPanel:100 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2023-03-06 15:57:17,379 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 549661136 Bytes (981467136)
+2023-03-06 15:57:17,659 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 551218496 Bytes (981467136)
+2023-03-06 15:57:18,734 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 720368688 Bytes (981467136)
+2023-03-06 15:57:19,460 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SPI
+2023-03-06 15:57:19,460 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: DAC
+2023-03-06 15:57:19,461 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: TIM1_8L4
+2023-03-06 15:57:19,461 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: SYS
+2023-03-06 15:57:19,461 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: ADC
+2023-03-06 15:57:19,461 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: RCC
+2023-03-06 15:57:19,462 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: I2C
+2023-03-06 15:57:19,462 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: LPUART
+2023-03-06 15:57:19,462 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: NVIC
+2023-03-06 15:57:19,463 [INFO] BlockDiagram:2753 - set Specific Code input for plugin: GPIO
+2023-03-06 15:57:19,465 [INFO] CodeGenerator:690 - code generatio: config db path: C:\ST\STM32CubeIDE_1.10.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.6.1.202207061420\\db\
+2023-03-06 15:57:19,761 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp_save
+2023-03-06 15:57:19,901 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\license.tmp
+2023-03-06 15:57:20,057 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp_save
+2023-03-06 15:57:20,195 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\gpio.tmp
+2023-03-06 15:57:21,063 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c_save
+2023-03-06 15:57:21,195 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_it.c
+2023-03-06 15:57:21,202 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h_save
+2023-03-06 15:57:21,313 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_it.h
+2023-03-06 15:57:21,341 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c_save
+2023-03-06 15:57:21,545 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\stm32l4xx_hal_msp.c
+2023-03-06 15:57:21,551 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp_save
+2023-03-06 15:57:21,623 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\MXTmpFiles\system.tmp
+2023-03-06 15:57:21,641 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h_save
+2023-03-06 15:57:21,780 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\stm32l4xx_hal_conf.h
+2023-03-06 15:57:21,808 [WARN] IPConfigManager:3348 - IP not found : TIM
+2023-03-06 15:57:21,809 [WARN] CodeGenerator:3567 - IP not found : null
+2023-03-06 15:57:21,824 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h_save
+2023-03-06 15:57:21,928 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Inc\main.h
+2023-03-06 15:57:21,942 [INFO] CodeEngine:245 - oldGeneratedFile, C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c_save
+2023-03-06 15:57:22,115 [INFO] CodeEngine:269 - Generated code: C:\Users\liams\Documents\MSD\Code-Repo\MSD-EuropaExplore\EuropaOS\Core\Src\main.c
+2023-03-06 15:57:23,094 [INFO] ProjectBuilder:2919 - Time for Copy HAL[1] : 343mS.
+2023-03-06 15:57:23,099 [INFO] ProjectBuilder:4117 - Project Generator version: 3.17.1
+2023-03-06 15:57:23,527 [INFO] ConfigFileManager:1394 - The Die is : DIE470
+2023-03-06 15:57:25,538 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 2439mS.
+2023-03-06 15:57:25,539 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-03-06 15:57:25,549 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+2023-03-22 12:25:55,998 [INFO] Activator:177 - 
+
+
+2023-03-22 12:25:56,001 [INFO] Activator:178 - !SESSION log4j initialized
+2023-03-22 12:26:31,114 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-03-22 12:26:31,115 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-03-22 12:26:31,117 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-03-27 14:15:40,827 [INFO] Activator:177 - 
+
+
+2023-03-27 14:15:40,831 [INFO] Activator:178 - !SESSION log4j initialized
