@@ -16,35 +16,110 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	uint32_t vernier_values[3];
 
 	char str[50] = "Vernier Sensor Collection Started\r\n";
-	char reading[40];
 	double volts;
 	uint32_t ph;
+	double salinity, dis_o;
+
+	// Display Sensor Collection Started
 	print(uart, str, sizeof(str));
 
-	// Select pH Channel
-	adc_select_pH(adc_handle);
-//	// Start the collection of Values from the ADC
-//	if ( HAL_ADC_Start(adc_handle) != HAL_OK) {
-//		Error_Handler();
-//	}
-	HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
-
-	//HAL_ADC_Start_DMA(adc_handle, buff, 1);
+	// ADC STML4 BUG, NEED TO SET DIFFERNTIAL MODE TO FALSE (MIGHT NEED TO DO THIS FOR EVER CHANNEL)
 	adc_handle->Instance->DIFSEL = 0;
 
+	// Main Task while loop
 	while(1) {
-		// Poll for a conversion
-		HAL_ADC_Start(adc_handle);
-		HAL_ADC_PollForConversion(adc_handle, 1000);
-		buff[0] = HAL_ADC_GetValue(adc_handle);
-		HAL_ADC_Stop(adc_handle);
-		volts = conv_adc_volt(buff[0]);
-		ph = conv_volt_ph(volts);
-		sprintf(reading, "ADC VALUE: %ld, Volts: %0.2f, pH: %ld\r\n", buff[0], volts, ph);
-		print(uart, reading, sizeof(reading));
-		HAL_Delay(1000);
-	}
+		// If pH Enabled, Switch to channel and get ADC reading
+		if (PH_EN){
+			// Select pH Channel
+			adc_select_pH(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+			adc_handle->Instance->DIFSEL = 0;
 
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+			volts = conv_adc_volt(buff[0]);
+			ph = conv_volt_ph(volts);
+			vernier_values[0] = ph;
+
+		}
+		// If Salinity Enabled, Switch to channel and get ADC reading
+		if (SALINITY_EN) {
+			adc_select_salinity(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+			adc_handle->Instance->DIFSEL = 0;
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+			volts = conv_adc_volt(buff[0]);
+			salinity = conv_volt_salinity(volts);
+			vernier_values[1] = salinity;
+		}
+		// If Dissolved Oxygen Enabled, Switch to channel and get ADC reading
+		if (DO_EN) {
+			adc_select_dissolved_oxygen(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+			adc_handle->Instance->DIFSEL = 0;
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+			volts = conv_adc_volt(buff[0]);
+			if (DO_MGL_MODE) {
+				dis_o = conv_volt_do_mgl(volts);
+			}
+			else {
+				dis_o = conv_volt_do_percent(volts);
+			}
+			vernier_values[2] = dis_o;
+
+		}
+
+		// Add Vernier Values to FreeRTOS Buffer to be transmitted (TODO)
+
+
+		// Print out information to console if verbose
+		if (VS_VERBOSE) {
+			char msg[26];
+			if (PH_EN) {
+				sprintf(msg, "pH: %d ", (int)ph);
+				print(uart, msg, 7);
+			}
+			if (SALINITY_EN) {
+				sprintf(msg, "Salinity: %0.2f ppt ", salinity);
+				print(uart, msg, 20);
+			}
+			if (DO_EN) {
+				if (DO_MGL_MODE) {
+					sprintf(msg, "Dissolved O: %0.2f mg/L ", dis_o);
+					print(uart, msg, sizeof(msg));
+				}
+				else if (DO_PERCENT_MODE) {
+					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
+					print(uart, msg, sizeof(msg)+1);
+				}
+			}
+			print(uart, "\r\n", 3);
+		}
+
+		// One second delay (TODO: replace this with timer in future)
+		HAL_Delay(1000);
+
+	}
+	return;
 
 }
 
@@ -71,9 +146,9 @@ void adc_select_salinity(ADC_HandleTypeDef* adc_handle){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
 	// Populate the configuration to select channel 3 (pH Sensor)
-	sConfig.Channel = ADC_CHANNEL_5;
+	sConfig.Channel = ADC_CHANNEL_6;
     sConfig.Rank = ADC_REGULAR_RANK_1;
-    sConfig.SamplingTime = ADC_SAMPLETIME_12CYCLES_5;
+    sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
     // Configure the adc to select channel 3
     if (HAL_ADC_ConfigChannel(adc_handle, &sConfig) != HAL_OK)
@@ -90,9 +165,9 @@ void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
 	// Populate the configuration to select channel 3 (pH Sensor)
-	sConfig.Channel = ADC_CHANNEL_7;
+	sConfig.Channel = ADC_CHANNEL_12;
     sConfig.Rank = ADC_REGULAR_RANK_1;
-    sConfig.SamplingTime = ADC_SAMPLETIME_12CYCLES_5;
+    sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
     // Configure the adc to select channel 3
     if (HAL_ADC_ConfigChannel(adc_handle, &sConfig) != HAL_OK)
@@ -129,6 +204,15 @@ uint32_t conv_volt_ph(double volts) {
 	return (uint32_t) round(ph);
 }
 
+double conv_volt_salinity(double volts) {
+	return volts * SALINITY_VOLT_SLOPE;
+}
 
+double conv_volt_do_mgl(double volts) {
+	return (volts * DO_MGL_VOLT_SLOPE) - DO_MGL_VOLT_INTERCEPT;
+}
 
+uint32_t conv_volt_do_percent(double volts) {
+	return (volts * DO_PERCENT_VOLT_SLOPE) - DO_PERCENT_VOLT_INERCEPT;
+}
 
