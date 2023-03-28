@@ -18,31 +18,64 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	char str[50] = "Vernier Sensor Collection Started\r\n";
 	char reading[40];
 	double volts;
-	uint32_t ph;
+	uint32_t ph, salinity, dis_o;
+
+	// Display Sensor Collection Started
 	print(uart, str, sizeof(str));
 
-	// Select pH Channel
-	adc_select_pH(adc_handle);
-//	// Start the collection of Values from the ADC
-//	if ( HAL_ADC_Start(adc_handle) != HAL_OK) {
-//		Error_Handler();
-//	}
-	HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
-
-	//HAL_ADC_Start_DMA(adc_handle, buff, 1);
+	// ADC STML4 BUG, NEED TO SET DIFFERNTIAL MODE TO FALSE
 	adc_handle->Instance->DIFSEL = 0;
 
 	while(1) {
-		// Poll for a conversion
-		HAL_ADC_Start(adc_handle);
-		HAL_ADC_PollForConversion(adc_handle, 1000);
-		buff[0] = HAL_ADC_GetValue(adc_handle);
-		HAL_ADC_Stop(adc_handle);
-		volts = conv_adc_volt(buff[0]);
-		ph = conv_volt_ph(volts);
+		if (PH_EN){
+			// Select pH Channel
+			adc_select_pH(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+			volts = conv_adc_volt(buff[0]);
+			ph = conv_volt_ph(volts);
+			vernier_values[0] = ph;
+
+		}
+		if (SALINITY_EN) {
+			adc_select_salinity(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+
+			verneier_values[1] = salinity;
+		}
+		if (SALINITY_EN) {
+			adc_select_salinity(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+
+			vernier_values[2] = dis_o;
+
+		}
+
 		sprintf(reading, "ADC VALUE: %ld, Volts: %0.2f, pH: %ld\r\n", buff[0], volts, ph);
 		print(uart, reading, sizeof(reading));
-		HAL_Delay(1000);
 	}
 
 

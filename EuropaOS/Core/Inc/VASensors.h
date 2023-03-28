@@ -24,6 +24,13 @@
 #define MAX_ADC_READ (4095)
 #define MIN_ADC_READ (0)
 
+#define PH_EN (1)
+#define SALINITY_EN (1)
+#define DO_EN (1)
+
+#define DO_MGL_MODE (0)
+#define DO_PERCENT_MODE (1)
+
 
 /*	id_t Enum
  * 	Description: This Enum will hold all of the IDs for the different types of Vernier analog sensors
