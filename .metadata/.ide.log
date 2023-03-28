@@ -34203,6 +34203,7 @@
 2023-03-28 16:56:28,792 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 5133mS.
 2023-03-28 16:56:28,793 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
 2023-03-28 16:56:28,797 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+<<<<<<< HEAD
 2023-03-28 17:08:16,537 [INFO] ADCParametersView:113 -                Rank 1 : false
 2023-03-28 17:08:16,650 [INFO] ADCParametersView:113 -                Rank 1 : false
 2023-03-28 17:08:16,650 [INFO] ADCParametersView:113 -                Rank 1 : false
@@ -35296,3 +35297,5 @@
 2023-03-28 17:11:51,223 [INFO] ProjectBuilder:4285 - Time for Generating toolchain IDE Files: 2489mS.
 2023-03-28 17:11:51,224 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 1mS.
 2023-03-28 17:11:51,230 [INFO] ProjectBuilder:2790 - Time for Copy CMSIS : 0mS.
+=======
+>>>>>>> f93e790df123996c40f9b8ed27925ec5f57d5370
