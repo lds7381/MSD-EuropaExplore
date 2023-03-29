@@ -15,7 +15,7 @@ root.resizable(0,0)
 root.wm_attributes("-topmost", 1)
 
 # start the csv writer 
-csv_writer = csv.writer()
+# csv_writer = csv.writer() TODO
 
 # Init data 
 data_timestamps = [] # [seconds]
@@ -25,22 +25,22 @@ data_PH = [] # ph [log scale]
 data_TE = [] # [deg C]
 
 # Init serial interface 
-ser = serial.Serial('COM3', baudrate=9600, timeout=1)
+# ser = serial.Serial('COM3', baudrate=9600, timeout=1) TODO
 
 # ------------------------------------------------------------
 
 # controls 
 def create_control_frame(container):
-    controlFrame = Frame(container)
+    controlFrame = Frame(container,height=500,width=500)
 
-    Button(controlFrame, text="rudder left",command=rudder_command).grid(column=0, row=1)
-    Button(controlFrame, text="rudder right",command=rudder_command).grid(column=2, row=1)
-    Button(controlFrame, text="move forwards",command=propeller_command).grid(column=1, row=0)
-    Button(controlFrame, text="move backwards",command=propeller_command).grid(column=1, row=2)
-    Button(controlFrame, text="STOP",command=stop).grid(column=1, row=1)
+    Button(controlFrame, text="rudder left",command=rudder_command,height=50,width=50).grid(column=0, row=1)
+    Button(controlFrame, text="rudder right",command=rudder_command,height=50,width=50).grid(column=2, row=1)
+    Button(controlFrame, text="move forwards",command=propeller_command,height=50,width=50).grid(column=1, row=0)
+    Button(controlFrame, text="move backwards",command=propeller_command,height=50,width=50).grid(column=1, row=2)
+    Button(controlFrame, text="STOP",command=stop,height=50,width=50).grid(column=1, row=1)
     for widget in controlFrame.winfo_children():
         widget.grid(padx=5, pady=5)
-    return controlFrame
+    # return controlFrame
 
 # ------------------------------------------------------------
 
@@ -49,7 +49,7 @@ def create_control_frame(container):
 # integrate plots with tk https://www.geeksforgeeks.org/how-to-embed-matplotlib-charts-in-tkinter-gui/
 def create_plots_frame(container):
     plt.ion()
-    new_line = ser.readline().decode('ascii')
+    new_line = 'ads\tfser' #.readline().decode('ascii')
     if new_line == '':
         pass
     else:   
@@ -61,7 +61,7 @@ def create_plots_frame(container):
         data_PH.append(val_PH)
         data_TE.append(val_TE)
 
-        csv_writer.writerow(line_arr)
+        # csv_writer.writerow(line_arr) TODO
 
         plt.plot(x, y, 'r-')
         plt.show()
@@ -73,11 +73,6 @@ def create_plots_frame(container):
     canvas = FigureCanvasTkAgg(fig, master = container)  
     canvas.draw()
     # placing the canvas on the Tkinter container
-    canvas.get_tk_widget().pack()
-    # creating the Matplotlib toolbar
-    toolbar = NavigationToolbar2Tk(canvas, container)
-    toolbar.update()
-    # placing the toolbar on the Tkinter container
     canvas.get_tk_widget().pack()
     return root.after(100, create_plots_frame)
 
@@ -122,10 +117,10 @@ class control:
         self.vel = self.vel + self.acc * 0.01
 
 
-       
 
-ball = Ball(canvas, "red")
-ball.draw()  #Changed per Bryan Oakley's comment.
+create_control_frame(root)
+# create_plots_frame(root)
+
 root.mainloop()
 
 # ------------------------------------------------------------
