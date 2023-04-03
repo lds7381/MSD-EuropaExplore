@@ -1474,7 +1474,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 					print(uart, msg, sizeof(msg));
 				}
 				else if (DO_PERCENT_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f Percent ", dis_o);
+					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
  80010c2:	f107 0014 	add.w	r0, r7, #20
  80010c6:	e9d7 231c 	ldrd	r2, r3, [r7, #112]	; 0x70
  80010ca:	490d      	ldr	r1, [pc, #52]	; (8001100 <start_va_sensors+0x1e4>)
