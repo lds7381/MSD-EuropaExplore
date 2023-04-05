@@ -2,10 +2,14 @@
  * Arducam.c
  *
  *  Created on: Mar 6, 2023
- *      Author: liams
+ *      Author: Liam Sullivan
  */
 
 #include "Arducam.h"
+
+void arducam_task() {
+
+}
 
 // I2C Initalization Function for Arducam
 void init_arducam(arducam_info_t *cam_info){
@@ -37,8 +41,71 @@ void init_arducam(arducam_info_t *cam_info){
 			i2c_wr_8_regs(cam_info->i2c, OV2640_640x480_JPEG);
 			break;
 	}
+
+	// Set the CS Pin High
+	if (cam_info->id == 0) {
+		HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);
+	}
+	else if (cam_info->id == 1) {
+		//HAL_GPIO_WritePin(SPI2_CS_GPIO_Port, SPI2_CS_Pin, GPIO_PIN_SET);
+	}
 }
 
-void capture_arducam(arducam_info_t *cam_info){
+// Arducam Register Functions
 
+uint8_t arducam_read_reg(arducam_info_t *cam_info, uint8_t addr) {
+	uint8_t data;
+	data = spi_cam_read(cam_info->spi, addr);
+	return data;
 }
+
+void arducam_write_reg(arducam_info_t *cam_info, uint8_t addr, uint8_t val) {
+	if (spi_cam_write(cam_info->spi, addr | RWBIT, val) != HAL_OK) {
+		print(hlpuart1, "Warning: Arducam register failed to write!\r\n");
+	}
+}
+
+void arducam_set_bit(arducam_info_t *cam_info, uint8_t addr, uint8_t bit) {
+	uint8_t temp;
+	temp = arducam_read_reg(cam_info, addr);
+	arducam_write_reg(cam_info, addr, (temp | bit));
+}
+
+void arducam_clear_bit(arducam_info_t *cam_info, uint8_t addr, uint8_t bit) {
+	uint8_t temp;
+	temp = arducam_read_reg(cam_info, addr);
+	arducam_write_reg(cam_info, addr, (temp & (~bit)));
+}
+
+uint8_t arducam_get_bit(arducam_info_t *cam_info, uint8_t addr, uint8_t bit) {
+	uint8_t temp;
+	temp = arducam_read_reg(cam_info, addr);
+	temp &= bit;
+	return temp;
+}
+
+// FIFO Functions
+
+void arducam_start_capture(arducam_info_t *cam_info) {
+	arducam_write_reg(ARDUCHIP_FIFO, FIFO_START_MASK);
+}
+
+uint8_t arducam_read_fifo(arducam_info_t *cam_info) {
+	uint8_t data;
+	data = arducam_read_reg(cam_info, SINGLE_FIFO_READ);
+	return data;
+}
+
+void arducam_clear_fifo(arducam_info_t *cam_info) {
+	arducam_write_reg(cam_info, ARDUCHIP_FIFO, FIFO_CLEAR_MASK);
+}
+
+void arducam_read_fifo_len(arducam_info_t *cam_info) {
+	uint32_t len1,len2,len3,length=0;
+	len1 = arducam_read_reg(cam_info, FIFO_SIZE1);
+	len2 = arducam_read_reg(cam_info, FIFO_SIZE2);
+	len3 = arducam_read_reg(cam_info, FIFO_SIZE3) & 0x7f;
+	length = ((len3 << 16) | (len2 << 8) | len1) & 0x07fffff;
+	return length;
+}
+

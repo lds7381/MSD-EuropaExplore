@@ -13,6 +13,7 @@
 #include "i2c.h"
 #include "uart.h"
 #include <stdio.h>
+#include "arducam_reg.h"
 
 #define SIZE_8 (8)
 
@@ -35,6 +36,11 @@ typedef struct arducam_info_t {
 	SPI_HandleTypeDef *spi;
 	I2C_HandleTypeDef *i2c;
 	uint8_t resolution;
+	uint8_t id;
 } arducam_info_t;
+
+void arducam_start(arducam_info_t *cam_info);
+void capture_arducam(arducam_info_t *cam_info);
+void init_arducam(arducam_info_t *cam_info);
 
 #endif /* INC_ARDUCAM_H_ */
