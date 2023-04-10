@@ -13,12 +13,12 @@
 ADC_ChannelConfTypeDef sConfig = {0};
 
 void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, uint32_t *buff){
-	uint32_t vernier_values[3];
+	double vernier_values[4];
 
 	char str[50] = "Vernier Sensor Collection Started\r\n";
 	double volts;
 	uint32_t ph;
-	double salinity, dis_o;
+	double salinity, dis_o, temp;
 
 	// Display Sensor Collection Started
 	print(uart, str, sizeof(str));
@@ -88,31 +88,28 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 
 		}
 
+		if (TEMP_EN) {
+			adc_select_thermistor(adc_handle);
+			HAL_ADCEx_Calibration_Start(adc_handle, ADC_SINGLE_ENDED);
+			adc_handle->Instance->DIFSEL = 0;
+
+			// Poll for a conversion
+			HAL_ADC_Start(adc_handle);
+			HAL_ADC_PollForConversion(adc_handle, 1000);
+			buff[0] = HAL_ADC_GetValue(adc_handle);
+			HAL_ADC_Stop(adc_handle);
+
+			// Convert
+			temp = conv_adc_temp(buff[0]);
+			vernier_values[3] = temp;
+		}
+
 		// Add Vernier Values to FreeRTOS Buffer to be transmitted (TODO)
 
 
 		// Print out information to console if verbose
 		if (VS_VERBOSE) {
-			char msg[26];
-			if (PH_EN) {
-				sprintf(msg, "pH: %d ", (int)ph);
-				print(uart, msg, 7);
-			}
-			if (SALINITY_EN) {
-				sprintf(msg, "Salinity: %0.2f ppt ", salinity);
-				print(uart, msg, 20);
-			}
-			if (DO_EN) {
-				if (DO_MGL_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f mg/L ", dis_o);
-					print(uart, msg, sizeof(msg));
-				}
-				else if (DO_PERCENT_MODE) {
-					sprintf(msg, "Dissolved O: %0.2f Percent", dis_o);
-					print(uart, msg, sizeof(msg)+1);
-				}
-			}
-			print(uart, "\r\n", 3);
+			print_values(vernier_values, uart);
 		}
 
 		// One second delay (TODO: replace this with timer in future)
@@ -179,6 +176,22 @@ void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle){
     mux_select(sel_do);
 }
 
+void adc_select_thermistor(ADC_HandleTypeDef* adc_handle) {
+	// Create the ADC channel configuration
+		ADC_ChannelConfTypeDef sConfig = {0};
+
+	// Populate the configuration to select channel 3 (pH Sensor)
+	sConfig.Channel = ADC_CHANNEL_2;
+	sConfig.Rank = ADC_REGULAR_RANK_1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
+
+	// Configure the adc to select channel 3
+	if (HAL_ADC_ConfigChannel(adc_handle, &sConfig) != HAL_OK)
+	{
+	    Error_Handler();
+    }
+}
+
 void mux_select(enum mux_vsel_t sel) {
 	if ((sel & 0b01) > 0) {
 		HAL_GPIO_WritePin(MUX_SEL0_GPIO_Port, MUX_SEL0_Pin, GPIO_PIN_SET);
@@ -214,5 +227,44 @@ double conv_volt_do_mgl(double volts) {
 
 uint32_t conv_volt_do_percent(double volts) {
 	return (volts * DO_PERCENT_VOLT_SLOPE) - DO_PERCENT_VOLT_INERCEPT;
+}
+
+double conv_adc_temp(uint32_t reading) {
+	// Convert value to resistance
+	uint32_t resistance = 4096 / reading - 1;
+	resistance = TEMP_RESISTANCE / resistance;
+
+	return conv_res_temp(resistance);
+}
+
+double conv_res_temp(uint32_t res) {
+	return (double)(((((double)res - (double)TEMP_MIN_RESISTANCE) * (TEMP_MAX - TEMP_MIN)) / ((double)TEMP_RESISTANCE - (double)TEMP_MIN_RESISTANCE)) + TEMP_MIN);
+}
+
+void print_values(double *vernier_values, UART_HandleTypeDef* uart) {
+	char msg[26];
+	if (PH_EN) {
+		sprintf(msg, "pH: %d ", (int)vernier_values[0]);
+		print(uart, msg, 7);
+	}
+	if (SALINITY_EN) {
+		sprintf(msg, "Salinity: %0.2f ppt ", vernier_values[1]);
+		print(uart, msg, 20);
+	}
+	if (DO_EN) {
+		if (DO_MGL_MODE) {
+	    	sprintf(msg, "Dissolved O: %0.2f mg/L ", vernier_values[2]);
+		    print(uart, msg, sizeof(msg)-3);
+		}
+		else if (DO_PERCENT_MODE) {
+			sprintf(msg, "Dissolved O: %0.2f Percent", vernier_values[2]);
+			print(uart, msg, sizeof(msg)+1);
+		}
+	}
+	if (TEMP_EN) {
+		sprintf(msg, "Temperature: %0.2f F ", vernier_values[3]);
+		print(uart, msg, 22);
+	}
+	print(uart, "\r\n", 3);
 }
 
