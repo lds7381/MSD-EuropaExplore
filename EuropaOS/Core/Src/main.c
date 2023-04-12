@@ -74,6 +74,14 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	uint8_t tx[20];
 	uint32_t adc_buff[1];
+
+	motor_info_t motor_info = {
+		.gpio_port = GPIOC,
+		.en_pin = MOTOR_EN_Pin,
+		.fwd_pin = MOTOR_FWD_Pin,
+		.rev_pin = MOTOR_REV_Pin
+	};
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -98,6 +106,8 @@ int main(void)
   MX_TIM3_Init();
   MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
+
+  motor_instruction(&motor_info, MOTOR_FORWARD);
 
   // Vernier Sensor Collection Function
   start_va_sensors(&hadc1, &hlpuart1, adc_buff);
@@ -323,9 +333,9 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 11999;
+  htim3.Init.Prescaler = 119;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 5000;
+  htim3.Init.Period = 19999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -358,6 +368,7 @@ static void MX_TIM3_Init(void)
   /* USER CODE BEGIN TIM3_Init 2 */
   HAL_TIM_Base_Start(&htim3);
   /* USER CODE END TIM3_Init 2 */
+  HAL_TIM_MspPostInit(&htim3);
 
 }
 
@@ -371,6 +382,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -384,6 +396,9 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, MUX_SEL0_Pin|USB_PowerSwitchOn_Pin|MUX_SEL1_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -412,6 +427,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : MOTOR_FWD_Pin MOTOR_EN_Pin MOTOR_REV_Pin */
+  GPIO_InitStruct.Pin = MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : USB_SOF_Pin USB_ID_Pin USB_DM_Pin USB_DP_Pin */
   GPIO_InitStruct.Pin = USB_SOF_Pin|USB_ID_Pin|USB_DM_Pin|USB_DP_Pin;
