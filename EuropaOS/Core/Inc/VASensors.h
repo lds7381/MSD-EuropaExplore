@@ -15,6 +15,7 @@
 #include "main.h"
 #include "uart.h"
 #include <math.h>
+#include <time.h>
 
 #define ADC_TIMEOUT (1000)
 
@@ -32,7 +33,7 @@
 #define DO_MGL_MODE (1)
 #define DO_PERCENT_MODE (0)
 
-#define VS_VERBOSE (1)
+#define VS_VERBOSE (0)
 
 #define SALINITY_VOLT_SLOPE (16.3)
 #define DO_MGL_VOLT_SLOPE (4.444)
@@ -49,29 +50,35 @@
 /*	id_t Enum
  * 	Description: This Enum will hold all of the IDs for the different types of Vernier analog sensors
  */
-enum v_net_id{
+typedef enum {
 	thermistor 			= 0b000,
 	dissolved_oxygen 	= 0b001,
 	ph 					= 0b010,
 	salinity 			= 0b100
-};
+} v_net_id;
 
 // Vernier Multiplexer selects
 enum mux_vsel_t {
 	sel_do 					= 0b00,
 	sel_ph 					= 0b01,
-	sel_salinity			= 0b10
+	sel_salinity			= 0b10,
 };
 
 
 /* va_data_t Struct
  * Description: This struct will hold all of the necessary information read from the Vernier analog sensors
  */
-typedef struct {
-	id_t sensor_type;
-	time_t timestamp;
-	int	data;
+typedef struct va_data_t{
+	v_net_id 	sensor_type;
+	double		data;
 } va_data_t;
+
+typedef struct tx_sensor_data{
+	va_data_t ph_data;
+	va_data_t do_data;
+	va_data_t sal_data;
+	va_data_t temp_data;
+} tx_sensor_data;
 
 void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, uint32_t *buff);
 void adc_select_pH(ADC_HandleTypeDef* adc_handle);

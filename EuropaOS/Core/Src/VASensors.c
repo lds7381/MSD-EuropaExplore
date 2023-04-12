@@ -20,6 +20,25 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 	uint32_t ph;
 	double salinity, dis_o, temp;
 
+	tx_sensor_data sensor_data;
+
+	va_data_t ph_data = {
+			.data = 0.0,
+			.sensor_type = 0b010
+	};
+	va_data_t do_data = {
+			.data = 0.0,
+			.sensor_type = dissolved_oxygen
+	};
+	va_data_t sal_data = {
+			.data = 0.0,
+			.sensor_type = 0b100
+	};
+	va_data_t temp_data = {
+			.data = 0.0,
+			.sensor_type = thermistor
+	};
+
 	// Display Sensor Collection Started
 	print(uart, str, sizeof(str));
 
@@ -44,6 +63,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 			// Convert
 			volts = conv_adc_volt(buff[0]);
 			ph = conv_volt_ph(volts);
+			ph_data.data = (double)ph;
 			vernier_values[0] = ph;
 
 		}
@@ -62,6 +82,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 			// Convert
 			volts = conv_adc_volt(buff[0]);
 			salinity = conv_volt_salinity(volts);
+			sal_data.data = salinity;
 			vernier_values[1] = salinity;
 		}
 		// If Dissolved Oxygen Enabled, Switch to channel and get ADC reading
@@ -84,6 +105,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 			else {
 				dis_o = conv_volt_do_percent(volts);
 			}
+			do_data.data = dis_o;
 			vernier_values[2] = dis_o;
 
 		}
@@ -101,15 +123,22 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 
 			// Convert
 			temp = conv_adc_temp(buff[0]);
+			temp_data.data = temp;
 			vernier_values[3] = temp;
 		}
 
 		// Add Vernier Values to FreeRTOS Buffer to be transmitted (TODO)
-
+		sensor_data.ph_data = ph_data;
+		sensor_data.do_data = do_data;
+		sensor_data.sal_data = sal_data;
+		sensor_data.temp_data = temp_data;
 
 		// Print out information to console if verbose
 		if (VS_VERBOSE) {
 			print_values(vernier_values, uart);
+		}
+		else {
+			transmit_va_data(uart, (uint8_t *)&sensor_data, sizeof(sensor_data));
 		}
 
 		// One second delay (TODO: replace this with timer in future)
@@ -243,28 +272,30 @@ double conv_res_temp(uint32_t res) {
 
 void print_values(double *vernier_values, UART_HandleTypeDef* uart) {
 	char msg[26];
+	int size;
 	if (PH_EN) {
-		sprintf(msg, "pH: %d ", (int)vernier_values[0]);
-		print(uart, msg, 7);
-	}
-	if (SALINITY_EN) {
-		sprintf(msg, "Salinity: %0.2f ppt ", vernier_values[1]);
-		print(uart, msg, 20);
+		size = sprintf(msg, "%d,", (int)vernier_values[0]);
+		print(uart, msg, size);
 	}
 	if (DO_EN) {
 		if (DO_MGL_MODE) {
-	    	sprintf(msg, "Dissolved O: %0.2f mg/L ", vernier_values[2]);
-		    print(uart, msg, sizeof(msg)-3);
+	    	size = sprintf(msg, "%0.2f,", vernier_values[2]);
+		    print(uart, msg, size);
 		}
 		else if (DO_PERCENT_MODE) {
-			sprintf(msg, "Dissolved O: %0.2f Percent", vernier_values[2]);
-			print(uart, msg, sizeof(msg)+1);
+			size = sprintf(msg, "%0.2f,", vernier_values[2]);
+			print(uart, msg, size);
 		}
 	}
+	if (SALINITY_EN) {
+			size = sprintf(msg, "%0.2f,", vernier_values[1]);
+			print(uart, msg, size);
+		}
 	if (TEMP_EN) {
-		sprintf(msg, "Temperature: %0.2f F ", vernier_values[3]);
-		print(uart, msg, 22);
+		size = sprintf(msg, "%0.2f", vernier_values[3]);
+		print(uart, msg, size);
 	}
 	print(uart, "\r\n", 3);
 }
+
 
