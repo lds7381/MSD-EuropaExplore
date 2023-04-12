@@ -17,10 +17,20 @@ typedef struct motor_info_t {
 	uint16_t rev_pin;
 } motor_info_t;
 
+
 #define MOTOR_FREE_STOP 	(0)
 #define MOTOR_ACTIVE_STOP 	(1)
 #define MOTOR_FORWARD 		(2)
 #define MOTOR_REVERSE		(3)
+
+#define SERVO_MIN_DUTY_CYCLE 		(400)
+#define SERVO_MAX_DUTY_CYCLE 		(2400)
+#define SERVO_DEFAULT_DUTY_CYCLE 	(1400)
+#define SERVO_POSITION0_DUTY_CYCLE 	(400)
+#define SERVO_POSITION1_DUTY_CYCLE 	(900)
+#define SERVO_POSITION2_DUTY_CYCLE 	(1400)
+#define SERVO_POSITION3_DUTY_CYCLE 	(1900)
+#define SERVO_POSITION4_DUTY_CYCLE 	(2400)
 
 void motor_instruction(motor_info_t *motor_info, int instruction);
 void motor_free_stop(motor_info_t *motor_info);

@@ -26,6 +26,29 @@ void motor_instruction(motor_info_t *motor_info, int instruction) {
 	}
 }
 
+void servo_move_pos(int position){
+	switch (position) {
+	case 0:
+		TIM3->CCR1 = SERVO_POSITION0_DUTY_CYCLE;
+		break;
+	case 1:
+		TIM3->CCR1 = SERVO_POSITION1_DUTY_CYCLE;
+		break;
+	case 2:
+		TIM3->CCR1 = SERVO_POSITION2_DUTY_CYCLE;
+		break;
+	case 3:
+		TIM3->CCR1 = SERVO_POSITION3_DUTY_CYCLE;
+		break;
+	case 4:
+		TIM3->CCR1 = SERVO_POSITION4_DUTY_CYCLE;
+		break;
+	default:
+		TIM3->CCR1 = SERVO_DEFAULT_DUTY_CYCLE;
+		break;
+	}
+}
+
 void motor_free_stop(motor_info_t *motor_info){
 	// Clear pins
 	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
