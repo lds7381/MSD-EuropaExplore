@@ -74,6 +74,14 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	uint8_t tx[20];
 	uint32_t adc_buff[1];
+
+	motor_info_t motor_info = {
+		.gpio_port = GPIOC,
+		.en_pin = MOTOR_EN_Pin,
+		.fwd_pin = MOTOR_FWD_Pin,
+		.rev_pin = MOTOR_REV_Pin
+	};
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -98,6 +106,8 @@ int main(void)
   MX_TIM3_Init();
   MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
+
+  motor_instruction(&motor_info, MOTOR_FORWARD);
 
   // Vernier Sensor Collection Function
   start_va_sensors(&hadc1, &hlpuart1, adc_buff);
@@ -385,6 +395,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, MUX_SEL0_Pin|USB_PowerSwitchOn_Pin|MUX_SEL1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
@@ -412,6 +425,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : MOTOR_FWD_Pin MOTOR_EN_Pin MOTOR_REV_Pin */
+  GPIO_InitStruct.Pin = MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pins : USB_SOF_Pin USB_ID_Pin USB_DM_Pin USB_DP_Pin */
   GPIO_InitStruct.Pin = USB_SOF_Pin|USB_ID_Pin|USB_DM_Pin|USB_DP_Pin;
