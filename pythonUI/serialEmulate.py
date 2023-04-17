@@ -4,7 +4,7 @@ import time
 
 print("***** \nserial emulator online \n*****")
 
-ser = serial.Serial("COM5", 9600)
+ser = serial.Serial("COM5", 209700)
 
 t_start = round(time.time(), 1)
 
@@ -12,13 +12,13 @@ read = []
 
 while True:
     t = time.time() - t_start
-    message = str(math.sin(t)) + "\n"
+    message = "{},{},{},{},{}".format(t,math.sin(t),math.cos(t),-math.sin(t),-math.cos(t)) 
     ser.write(bytes(message,"utf"))
 
     # try:
-    #     read = ser.read().decode('ascii')
+    #     read = ser.readline() #.decode('ascii')
     # except:
     #     pass
-
     # print(read)
-    time.sleep(0.001)
+    
+    time.sleep(.5)
