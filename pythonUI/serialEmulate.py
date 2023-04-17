@@ -14,7 +14,8 @@ while True:
     t = time.time() - t_start
     message = "{},{},{},{},{}".format(t,math.sin(t),math.cos(t),-math.sin(t),-math.cos(t)) 
     ser.write(bytes(message,"utf"))
-
+    print(message)
+    
     # try:
     #     read = ser.readline() #.decode('ascii')
     # except:

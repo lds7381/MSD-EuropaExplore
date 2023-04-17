@@ -12,6 +12,7 @@ from tkinter import filedialog
 # Reference for protocol interpretation: https://docs.google.com/document/d/17hC0oAoF7pTGZNYeh3ka6t4bvLvzr4SShMjbHldEPO4/edit
 
 
+# ----------------------------------------------------------------------------------------------------------------------
 def resizeImage(img, newWidth, newHeight):
     oldWidth = img.width()
     oldHeight = img.height()
@@ -25,6 +26,32 @@ def resizeImage(img, newWidth, newHeight):
     return newPhotoImage
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# The serial readline function is slow and read only picks out a single character. We need a solution 
+# https://github.com/pyserial/pyserial/issues/216#issuecomment-369414522
+class ReadLine:
+    def __init__(self, s):
+        self.buf = bytearray()
+        self.s = s
+    
+    def readline(self):
+        i = self.buf.find(b"\n")
+        if i >= 0:
+            r = self.buf[:i+1]
+            self.buf = self.buf[i+1:]
+            return r
+        while True:
+            i = max(1, min(2048, self.s.in_waiting))
+            data = self.s.read(i)
+            i = data.find(b"\n")
+            if i >= 0:
+                r = self.buf + data[:i+1]
+                self.buf[0:] = data[i+1:]
+                return r
+            else:
+                self.buf.extend(data)
+
+# ----------------------------------------------------------------------------------------------------------------------
 # Tkinter class to hold everything 
 class window():
 
@@ -35,14 +62,14 @@ class window():
         # self.wm_iconbitmap('icon.ico')
 
         # Prepare data for capture 
-        self.time_DO = [] # time [s] 
-        self.time_SA = [] # time [s] 
-        self.time_PH = [] # time [s] 
-        self.time_TE = [] # time [s] 
-        self.data_DO = [] # dissolved oxygen [mg/L] 
-        self.data_SA = [] # salinity [ppm] 
-        self.data_PH = [] # ph [log scale] 
-        self.data_TE = [] # [deg C] 
+        self.time_DO = [0] # time [s] 
+        self.time_SA = [0] # time [s] 
+        self.time_PH = [0] # time [s] 
+        self.time_TE = [0] # time [s] 
+        self.data_DO = [0] # dissolved oxygen [mg/L] 
+        self.data_SA = [0] # salinity [ppm] 
+        self.data_PH = [0] # ph [log scale] 
+        self.data_TE = [0] # [deg C] 
 
         # configure column widths
         container.columnconfigure(0, weight=1)
@@ -50,8 +77,8 @@ class window():
         container.columnconfigure(2, weight=1)
 
         # User selects folders for storage 
-        self.data_folder = filedialog.askopenfilename(title='folder for sensor data')
-        self.images_folder = filedialog.askopenfilename(title='folder for camera images')
+        self.data_folder = filedialog.askdirectory(title='folder for sensor data')
+        self.images_folder = filedialog.askdirectory(title='folder for camera images')
 
         # create each frame and add them to the root container 
         data_frame = self.create_plotting_frame(container)
@@ -66,7 +93,7 @@ class window():
     def create_middle_frame(self, container):
         frame = Frame(container)
 
-        filename_bottom = filedialog.askopenfilename(title='open')
+        filename_bottom = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/space_shark_by_bojustbo_da5h40c-fullview-1388306213.jpg" # filedialog.askopenfilename(title='open')
         print(filename_bottom)
         img_front = ImageTk.PhotoImage(Image.open(filename_bottom).resize(size=[300,200]))
         panel_front = Label(frame)
@@ -75,7 +102,7 @@ class window():
         panel_front.pack( fill = "both", expand = "yes")
         Label(frame,text="Front Camera").pack(pady=10)
 
-        filename_front = filedialog.askopenfilename(title='open')
+        filename_front = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/space_shark_by_bojustbo_da5h40c-fullview-1388306213.jpg" # filedialog.askopenfilename(title='open')
         print(filename_front)
         img_bottom = ImageTk.PhotoImage(Image.open(filename_front).resize(size=[300,200]))
         panel_bottom = Label(frame)
@@ -96,7 +123,7 @@ class window():
         Button(controlFrame, text="rudder \nright",   command=rudder_command(0b1000),     height=5,width=10).grid(column=2, row=1)
         Button(controlFrame, text="forwards",  command=propeller_command(0b0001),  height=5,width=10).grid(column=1, row=0)
         Button(controlFrame, text="backwards", command=propeller_command(0b0010),  height=5,width=10).grid(column=1, row=2)
-        Button(controlFrame, text="STOP",      command=stop,               height=5,width=10).grid(column=1, row=1)
+        Button(controlFrame, text="STOP",      command=stop,                       height=5,width=10).grid(column=1, row=1)
         for widget in controlFrame.winfo_children():
             widget.grid(padx=5, pady=5)
 
@@ -109,7 +136,7 @@ class window():
         self.sensorPlotUpdate(self.sensor_axs)
 
         self.sensor_fig.set_figheight(10)
-        self.sensorDataUpdate("")
+        self.sensorDataUpdate("0,0,0,0,0")
         # prepare frames for figure placement 
         frame = Frame(container, width= 100, height= 800)
         # Tie the figures with the frames 
@@ -120,14 +147,6 @@ class window():
 
     def sensorDataUpdate(self,dataString:str):
         timestamp,DO,SA,PH,TE = dataString.split(",")
-        self.time_DO.pop(0)
-        self.time_SA.pop(0)
-        self.time_PH.pop(0)
-        self.time_TE.pop(0)
-        self.data_DO.pop(0)
-        self.data_SA.pop(0)
-        self.data_PH.pop(0) 
-        self.data_TE.pop(0)
         self.time_DO.append(timestamp)
         self.time_SA.append(timestamp)
         self.time_PH.append(timestamp)
@@ -136,6 +155,14 @@ class window():
         self.data_SA.append(SA)
         self.data_PH.append(PH) 
         self.data_TE.append(TE)
+        self.time_DO = self.time_DO[-50:]
+        self.time_SA = self.time_SA[-50:]
+        self.time_PH = self.time_PH[-50:]
+        self.time_TE = self.time_TE[-50:]
+        self.data_DO = self.data_DO[-50:]
+        self.data_SA = self.data_SA[-50:]
+        self.data_PH = self.data_PH[-50:] 
+        self.data_TE = self.data_TE[-50:]
 
     def sensorPlotUpdate(self,axs):
         # plot test data in figures 
@@ -166,29 +193,33 @@ class window():
         axs[2].annotate(text=self.data_PH[-1] ,xy=(self.time_PH[-1],self.data_PH[-1]),textcoords='data')
         axs[3].annotate(text=self.data_TE[-1] ,xy=(self.time_TE[-1],self.data_TE[-1]),textcoords='data')
         
-
-
     # continuously recieves serial and decides on display options 
-    def animate(i, dataList, ser):
-        data_data = ser.readline()
-        data_string = data_data.decode('ascii') # Decode receive Arduino data as a formatted string
+    def animate(self,i, ser):
+        try:
+            print("collect data")
+            print(ser)
+            data_data = ser.readline().decode('ascii')
+            print(data_data)
+        except Exception as e:
+            print("error: ", e)
+            pass
+        data_string = data_data.decode('ascii') #  receive data as a formatted string
 
-        data_ID = data_data[0:2]
-        print(data_ID)
+        self.sensorDataUpdate(data_string)
+        # data_ID = data_data[0:2]
 
-        if(data_ID == 0b000):
-            pass #TODO add all the ID cases  
-        elif(data_ID == 0b001):
-            pass
-        elif(data_ID == 0b010):
-            pass
-        elif(data_ID == 0b100):
-            pass
+        # if(data_ID == 0b000):
+        #     pass #TODO add all the ID cases  
+        # elif(data_ID == 0b001):
+        #     pass
+        # elif(data_ID == 0b010):
+        #     pass
+        # elif(data_ID == 0b100):
+        #     pass
         
-        dataList = dataList[-50:]                           # Fix the list size so that the animation plot 'window' is x number of points
         # TODO flesh out the general case to work with each type of ID 
         self.axs_sensors.clear()  #                                        # Clear last data frame
-        ax.plot(dataList)                                   # Plot new data frame
+        self.sensorPlotUpdate(axs=self.sensor_axs)                         # Plot new data frame
 
     # def create_control_frame(self,container):
     #     controlFrame = Frame(container,height=500,width=500)    
@@ -208,47 +239,20 @@ class window():
     #     return controlFrame
 
 # ----------------------------------------------------------------------------------------------------------------------
-# The serial readline function is slow and read only picks out a single character. We need a solution 
-
-# https://github.com/pyserial/pyserial/issues/216#issuecomment-369414522
-class ReadLine:
-    def __init__(self, s):
-        self.buf = bytearray()
-        self.s = s
-    
-    def readline(self):
-        i = self.buf.find(b"\n")
-        if i >= 0:
-            r = self.buf[:i+1]
-            self.buf = self.buf[i+1:]
-            return r
-        while True:
-            i = max(1, min(2048, self.s.in_waiting))
-            data = self.s.read(i)
-            i = data.find(b"\n")
-            if i >= 0:
-                r = self.buf + data[:i+1]
-                self.buf[0:] = data[i+1:]
-                return r
-            else:
-                self.buf.extend(data)
-
-# ----------------------------------------------------------------------------------------------------------------------
-
-
-
-ser = serial.Serial("COM4", 209700)                       # Establish Serial object with COM port and BAUD rate to match Arduino Port/rate
+# Code starts running here 
 
 
 # 209700 bps  baud
+ser = serial.Serial("COM4", 209700)         # Establish Serial object with COM port and BAUD rate to match Port/rate
 
 if __name__ == '__main__':
-    root = Toplevel()
-    window(root)
+    root = Tk()
+    win = window(root)
 
+    print("window created")
     # Now that everything is started, run the capture and animate loop
     # TODO this only works with a single figure. Convert the array of figures to subplots
-    ani = animation.FuncAnimation(fig, self.animate, frames=100, fargs=(dataList, ser), interval=100)
+    ani = animation.FuncAnimation(fig=win.sensor_fig, func=win.animate, frames=100, fargs=(ser,), interval=25)
 
     root.mainloop()
     
