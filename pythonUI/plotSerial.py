@@ -27,29 +27,6 @@ def resizeImage(img, newWidth, newHeight):
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-# The serial readline function is slow and read only picks out a single character. We need a solution 
-# https://github.com/pyserial/pyserial/issues/216#issuecomment-369414522
-class ReadLine:
-    def __init__(self, s):
-        self.buf = bytearray()
-        self.s = s
-    
-    def readline(self):
-        i = self.buf.find(b"\n")
-        if i >= 0:
-            r = self.buf[:i+1]
-            self.buf = self.buf[i+1:]
-            return r
-        while True:
-            i = max(1, min(2048, self.s.in_waiting))
-            data = self.s.read(i)
-            i = data.find(b"\n")
-            if i >= 0:
-                r = self.buf + data[:i+1]
-                self.buf[0:] = data[i+1:]
-                return r
-            else:
-                self.buf.extend(data)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Tkinter class to hold everything 
@@ -57,7 +34,7 @@ class window():
 
     def __init__(self, container):
         super().__init__()
-        container.title("Embeded figures in window")
+        container.title("Europa Explorer Inerface")
         container.minsize(640,600)
         # self.wm_iconbitmap('icon.ico')
 
@@ -87,7 +64,8 @@ class window():
         cont_frame = self.create_middle_frame(container)
         cont_frame.grid(column=1,row=0)
         print("rover controls added")
-        
+
+        print("Window init complete \n")
 
 
     def create_middle_frame(self, container):
@@ -102,7 +80,7 @@ class window():
         panel_front.pack( fill = "both", expand = "yes")
         Label(frame,text="Front Camera").pack(pady=10)
 
-        filename_front = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/space_shark_by_bojustbo_da5h40c-fullview-1388306213.jpg" # filedialog.askopenfilename(title='open')
+        filename_front = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/th-21406574.jpg" # filedialog.askopenfilename(title='open')
         print(filename_front)
         img_bottom = ImageTk.PhotoImage(Image.open(filename_front).resize(size=[300,200]))
         panel_bottom = Label(frame)
@@ -197,29 +175,35 @@ class window():
     def animate(self,i, ser):
         try:
             print("collect data")
-            print(ser)
-            data_data = ser.readline().decode('ascii')
-            print(data_data)
+            data_data = ser.read_all()
+            # print(data_data)
         except Exception as e:
             print("error: ", e)
             pass
-        data_string = data_data.decode('ascii') #  receive data as a formatted string
-
-        self.sensorDataUpdate(data_string)
-        # data_ID = data_data[0:2]
-
-        # if(data_ID == 0b000):
-        #     pass #TODO add all the ID cases  
-        # elif(data_ID == 0b001):
-        #     pass
-        # elif(data_ID == 0b010):
-        #     pass
-        # elif(data_ID == 0b100):
-        #     pass
         
-        # TODO flesh out the general case to work with each type of ID 
-        self.axs_sensors.clear()  #                                        # Clear last data frame
-        self.sensorPlotUpdate(axs=self.sensor_axs)                         # Plot new data frame
+        print(data_data)
+        if data_data !=  b'':
+            data_string = data_data.decode('ascii') #  receive data as a formatted string
+
+            print("String Recieved: ", data_string)
+            self.sensorDataUpdate(data_string)
+            print("String Decoded")
+
+            print()
+            # data_ID = data_data[0:2]
+
+            # if(data_ID == 0b000):
+            #     pass #TODO add all the ID cases  
+            # elif(data_ID == 0b001):
+            #     pass
+            # elif(data_ID == 0b010):
+            #     pass
+            # elif(data_ID == 0b100):
+            #     pass
+            
+            # TODO flesh out the general case to work with each type of ID 
+            # self.axs_sensors.clear()  #                                        # Clear last data frame
+            # self.sensorPlotUpdate(axs=self.sensor_axs)                         # Plot new data frame
 
     # def create_control_frame(self,container):
     #     controlFrame = Frame(container,height=500,width=500)    
