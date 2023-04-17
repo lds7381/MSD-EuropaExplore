@@ -174,15 +174,13 @@ class window():
     # continuously recieves serial and decides on display options 
     def animate(self,i, ser):
         try:
-            print("collect data")
             data_data = ser.read_all()
-            # print(data_data)
         except Exception as e:
             print("error: ", e)
             pass
         
         print(data_data)
-        if data_data !=  b'':
+        if data_data.count(b',')==4 :
             data_string = data_data.decode('ascii') #  receive data as a formatted string
 
             print("String Recieved: ", data_string)
