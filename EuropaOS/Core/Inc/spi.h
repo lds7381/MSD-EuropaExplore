@@ -13,9 +13,7 @@
 #include <stdio.h>
 #include "arducam_reg.h"
 
-#define TIMEOUT (1000)
-
-int spi_cam_write(SPI_HandleTypeDef *spi, uint8_t address, uint8_t val);
-uint8_t spi_cam_read(SPI_HandleTypeDef *spi, uint8_t address);
+int spi_cam_write(SPI_HandleTypeDef *spi, uint8_t camera_id, uint8_t address, uint8_t val);
+uint8_t spi_cam_read(SPI_HandleTypeDef *spi, uint8_t camera_id, uint8_t address);
 
 #endif /* INC_SPI_H_ */
