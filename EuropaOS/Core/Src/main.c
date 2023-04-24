@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -46,6 +47,27 @@ UART_HandleTypeDef hlpuart1;
 
 TIM_HandleTypeDef htim3;
 
+/* Definitions for defaultTask */
+osThreadId_t defaultTaskHandle;
+const osThreadAttr_t defaultTask_attributes = {
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for VASensors_Task */
+osThreadId_t VASensors_TaskHandle;
+const osThreadAttr_t VASensors_Task_attributes = {
+  .name = "VASensors_Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for Motor_Task */
+osThreadId_t Motor_TaskHandle;
+const osThreadAttr_t Motor_Task_attributes = {
+  .name = "Motor_Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityBelowNormal1,
+};
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -56,6 +78,10 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_LPUART1_UART_Init(void);
+void StartDefaultTask(void *argument);
+extern void va_task(va_info_t *va_info);
+extern void motor_task(motor_info_t *motor_info);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -80,6 +106,12 @@ int main(void)
 		.en_pin = MOTOR_EN_Pin,
 		.fwd_pin = MOTOR_FWD_Pin,
 		.rev_pin = MOTOR_REV_Pin
+	};
+
+	va_info_t va_data = {
+			.adc_handle = &hadc1,
+			.uart = &hlpuart1,
+			.buff = adc_buff
 	};
 
   /* USER CODE END 1 */
@@ -107,13 +139,49 @@ int main(void)
   MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  motor_instruction(&motor_info, MOTOR_FORWARD);
-
-  // Vernier Sensor Collection Function
-  start_va_sensors(&hadc1, &hlpuart1, adc_buff);
-
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of defaultTask */
+  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of VASensors_Task */
+  VASensors_TaskHandle = osThreadNew(va_task, (void*) &va_data, &VASensors_Task_attributes);
+
+  /* creation of Motor_Task */
+  Motor_TaskHandle = osThreadNew(motor_task, (void*) &motor_info, &Motor_Task_attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  /* USER CODE END RTOS_EVENTS */
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -453,6 +521,46 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void *argument)
+{
+  /* USER CODE BEGIN 5 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(10000);
+    // Do nothing forever....
+  }
+  /* USER CODE END 5 */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

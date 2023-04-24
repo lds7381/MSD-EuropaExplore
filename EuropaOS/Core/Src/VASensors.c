@@ -12,6 +12,10 @@
 
 ADC_ChannelConfTypeDef sConfig = {0};
 
+void va_task(va_info_t *va_info) {
+	start_va_sensors(va_info->adc_handle, va_info->uart, va_info->buff);
+}
+
 void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, uint32_t *buff){
 	double vernier_values[4];
 
@@ -142,7 +146,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		}
 
 		// One second delay (TODO: replace this with timer in future)
-		HAL_Delay(1000);
+		osDelay(1000);
 
 	}
 	return;

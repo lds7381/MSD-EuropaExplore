@@ -9,6 +9,7 @@
 #define INC_MOTOR_H_
 
 #include "stm32l4xx_hal.h"
+#include "cmsis_os.h"
 
 typedef struct motor_info_t {
 	GPIO_TypeDef *gpio_port;

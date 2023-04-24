@@ -7,6 +7,56 @@
 
 #include "motor.h"
 
+uint8_t count = 0, last_count = 0;
+uint8_t tx;
+
+void motor_task(motor_info_t *motor_info) {
+	while (1) {
+		if (last_count != count) {
+			switch ((char)tx):
+				case 'W':
+				case 'w':
+					motor_instruction(motor_info, MOTOR_FORWARD);
+					break;
+				case 'S':
+				case 's':
+					motor_instruction(motor_info, MOTOR_REVERSE);
+					break;
+				case 'X':
+				case 'x':
+					motor_instruction(motor_info, MOTOR_ACTIVE_STOP);
+					break;
+				case '0':
+					servo_move_pos(0);
+					break;
+				case '1':
+					servo_move_pos(1);
+					break;
+				case '2':
+					servo_move_pos(0);
+					break;
+				case '3':
+					servo_move_pos(1);
+					break;
+				case '3':
+					servo_move_pos(1);
+					break;
+				default:
+					break;
+		}
+		else {
+			osDelay(100);
+		}
+	}
+
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	print(&huart, "H\r\n", 4);
+	HAL_UART_Receive_IT(&huart, &tx, 1);
+	count++;
+}
+
 void motor_instruction(motor_info_t *motor_info, int instruction) {
 	switch(instruction) {
 	case MOTOR_FREE_STOP:

@@ -73,6 +73,12 @@ typedef struct va_data_t{
 	double		data;
 } va_data_t;
 
+typedef struct va_info_t {
+	ADC_HandleTypeDef* adc_handle;
+	UART_HandleTypeDef* uart;
+	uint32_t *buff;
+}va_info_t;
+
 typedef struct tx_sensor_data{
 	va_data_t ph_data;
 	va_data_t do_data;
@@ -94,5 +100,6 @@ double conv_adc_temp(uint32_t reading);
 double conv_res_temp(uint32_t res);
 void mux_select(enum mux_vsel_t sel);
 void print_values(double *vernier_values, UART_HandleTypeDef* uart);
+void va_task(va_info_t *va_info);
 
 #endif /* INC_VASENSORS_H_ */
