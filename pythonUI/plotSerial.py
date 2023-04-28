@@ -8,6 +8,8 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from PIL import ImageTk,Image
 from tkinter import filedialog
+from multiprocessing import Process
+import threading 
 
 # Reference for protocol interpretation: https://docs.google.com/document/d/17hC0oAoF7pTGZNYeh3ka6t4bvLvzr4SShMjbHldEPO4/edit
 
@@ -27,14 +29,13 @@ def resizeImage(img, newWidth, newHeight):
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-
 # ----------------------------------------------------------------------------------------------------------------------
 # Tkinter class to hold everything 
 class window():
 
     def __init__(self, container):
         super().__init__()
-        container.title("Europa Explorer Inerface")
+        container.title("Europa Explorer Interface")
         container.minsize(640,600)
         # self.wm_iconbitmap('icon.ico')
 
@@ -91,26 +92,27 @@ class window():
 
         def stop():
             pass
-        def rudder_command(sig):
-            ser.write(sig)
-        def propeller_command(sig):
-            ser.write(sig)
 
         controlFrame = Frame(frame)
-        Button(controlFrame, text="rudder \nleft",    command=rudder_command(0b0100),     height=5,width=10).grid(column=0, row=1)
-        Button(controlFrame, text="rudder \nright",   command=rudder_command(0b1000),     height=5,width=10).grid(column=2, row=1)
-        Button(controlFrame, text="forwards",  command=propeller_command(0b0001),  height=5,width=10).grid(column=1, row=0)
-        Button(controlFrame, text="backwards", command=propeller_command(0b0010),  height=5,width=10).grid(column=1, row=2)
-        Button(controlFrame, text="STOP",      command=stop,                       height=5,width=10).grid(column=1, row=1)
+        Button(controlFrame, text="rudder \nleft",  command=lambda:self.movement_command("l",0b0100),   height=5,width=10).grid(column=0, row=1)
+        Button(controlFrame, text="rudder \nright", command=lambda:self.movement_command("r",0b1000),   height=5,width=10).grid(column=2, row=1)
+        Button(controlFrame, text="forwards",       command=lambda:self.movement_command("f",b"w"),     height=5,width=10).grid(column=1, row=0)
+        Button(controlFrame, text="backwards",      command=lambda:self.movement_command("b",b"s"),     height=5,width=10).grid(column=1, row=2)
+        Button(controlFrame, text="STOP",           command=lambda:self.movement_command("s",b"x"),     height=5,width=10).grid(column=1, row=1)
         for widget in controlFrame.winfo_children():
             widget.grid(padx=5, pady=5)
 
         controlFrame.pack(side="bottom",pady=40)
         return frame 
     
+    def movement_command(self,cmd,sig):
+        ser.write(sig)
+        print("Sent command: ", cmd, sig)
 
     def create_plotting_frame(self, container):
-        self.sensor_fig,self.sensor_axs = plt.subplots(4, 1)
+        self.sensor_fig = Figure(dpi=100)
+
+        self.sensor_axs = self.sensor_fig.subplots(4, 1)
         self.sensorPlotUpdate(self.sensor_axs)
 
         self.sensor_fig.set_figheight(10)
@@ -133,21 +135,29 @@ class window():
         self.data_SA.append(SA)
         self.data_PH.append(PH) 
         self.data_TE.append(TE)
-        self.time_DO = self.time_DO[-50:]
-        self.time_SA = self.time_SA[-50:]
-        self.time_PH = self.time_PH[-50:]
-        self.time_TE = self.time_TE[-50:]
-        self.data_DO = self.data_DO[-50:]
-        self.data_SA = self.data_SA[-50:]
-        self.data_PH = self.data_PH[-50:] 
-        self.data_TE = self.data_TE[-50:]
+        self.time_DO = self.time_DO[-20:]
+        self.time_SA = self.time_SA[-20:]
+        self.time_PH = self.time_PH[-20:]
+        self.time_TE = self.time_TE[-20:]
+        self.data_DO = self.data_DO[-20:]
+        self.data_SA = self.data_SA[-20:]
+        self.data_PH = self.data_PH[-20:] 
+        self.data_TE = self.data_TE[-20:]
 
     def sensorPlotUpdate(self,axs):
-        # plot test data in figures 
-        axs[0].plot(self.time_DO, self.data_DO)
-        axs[1].plot(self.time_SA, self.data_SA)
-        axs[2].plot(self.time_PH, self.data_PH)
-        axs[3].plot(self.time_TE, self.data_TE)
+        axs[0].clear()
+        axs[1].clear()
+        axs[2].clear()
+        axs[3].clear()
+
+        # axs[0].set_xdata(self.time_DO)
+        # axs[1].set_xdata(self.time_SA)
+        # axs[2].set_xdata(self.time_PH)
+        # axs[3].set_xdata(self.time_TE)
+        # axs[0].set_ydata(self.data_DO)
+        # axs[1].set_ydata(self.data_SA)
+        # axs[2].set_ydata(self.data_PH)
+        # axs[3].set_ydata(self.data_TE)
 
         # Axes labels 
         axs[0].set_ylabel("Dissolved Oxygen [g/mL]")
@@ -164,6 +174,11 @@ class window():
         axs[1].set_ylim(0,25)
         axs[2].set_ylim(1,12)
         axs[3].set_ylim(0,100)
+        # plot test data in figures 
+        axs[0].plot(self.time_DO, self.data_DO)
+        axs[1].plot(self.time_SA, self.data_SA)
+        axs[2].plot(self.time_PH, self.data_PH)
+        axs[3].plot(self.time_TE, self.data_TE)
 
         # Label last point 
         axs[0].annotate(text=self.data_DO[-1] ,xy=(self.time_DO[-1],self.data_DO[-1]),textcoords='data')
@@ -179,46 +194,12 @@ class window():
             print("error: ", e)
             pass
         
-        print(data_data)
         if data_data.count(b',')==4 :
             data_string = data_data.decode('ascii') #  receive data as a formatted string
 
             print("String Recieved: ", data_string)
             self.sensorDataUpdate(data_string)
-            print("String Decoded")
-
-            print()
-            # data_ID = data_data[0:2]
-
-            # if(data_ID == 0b000):
-            #     pass #TODO add all the ID cases  
-            # elif(data_ID == 0b001):
-            #     pass
-            # elif(data_ID == 0b010):
-            #     pass
-            # elif(data_ID == 0b100):
-            #     pass
-            
-            # TODO flesh out the general case to work with each type of ID 
-            # self.axs_sensors.clear()  #                                        # Clear last data frame
-            # self.sensorPlotUpdate(axs=self.sensor_axs)                         # Plot new data frame
-
-    # def create_control_frame(self,container):
-    #     controlFrame = Frame(container,height=500,width=500)    
-    #     def stop():
-    #         return
-    #     def rudder_command():
-    #         return
-    #     def propeller_command():
-    #         return
-    #     Button(controlFrame, text="rudder \nleft",    command=rudder_command,     height=5,width=10).grid(column=0, row=1)
-    #     Button(controlFrame, text="rudder \nright",   command=rudder_command,     height=5,width=10).grid(column=2, row=1)
-    #     Button(controlFrame, text="forwards",  command=propeller_command,  height=5,width=10).grid(column=1, row=0)
-    #     Button(controlFrame, text="backwards", command=propeller_command,  height=5,width=10).grid(column=1, row=2)
-    #     Button(controlFrame, text="STOP",           command=stop,               height=5,width=10).grid(column=1, row=1)
-    #     for widget in controlFrame.winfo_children():
-    #         widget.grid(padx=5, pady=5)
-    #     return controlFrame
+            self.sensorPlotUpdate(axs=self.sensor_axs)  # Plot new data frame
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Code starts running here 
@@ -234,7 +215,13 @@ if __name__ == '__main__':
     print("window created")
     # Now that everything is started, run the capture and animate loop
     # TODO this only works with a single figure. Convert the array of figures to subplots
-    ani = animation.FuncAnimation(fig=win.sensor_fig, func=win.animate, frames=100, fargs=(ser,), interval=25)
+    
+    # p = Process(target=animation.FuncAnimation, args=(win.sensor_fig, win.animate, 100, (ser,), 25))
+    # p.start()
+    # ani = animation.FuncAnimation(win.sensor_fig, win.animate, frames=100, fargs=(ser,), interval=10)
 
+
+    print("Entering Mainloop")
     root.mainloop()
+    # p.join()
     

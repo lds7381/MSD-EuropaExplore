@@ -22,4 +22,4 @@ while True:
     #     pass
     # print(read)
     
-    time.sleep(.5)
+    time.sleep(1)
