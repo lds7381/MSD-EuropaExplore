@@ -65,16 +65,16 @@ class window():
         # User selects folders for storage 
         self.data_folder = filedialog.askdirectory(title='folder for sensor data')
         self.images_folder = filedialog.askdirectory(title='folder for camera images')
-        self.csv_file_location = self.images_folder + csvFileName
+        self.csv_file_location = self.images_folder +"\\" + csvFileName
         print("Data is stored here: ", self.csv_file_location)
 
         # create each frame and add them to the root container 
         data_frame = self.create_plotting_frame(container)
         data_frame.grid(column=0,row=0)
-        print("***plots are added")
+        print("plots are added")
         cont_frame = self.create_middle_frame(container)
         cont_frame.grid(column=1,row=0)
-        print("***rover controls added")
+        print("rover controls added")
 
         # Initial servo position
         self.servo_pos = 5
@@ -86,7 +86,7 @@ class window():
         frame = Frame(container)
 
         filename_bottom = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/space_shark_by_bojustbo_da5h40c-fullview-1388306213.jpg" # filedialog.askopenfilename(title='open')
-        print("***Loaded bottom image: " , filename_bottom)
+        print("Loaded bottom image: " , filename_bottom)
         img_front = ImageTk.PhotoImage(Image.open(filename_bottom).resize(size=[300,200]))
         self.panel_front = Label(frame)
         self.panel_front.image = img_front
@@ -95,7 +95,7 @@ class window():
         Label(frame,text="Front Camera").pack(pady=10)
 
         filename_front = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/th-21406574.jpg" # filedialog.askopenfilename(title='open')
-        print("***Loaded front image: " , filename_front)
+        print("Loaded front image: " , filename_front)
         img_bottom = ImageTk.PhotoImage(Image.open(filename_front).resize(size=[300,200]))
         self.panel_bottom = Label(frame)
         self.panel_bottom.image = img_bottom
@@ -142,6 +142,14 @@ class window():
 
     def sensorDataUpdate(self,dataString:str):
         timestamp,DO,SA,PH,TE = dataString.split(",")
+
+        f = open(self.csv_file_location.replace(".csv", ".txt"), 'w')
+        f.write(dataString + '\n')
+        f.close
+        # with open(self.csv_file_location, 'w') as csvfile:
+        #     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        #     spamwriter.writerow(dataString.split(","))
+
         self.time_DO.append(timestamp)
         self.time_SA.append(timestamp)
         self.time_PH.append(timestamp)
@@ -214,7 +222,7 @@ class window():
 
         plt.show()
     def update_photo(self):
-        list_of_files = glob.glob(self.images_folder+"\\*")
+        list_of_files = glob.glob(self.images_folder+"\\*.jpg")
         latest_file =  max(list_of_files, key=os.path.getctime).replace("/", "\\") 
         try:
             if latest_file == self.last_photo:
@@ -247,12 +255,10 @@ class window():
 
 
 # 209700 bps  baud
-dt = datetime.datetime.now()
-csvFileName = dt.strftime('%Y_%m_%d_%H%M%S.csv')
-print(csvFileName)
 
 if __name__ == '__main__':
     root = Tk()
+    csvFileName = datetime.datetime.now().strftime('%Y_%m_%d_%H%M%S.csv')
     win = window(root,csvFileName)
     print("window created")
     # Now that everything is started, run the capture and animate loop

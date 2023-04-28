@@ -2,6 +2,8 @@ import serial
 import math
 import time 
 
+'''Make sure com0com is installed and the emulated send recieve ports are correct'''
+
 print("***** \nserial emulator online \n*****")
 
 ser = serial.Serial("COM5", 209700)
