@@ -9,6 +9,7 @@ from PIL import ImageTk,Image
 from tkinter import filedialog
 import glob, os
 import csv
+import argparse
 
 # Reference for protocol interpretation: https://docs.google.com/document/d/17hC0oAoF7pTGZNYeh3ka6t4bvLvzr4SShMjbHldEPO4/edit
 
@@ -259,6 +260,14 @@ class window():
 # 209700 bps  baud
 
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--com", type=str, help='Pass the com port (default: COM4)')
+    (args) = parser.parse_args()
+    com = args.com 
+    if com==None: com = "COM4"
+    print("Using com port: ", com)
+
     root = Tk()
     csvFileName = datetime.datetime.now().strftime('%Y_%m_%d_%H%M%S.csv')
     win = window(root,csvFileName)
@@ -269,7 +278,7 @@ if __name__ == '__main__':
     # p.start()
         
     try:
-        ser = serial.Serial("COM4", 209700)         # Establish Serial object with COM port and BAUD rate to match Port/rate
+        ser = serial.Serial(com, 209700)         # Establish Serial object with COM port and BAUD rate to match Port/rate
         ani = animation.FuncAnimation(win.sensor_fig, win.animate, frames=100, fargs=(ser,), interval=25)
     except Exception as e:
         print("error: ", e)
