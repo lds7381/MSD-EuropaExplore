@@ -77,7 +77,7 @@ class window():
         print("rover controls added")
 
         # Initial servo position
-        self.servo_pos = 5
+        self.servo_pos = 2
 
         print("Window init complete \n")
 
@@ -106,9 +106,9 @@ class window():
         controlFrame = Frame(frame)
         Button(controlFrame, text="rudder \nleft",  command=lambda:self.servo_command( 1),          height=5,width=10).grid(column=0, row=1)
         Button(controlFrame, text="rudder \nright", command=lambda:self.servo_command(-1),          height=5,width=10).grid(column=2, row=1)
-        Button(controlFrame, text="forwards",       command=lambda:self.send_command("f",b"w"),     height=5,width=10).grid(column=1, row=0)
-        Button(controlFrame, text="backwards",      command=lambda:self.send_command("b",b"s"),     height=5,width=10).grid(column=1, row=2)
-        Button(controlFrame, text="STOP",           command=lambda:self.send_command("s",b"x"),     height=5,width=10).grid(column=1, row=1)
+        Button(controlFrame, text="forwards",       command=lambda:self.send_command("f","w"),     height=5,width=10).grid(column=1, row=0)
+        Button(controlFrame, text="backwards",      command=lambda:self.send_command("b","s"),     height=5,width=10).grid(column=1, row=2)
+        Button(controlFrame, text="STOP",           command=lambda:self.send_command("s","x"),     height=5,width=10).grid(column=1, row=1)
         for widget in controlFrame.winfo_children():
             widget.grid(padx=5, pady=5)
 
@@ -116,7 +116,7 @@ class window():
         return frame 
     
     def servo_command(self,direction):
-        self.servo_pos = max(1, min(9, self.servo_pos + direction))
+        self.servo_pos = max(1, min(5, self.servo_pos + direction))
         ser.write(self.servo_pos)
         print("Sent command: ", "servo", self.servo_pos)
 
@@ -125,6 +125,8 @@ class window():
         print("Sent command: ", cmd, sig)
 
     def create_plotting_frame(self, container):
+        self.csvfile = open(self.csv_file_location, 'w')
+
         self.sensor_fig = Figure(dpi=100)
         self.sensor_axs = self.sensor_fig.subplots(4, 1)
         self.sensorPlotUpdate(self.sensor_axs)
@@ -141,11 +143,10 @@ class window():
         return frame
 
     def sensorDataUpdate(self,dataString:str):
-        timestamp,DO,SA,PH,TE = dataString.split(",")
-
-        f = open(self.csv_file_location.replace(".csv", ".txt"), 'w')
-        f.write(dataString + '\n')
-        f.close
+        convertedInts = dataString.split(",")
+        timestamp,DO,SA,PH,TE = [float(x) for x in convertedInts]
+        
+        self.csvfile.writelines(dataString + '\n')
         # with open(self.csv_file_location, 'w') as csvfile:
         #     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         #     spamwriter.writerow(dataString.split(","))
@@ -209,6 +210,7 @@ class window():
         axs[1].plot(self.time_SA, self.data_SA)
         axs[2].plot(self.time_PH, self.data_PH)
         axs[3].plot(self.time_TE, self.data_TE)
+        self.sensor_axs[1].plot()
         # y limit hard bounds 
         axs[0].set_ylim([0,20])
         axs[1].set_ylim([0,25])
@@ -247,7 +249,7 @@ class window():
             data_string = data_data.decode('ascii') #  receive data as a formatted string
             print("String Recieved: ", data_string)
             self.sensorDataUpdate(data_string)
-            self.sensorPlotUpdate(axs=self.sensor_axs)  # Plot new data frame
+            self.sensorPlotUpdate(axs=self.sensor_axs)  # Plot new data framew
         self.update_photo()
 
 # ----------------------------------------------------------------------------------------------------------------------
