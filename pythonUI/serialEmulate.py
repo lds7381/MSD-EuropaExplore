@@ -14,7 +14,7 @@ read = []
 
 while True:
     t = time.time() - t_start
-    message = "{},{},{},{},{}".format(t,math.sin(t),math.cos(t),-math.sin(t),-math.cos(t)) 
+    message = "{},{},{},{},{}".format(t,math.sin(t)+5,math.cos(t)+5,-math.sin(t)+4,-math.cos(t)+20) 
     ser.write(bytes(message,"utf"))
     print(message)
     

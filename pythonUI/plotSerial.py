@@ -36,7 +36,7 @@ class window():
         super().__init__()
         container.title("Europa Explorer Interface")
         w = 1200
-        h = 800
+        h = 900
         # get screen width and height
         ws = root.winfo_screenwidth() # width of the screen
         hs = root.winfo_screenheight() # height of the screen
@@ -106,9 +106,9 @@ class window():
         controlFrame = Frame(frame)
         Button(controlFrame, text="rudder \nleft",  command=lambda:self.servo_command( 1),          height=5,width=10).grid(column=0, row=1)
         Button(controlFrame, text="rudder \nright", command=lambda:self.servo_command(-1),          height=5,width=10).grid(column=2, row=1)
-        Button(controlFrame, text="forwards",       command=lambda:self.send_command("f","w"),     height=5,width=10).grid(column=1, row=0)
-        Button(controlFrame, text="backwards",      command=lambda:self.send_command("b","s"),     height=5,width=10).grid(column=1, row=2)
-        Button(controlFrame, text="STOP",           command=lambda:self.send_command("s","x"),     height=5,width=10).grid(column=1, row=1)
+        Button(controlFrame, text="forwards",       command=lambda:self.send_command("f",b"w"),     height=5,width=10).grid(column=1, row=0)
+        Button(controlFrame, text="backwards",      command=lambda:self.send_command("b",b"s"),     height=5,width=10).grid(column=1, row=2)
+        Button(controlFrame, text="STOP",           command=lambda:self.send_command("s",b"x"),     height=5,width=10).grid(column=1, row=1)
         for widget in controlFrame.winfo_children():
             widget.grid(padx=5, pady=5)
 
@@ -130,7 +130,7 @@ class window():
         self.sensor_fig = Figure(dpi=100)
         self.sensor_axs = self.sensor_fig.subplots(4, 1)
         self.sensorPlotUpdate(self.sensor_axs)
-        self.sensor_fig.set_figheight(10)
+        self.sensor_fig.set_figheight(8)
         self.sensor_fig.tight_layout()
         self.sensor_fig.subplots_adjust(top=0.95)
         self.sensorDataUpdate("0,0,0,0,0")
