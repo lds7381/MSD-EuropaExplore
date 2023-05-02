@@ -8,7 +8,7 @@ How to Flash EuropaOS onto STM32 NUCELO-L4R5ZI:
    - Flash Project with green arrow in top middle STM32CubeIDE
 
 Connection to Board:
-STM32 will communicate through uart, open this uart communiction with putty or python applition.
+   - STM32 will communicate through uart, open this uart communiction with putty or python applition.
    - Open device manager, under COM, see what COM port the STM32 is connected to.
    - Open PuTTYy or Python appliction.
    - Set the STM32's COM port from the device manager.
