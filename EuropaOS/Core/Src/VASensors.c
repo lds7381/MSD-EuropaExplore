@@ -12,7 +12,8 @@
 
 ADC_ChannelConfTypeDef sConfig = {0};
 
-void va_task(va_info_t *va_info) {
+void va_task(void *argument) {
+	va_info_t *va_info = (va_info_t *) argument;
 	start_va_sensors(va_info->adc_handle, va_info->uart, va_info->buff);
 }
 
@@ -146,7 +147,7 @@ void start_va_sensors(ADC_HandleTypeDef* adc_handle, UART_HandleTypeDef* uart, u
 		}
 
 		// One second delay (TODO: replace this with timer in future)
-		osDelay(1000);
+		vTaskDelay(1000);
 
 	}
 	return;
@@ -158,7 +159,7 @@ void adc_select_pH(ADC_HandleTypeDef* adc_handle){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
 	// Populate the configuration to select channel 3 (pH Sensor)
-	sConfig.Channel = ADC_CHANNEL_4;
+	sConfig.Channel = ADC_CHANNEL_14;
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
@@ -176,7 +177,7 @@ void adc_select_salinity(ADC_HandleTypeDef* adc_handle){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
 	// Populate the configuration to select channel 3 (pH Sensor)
-	sConfig.Channel = ADC_CHANNEL_6;
+	sConfig.Channel = ADC_CHANNEL_5;
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
@@ -195,7 +196,7 @@ void adc_select_dissolved_oxygen(ADC_HandleTypeDef* adc_handle){
 	ADC_ChannelConfTypeDef sConfig = {0};
 
 	// Populate the configuration to select channel 3 (pH Sensor)
-	sConfig.Channel = ADC_CHANNEL_12;
+	sConfig.Channel = ADC_CHANNEL_16;
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
 
@@ -246,7 +247,7 @@ double conv_adc_volt(uint32_t adc_reading){
 }
 
 uint32_t conv_volt_ph(double volts) {
-	double ph = (14-(volts/0.25));
+	double ph = (14-(volts/0.1666666667));
 	return (uint32_t) round(ph);
 }
 
@@ -267,7 +268,7 @@ double conv_adc_temp(uint32_t reading) {
 	uint32_t resistance = 4096 / reading - 1;
 	resistance = TEMP_RESISTANCE / resistance;
 
-	return conv_res_temp(resistance);
+	return conv_res_temp(resistance) + 92;
 }
 
 double conv_res_temp(uint32_t res) {

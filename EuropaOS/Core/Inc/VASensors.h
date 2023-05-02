@@ -16,6 +16,7 @@
 #include "uart.h"
 #include <math.h>
 #include <time.h>
+#include "cmsis_os.h"
 
 #define ADC_TIMEOUT (1000)
 
@@ -33,13 +34,13 @@
 #define DO_MGL_MODE (1)
 #define DO_PERCENT_MODE (0)
 
-#define VS_VERBOSE (0)
+#define VS_VERBOSE (1)
 
 #define SALINITY_VOLT_SLOPE (16.3)
-#define DO_MGL_VOLT_SLOPE (4.444)
-#define DO_MGL_VOLT_INTERCEPT (0.444)
-#define DO_PERCENT_VOLT_SLOPE (66.666)
-#define DO_PERCENT_VOLT_INERCEPT (0.666)
+#define DO_MGL_VOLT_SLOPE (2.96267)//(4.444)
+#define DO_MGL_VOLT_INTERCEPT (0.296)
+#define DO_PERCENT_VOLT_SLOPE (44.444)//(66.666)
+#define DO_PERCENT_VOLT_INERCEPT (0.444) //(0.666)
 
 #define TEMP_RESISTANCE (335600.0)
 #define TEMP_MIN_RESISTANCE (85.5)
@@ -77,6 +78,7 @@ typedef struct va_info_t {
 	ADC_HandleTypeDef* adc_handle;
 	UART_HandleTypeDef* uart;
 	uint32_t *buff;
+	osSemaphoreId_t *sem;
 }va_info_t;
 
 typedef struct tx_sensor_data{
@@ -100,6 +102,6 @@ double conv_adc_temp(uint32_t reading);
 double conv_res_temp(uint32_t res);
 void mux_select(enum mux_vsel_t sel);
 void print_values(double *vernier_values, UART_HandleTypeDef* uart);
-void va_task(va_info_t *va_info);
+void va_task(void *argument);
 
 #endif /* INC_VASENSORS_H_ */

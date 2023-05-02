@@ -10,53 +10,6 @@
 uint8_t count = 0, last_count = 0;
 uint8_t tx;
 
-void motor_task(motor_info_t *motor_info) {
-	while (1) {
-		if (last_count != count) {
-			switch ((char)tx):
-				case 'W':
-				case 'w':
-					motor_instruction(motor_info, MOTOR_FORWARD);
-					break;
-				case 'S':
-				case 's':
-					motor_instruction(motor_info, MOTOR_REVERSE);
-					break;
-				case 'X':
-				case 'x':
-					motor_instruction(motor_info, MOTOR_ACTIVE_STOP);
-					break;
-				case '0':
-					servo_move_pos(0);
-					break;
-				case '1':
-					servo_move_pos(1);
-					break;
-				case '2':
-					servo_move_pos(0);
-					break;
-				case '3':
-					servo_move_pos(1);
-					break;
-				case '3':
-					servo_move_pos(1);
-					break;
-				default:
-					break;
-		}
-		else {
-			osDelay(100);
-		}
-	}
-
-}
-
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	print(&huart, "H\r\n", 4);
-	HAL_UART_Receive_IT(&huart, &tx, 1);
-	count++;
-}
-
 void motor_instruction(motor_info_t *motor_info, int instruction) {
 	switch(instruction) {
 	case MOTOR_FREE_STOP:
@@ -98,31 +51,41 @@ void servo_move_pos(int position){
 		break;
 	}
 }
+// CCR1 -> FORWRD
+// CCR3 -> EN
+// CCR4 -> REV
 
 void motor_free_stop(motor_info_t *motor_info){
 	// Clear pins
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
+	TIM8->CCR1 = MOTOR_OFF;   TIM8->CCR3 = MOTOR_OFF;     TIM8->CCR4 = MOTOR_OFF;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
 	// Set EN Pin only
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->en_pin, GPIO_PIN_SET);
+	TIM8->CCR3 = MOTOR_ON;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->en_pin, GPIO_PIN_SET);
 
 }
 
 void motor_active_stop(motor_info_t *motor_info) {
 	// Clear pins
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
+	TIM8->CCR1 = MOTOR_OFF;   TIM8->CCR3 = MOTOR_OFF;     TIM8->CCR4 = MOTOR_OFF;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
 }
 
 void motor_forward(motor_info_t *motor_info) {
 	// Clear pins
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
+	TIM8->CCR1 = MOTOR_OFF;   TIM8->CCR3 = MOTOR_OFF;     TIM8->CCR4 = MOTOR_OFF;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
 	// Set Forward Pin only
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin, GPIO_PIN_SET);
+	TIM8->CCR1 = MOTOR_ON;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin, GPIO_PIN_SET);
 
 }
 
 void motor_reverse(motor_info_t *motor_info) {
 	// Clear pins
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
+	TIM8->CCR1 = MOTOR_OFF;   TIM8->CCR3 = MOTOR_OFF;     TIM8->CCR4 = MOTOR_OFF;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin|motor_info->en_pin|motor_info->rev_pin, GPIO_PIN_RESET);
 	// Set Reverse Pin only
-	HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin, GPIO_PIN_SET);
+	TIM8->CCR4 = MOTOR_ON;
+	//HAL_GPIO_WritePin(motor_info->gpio_port, motor_info->fwd_pin, GPIO_PIN_SET);
 }
