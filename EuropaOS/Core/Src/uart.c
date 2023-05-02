@@ -15,3 +15,4 @@ void print(UART_HandleTypeDef *uart, char *msg, int size) {
 	HAL_UART_Transmit(uart, (uint8_t *)msg, size, transmit_timeout);
 }
 
+

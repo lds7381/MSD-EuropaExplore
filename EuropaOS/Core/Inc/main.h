@@ -77,12 +77,6 @@ void Error_Handler(void);
 #define MUX_SEL1_GPIO_Port GPIOG
 #define STLINK_TX_Pin GPIO_PIN_7
 #define STLINK_TX_GPIO_Port GPIOG
-#define MOTOR_FWD_Pin GPIO_PIN_6
-#define MOTOR_FWD_GPIO_Port GPIOC
-#define MOTOR_EN_Pin GPIO_PIN_8
-#define MOTOR_EN_GPIO_Port GPIOC
-#define MOTOR_REV_Pin GPIO_PIN_9
-#define MOTOR_REV_GPIO_Port GPIOC
 #define USB_SOF_Pin GPIO_PIN_8
 #define USB_SOF_GPIO_Port GPIOA
 #define USB_VBUS_Pin GPIO_PIN_9

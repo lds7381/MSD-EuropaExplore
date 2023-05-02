@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -45,9 +46,37 @@ ADC_HandleTypeDef hadc1;
 UART_HandleTypeDef hlpuart1;
 
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim8;
 
+/* Definitions for defaultTask */
+osThreadId_t defaultTaskHandle;
+const osThreadAttr_t defaultTask_attributes = {
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+/* Definitions for VASensors_Task */
+osThreadId_t VASensors_TaskHandle;
+const osThreadAttr_t VASensors_Task_attributes = {
+  .name = "VASensors_Task",
+  .stack_size = 640 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
+/* Definitions for Motor_Task */
+osThreadId_t Motor_TaskHandle;
+const osThreadAttr_t Motor_Task_attributes = {
+  .name = "Motor_Task",
+  .stack_size = 640 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
+/* Definitions for BinarySem01 */
+osSemaphoreId_t BinarySem01Handle;
+const osSemaphoreAttr_t BinarySem01_attributes = {
+  .name = "BinarySem01"
+};
 /* USER CODE BEGIN PV */
-
+uint8_t rx[1];
+uint8_t data_ready = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,13 +85,23 @@ static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_LPUART1_UART_Init(void);
+static void MX_TIM8_Init(void);
+void StartDefaultTask(void *argument);
+extern void va_task(void *argument);
+void motor_task(void *argument);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	if (huart->Instance == hlpuart1.Instance) {
+	    HAL_UART_Receive_IT(&hlpuart1, rx, 1);
+	    data_ready = 1;
+	}
+}
 /* USER CODE END 0 */
 
 /**
@@ -72,14 +111,22 @@ static void MX_LPUART1_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t tx[20];
 	uint32_t adc_buff[1];
+	char str[50];
+	uint32_t len;
 
 	motor_info_t motor_info = {
-		.gpio_port = GPIOC,
-		.en_pin = MOTOR_EN_Pin,
-		.fwd_pin = MOTOR_FWD_Pin,
-		.rev_pin = MOTOR_REV_Pin
+		.gpio_port = 0,//GPIOC,
+		.en_pin = 0,//MOTOR_EN_Pin,
+		.fwd_pin = 0,//MOTOR_FWD_Pin,
+		.rev_pin = 0//MOTOR_REV_Pin
+	};
+
+	va_info_t va_data = {
+			.adc_handle = &hadc1,
+			.uart = &hlpuart1,
+			.buff = adc_buff,
+			.sem = &BinarySem01Handle
 	};
 
   /* USER CODE END 1 */
@@ -105,15 +152,58 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM3_Init();
   MX_LPUART1_UART_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
-
-  motor_instruction(&motor_info, MOTOR_FORWARD);
-
-  // Vernier Sensor Collection Function
-  start_va_sensors(&hadc1, &hlpuart1, adc_buff);
-
+  HAL_UART_Receive_IT(&hlpuart1, rx, 1);
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* USER CODE BEGIN RTOS_MUTEX */
+  /* add mutexes, ... */
+  /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* creation of BinarySem01 */
+  BinarySem01Handle = osSemaphoreNew(1, 1, &BinarySem01_attributes);
+
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* add semaphores, ... */
+  /* USER CODE END RTOS_SEMAPHORES */
+
+  /* USER CODE BEGIN RTOS_TIMERS */
+  /* start timers, add new ones, ... */
+  /* USER CODE END RTOS_TIMERS */
+
+  /* USER CODE BEGIN RTOS_QUEUES */
+  /* add queues, ... */
+  /* USER CODE END RTOS_QUEUES */
+
+  /* Create the thread(s) */
+  /* creation of defaultTask */
+  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+  /* creation of VASensors_Task */
+  VASensors_TaskHandle = osThreadNew(va_task, (void*) &va_data, &VASensors_Task_attributes);
+
+  /* creation of Motor_Task */
+  Motor_TaskHandle = osThreadNew(motor_task, (void*) &motor_info, &Motor_Task_attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
+  /* add threads, ... */
+  /* USER CODE END RTOS_THREADS */
+
+  /* USER CODE BEGIN RTOS_EVENTS */
+  /* add events, ... */
+  len = sprintf(str, "Starting RTOS Tasks...\r\n");
+  print(&hlpuart1, str, len);
+  /* USER CODE END RTOS_EVENTS */
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -219,7 +309,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Channel = ADC_CHANNEL_14;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_92CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
@@ -232,7 +322,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Channel = ADC_CHANNEL_5;
   sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -241,7 +331,7 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Channel = ADC_CHANNEL_16;
   sConfig.Rank = ADC_REGULAR_RANK_3;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -367,8 +457,101 @@ static void MX_TIM3_Init(void)
   }
   /* USER CODE BEGIN TIM3_Init 2 */
   HAL_TIM_Base_Start(&htim3);
+  HAL_TIM_IC_Start(&htim3, TIM_CHANNEL_1);
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
+
+}
+
+/**
+  * @brief TIM8 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM8_Init(void)
+{
+
+  /* USER CODE BEGIN TIM8_Init 0 */
+
+  /* USER CODE END TIM8_Init 0 */
+
+  TIM_SlaveConfigTypeDef sSlaveConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+  TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
+
+  /* USER CODE BEGIN TIM8_Init 1 */
+
+  /* USER CODE END TIM8_Init 1 */
+  htim8.Instance = TIM8;
+  htim8.Init.Prescaler = 119;
+  htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim8.Init.Period = 100;
+  htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim8.Init.RepetitionCounter = 0;
+  htim8.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim8) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sSlaveConfig.SlaveMode = TIM_SLAVEMODE_EXTERNAL1;
+  sSlaveConfig.InputTrigger = TIM_TS_ITR0;
+  if (HAL_TIM_SlaveConfigSynchro(&htim8, &sSlaveConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger2 = TIM_TRGO2_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim8, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+  sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+  if (HAL_TIM_PWM_ConfigChannel(&htim8, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_ConfigChannel(&htim8, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_ConfigChannel(&htim8, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
+  sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
+  sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
+  sBreakDeadTimeConfig.DeadTime = 0;
+  sBreakDeadTimeConfig.BreakState = TIM_BREAK_DISABLE;
+  sBreakDeadTimeConfig.BreakPolarity = TIM_BREAKPOLARITY_HIGH;
+  sBreakDeadTimeConfig.BreakFilter = 0;
+  sBreakDeadTimeConfig.Break2State = TIM_BREAK2_DISABLE;
+  sBreakDeadTimeConfig.Break2Polarity = TIM_BREAK2POLARITY_HIGH;
+  sBreakDeadTimeConfig.Break2Filter = 0;
+  sBreakDeadTimeConfig.AutomaticOutput = TIM_AUTOMATICOUTPUT_DISABLE;
+  if (HAL_TIMEx_ConfigBreakDeadTime(&htim8, &sBreakDeadTimeConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM8_Init 2 */
+  HAL_TIM_Base_Start(&htim8);
+  HAL_TIM_IC_Start(&htim8, TIM_CHANNEL_1);
+  HAL_TIM_IC_Start(&htim8, TIM_CHANNEL_3);
+  HAL_TIM_IC_Start(&htim8, TIM_CHANNEL_4);
+  /* USER CODE END TIM8_Init 2 */
+  HAL_TIM_MspPostInit(&htim8);
 
 }
 
@@ -396,9 +579,6 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, MUX_SEL0_Pin|USB_PowerSwitchOn_Pin|MUX_SEL1_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -428,13 +608,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : MOTOR_FWD_Pin MOTOR_EN_Pin MOTOR_REV_Pin */
-  GPIO_InitStruct.Pin = MOTOR_FWD_Pin|MOTOR_EN_Pin|MOTOR_REV_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
   /*Configure GPIO pins : USB_SOF_Pin USB_ID_Pin USB_DM_Pin USB_DP_Pin */
   GPIO_InitStruct.Pin = USB_SOF_Pin|USB_ID_Pin|USB_DM_Pin|USB_DP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -453,6 +626,115 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 /* USER CODE END 4 */
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+  * @brief  Function implementing the defaultTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void *argument)
+{
+  /* USER CODE BEGIN 5 */
+  char str[75];
+  uint32_t len;
+  len = sprintf(str, "Main Task?\r\n");
+  print(&hlpuart1, str, len);
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+    // Do nothing forever....
+  }
+  /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_motor_task */
+/**
+* @brief Function implementing the Motor_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_motor_task */
+void motor_task(void *argument)
+{
+  /* USER CODE BEGIN motor_task */
+  motor_info_t *motor_info = (motor_info_t *) argument;
+  char str[75];
+  uint32_t len;
+  len = sprintf(str, "Motor Task Started. Awaiting Motor Instructions...\r\n");
+  print(&hlpuart1, str, len);
+
+  /* Infinite loop */
+  for(;;)
+  {
+	//osSemaphoreAcquire(BinarySem01Handle, 100);
+	if (data_ready > 0) {
+	len = sprintf(str, "Instruction Received %c \r\n", rx[0]);
+	print(&hlpuart1, str, len);
+    switch ((char)rx[0]) {
+			case 'W':
+			case 'w':
+				motor_instruction(motor_info, MOTOR_FORWARD);
+				break;
+			case 'S':
+			case 's':
+				motor_instruction(motor_info, MOTOR_REVERSE);
+				break;
+			case 'X':
+			case 'x':
+				motor_instruction(motor_info, MOTOR_ACTIVE_STOP);
+				break;
+			case '0':
+				servo_move_pos(0);
+				break;
+			case '1':
+				servo_move_pos(1);
+				break;
+			case '2':
+				servo_move_pos(2);
+				break;
+			case '3':
+				servo_move_pos(3);
+				break;
+			case '4':
+				servo_move_pos(4);
+				break;
+			case '5':
+				servo_move_pos(5);
+				break;
+			default:
+				break;
+    }
+    data_ready = 0;
+    }
+	//osSemaphoreRelease(BinarySem01Handle);
+	vTaskDelay(100);
+  }
+  /* USER CODE END motor_task */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
