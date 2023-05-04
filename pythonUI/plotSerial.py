@@ -71,40 +71,43 @@ class window():
 
         # create each frame and add them to the root container 
         data_frame = self.create_plotting_frame(container)
-        data_frame.grid(column=0,row=0)
+        data_frame.pack(side=LEFT, anchor=N)
         print("plots are added")
-        cont_frame = self.create_middle_frame(container)
-        cont_frame.grid(column=1,row=0)
+        cont_frame = self.create_control_frame(container)
+        cont_frame.pack(side=RIGHT, anchor=N)
         print("rover controls added")
+        imgs_frame = self.create_middle_frame(container)
+        imgs_frame.pack(side=RIGHT, anchor=N)
+        print("Images added")
 
         # Initial servo position
         self.servo_pos = 2
+        self.dir = -1 
 
         print("Window init complete \n")
-
-
+    
     def create_middle_frame(self, container):
         frame = Frame(container)
-
         filename_bottom = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/space_shark_by_bojustbo_da5h40c-fullview-1388306213.jpg" # filedialog.askopenfilename(title='open')
         print("Loaded bottom image: " , filename_bottom)
-        img_front = ImageTk.PhotoImage(Image.open(filename_bottom).resize(size=[300,200]))
+        img_front = ImageTk.PhotoImage(Image.open(filename_bottom).resize(size=[640,480]))
         self.panel_front = Label(frame)
         self.panel_front.image = img_front
         self.panel_front.configure(image=img_front)
         self.panel_front.pack( fill = "both", expand = "yes")
         Label(frame,text="Front Camera").pack(pady=10)
-
         filename_front = "D:/Documents/_RIT/MSD-EuropaExplore/pythonUI/images/th-21406574.jpg" # filedialog.askopenfilename(title='open')
         print("Loaded front image: " , filename_front)
-        img_bottom = ImageTk.PhotoImage(Image.open(filename_front).resize(size=[300,200]))
+        img_bottom = ImageTk.PhotoImage(Image.open(filename_front).resize(size=[640,480]))
         self.panel_bottom = Label(frame)
         self.panel_bottom.image = img_bottom
         self.panel_bottom.configure(image=img_bottom)
         self.panel_bottom.pack( fill = "both", expand = "yes")
         Label(frame,text="Bottom Camera").pack(pady=10)
+        return frame 
 
-        controlFrame = Frame(frame)
+    def create_control_frame(self,container):
+        controlFrame = Frame(container)
         Button(controlFrame, text="rudder \nleft",  command=lambda:self.servo_command( 1),          height=5,width=10).grid(column=0, row=1)
         Button(controlFrame, text="rudder \nright", command=lambda:self.servo_command(-1),          height=5,width=10).grid(column=2, row=1)
         Button(controlFrame, text="forwards",       command=lambda:self.send_command("f",b"w"),     height=5,width=10).grid(column=1, row=0)
@@ -112,13 +115,11 @@ class window():
         Button(controlFrame, text="STOP",           command=lambda:self.send_command("s",b"x"),     height=5,width=10).grid(column=1, row=1)
         for widget in controlFrame.winfo_children():
             widget.grid(padx=5, pady=5)
-
-        controlFrame.pack(side="bottom",pady=30)
-        return frame 
+        return controlFrame
     
     def servo_command(self,direction):
         self.servo_pos = max(1, min(5, self.servo_pos + direction))
-        ser.write(self.servo_pos)
+        ser.write(str(self.servo_pos).encode('UTF-8'))
         print("Sent command: ", "servo", self.servo_pos)
 
     def send_command(self,cmd,sig):
@@ -134,36 +135,38 @@ class window():
         self.sensor_fig.set_figheight(8)
         self.sensor_fig.tight_layout()
         self.sensor_fig.subplots_adjust(top=0.95)
-        self.sensorDataUpdate("0,0,0,0,0")
+        self.sensorDataUpdate("0,0,0,0")
         # prepare frames for figure placement 
         frame = Frame(container, width= 100, height= 600)
         # Tie the figures with the frames 
         canvas = FigureCanvasTkAgg(self.sensor_fig, master = frame)
         # Place the figures in the container
-        canvas.get_tk_widget().pack()
+        canvas.get_tk_widget().pack(side=TOP,anchor=NW)
         return frame
 
     def sensorDataUpdate(self,dataString:str):
-        convertedInts = dataString.split(",")
-        timestamp,DO,SA,PH,TE = [float(x) for x in convertedInts]
-        
+        try:
+            convertedInts = dataString.split(",")
+            PH,SA,DO,TE = [float(x) for x in convertedInts]
+        except:
+            return
         self.csvfile.writelines(dataString + '\n')
         # with open(self.csv_file_location, 'w') as csvfile:
         #     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         #     spamwriter.writerow(dataString.split(","))
 
-        self.time_DO.append(timestamp)
-        self.time_SA.append(timestamp)
-        self.time_PH.append(timestamp)
-        self.time_TE.append(timestamp)
+        # self.time_DO.append(timestamp)
+        # self.time_SA.append(timestamp)
+        # self.time_PH.append(timestamp)
+        # self.time_TE.append(timestamp)
         self.data_DO.append(DO)
         self.data_SA.append(SA)
         self.data_PH.append(PH) 
         self.data_TE.append(TE)
-        self.time_DO = self.time_DO[-20:]
-        self.time_SA = self.time_SA[-20:]
-        self.time_PH = self.time_PH[-20:]
-        self.time_TE = self.time_TE[-20:]
+        # self.time_DO = self.time_DO[-20:]
+        # self.time_SA = self.time_SA[-20:]
+        # self.time_PH = self.time_PH[-20:]
+        # self.time_TE = self.time_TE[-20:]
         self.data_DO = self.data_DO[-20:]
         self.data_SA = self.data_SA[-20:]
         self.data_PH = self.data_PH[-20:] 
@@ -201,16 +204,16 @@ class window():
         axs[0].set_ylabel("Dissolved Oxygen [g/mL]")
         axs[1].set_ylabel("Salinity [ppt]")
         axs[2].set_ylabel("pH [-]")
-        axs[3].set_ylabel("Temperature [Celcius]")
+        axs[3].set_ylabel("Temperature [Fahrenheit]")
         # axs[0].set_xlabel("Time [s]")
         # axs[1].set_xlabel("Time [s]")
         # axs[2].set_xlabel("Time [s]") # removed to not hog space
         axs[3].set_xlabel("Time [s]")
         # plot test data in figures 
-        axs[0].plot(self.time_DO, self.data_DO)
-        axs[1].plot(self.time_SA, self.data_SA)
-        axs[2].plot(self.time_PH, self.data_PH)
-        axs[3].plot(self.time_TE, self.data_TE)
+        axs[0].plot(self.data_DO)
+        axs[1].plot(self.data_SA)
+        axs[2].plot(self.data_PH)
+        axs[3].plot(self.data_TE)
         self.sensor_axs[1].plot()
         # y limit hard bounds 
         axs[0].set_ylim([0,20])
@@ -233,7 +236,7 @@ class window():
         except:
             pass
         print("New image: ", latest_file)
-        im = Image.open(latest_file).resize(size=[300,200])
+        im = Image.open(latest_file).resize(size=[640,480])
         ph = ImageTk.PhotoImage(im)
         self.panel_bottom.configure(image=ph)
         self.panel_bottom.image = ph
@@ -243,15 +246,26 @@ class window():
     def animate(self,i, ser):
         try:
             data_data = ser.read_all()
+            data_string = data_data.decode('ascii').replace("\r\n\x00","") #  receive data as a formatted string
         except Exception as e:
             print("error: ", e)
             pass  
-        if data_data.count(b',')==4 :
-            data_string = data_data.decode('ascii') #  receive data as a formatted string
-            print("String Recieved: ", data_string)
+        if data_string.count("Instruction Received")>0:
+            print(data_string )
+        if data_string.count(',')==3 :
+            print("Instruction Received: ", data_string)
             self.sensorDataUpdate(data_string)
             self.sensorPlotUpdate(axs=self.sensor_axs)  # Plot new data framew
         self.update_photo()
+        
+        # # The following code is designed to sweep the rudder back and forth during imagineRIT:
+        # if self.servo_pos >4:
+        #     self.dir = -1
+        # if self.servo_pos<=1:
+        #     self.dir = 1
+        # self.servo_pos = max(1, min(5, self.servo_pos + self.dir))
+        # ser.write(str(self.servo_pos).encode('UTF-8'))
+        # print("Sent command: ", "servo", self.servo_pos)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Code starts running here 
@@ -279,7 +293,7 @@ if __name__ == '__main__':
         
     try:
         ser = serial.Serial(com, 209700)         # Establish Serial object with COM port and BAUD rate to match Port/rate
-        ani = animation.FuncAnimation(win.sensor_fig, win.animate, frames=100, fargs=(ser,), interval=25)
+        ani = animation.FuncAnimation(win.sensor_fig, win.animate, frames=100, fargs=(ser,), interval=50)
     except Exception as e:
         print("error: ", e)
         pass
